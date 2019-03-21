@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">البلدية</string>
+<!--sing in-->
+    <string name="user_name">اسم المستخدم</string>
+    <string name="password">كلمة السر</string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="sign_up">انشاء حساب جديد</string>
+    <string name="forget_password">هل نسيت كلمة السر</string>
+<!--sign up-->
+    <string name="first_name">الاسم الاول</string>
+    <string name="father_name">اسم الاب</string>
+    <string name="grand_father_name">اسم الجد</string>
+    <string name="family_name">اسم العائلة</string>
+    <string name="number_family_member">عدد افراد العائلة</string>
+
+    <string name="gender">الجنس</string>
+    <string name="gender1">ذكر</string>
+    <string name="gender2">انثى</string>
+    <string name="id_number">رقم الهوية</string>
+    <string name="date_birth">تاريخ الميلاد</string>
+    <string name="place_birth">مكان الميلاد</string>
+
+    <string name="passport_number">رقم جواز السفر</string>
+    <string name="telephone_number">رقم الهاتف</string>
+    <string name="mobile_number">رقم الموبايل</string>
+    <string name="email">الايميل</string>
+    <string name="fax">فاكس</string>
+
+    <string name="work">المهنة</string>
+    <string name="address">العنوان</string>
+    <string name="street">الشارع</string>
+    <string name="region">المنطقه</string>
+    <string name="zone">الحي</string>
+
+</resources>
