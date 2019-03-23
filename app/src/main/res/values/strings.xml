@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Municipality</string>
 
-<!--sing in-->
+    <!--sing in-->
     <string name="user_name">User Name</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign in</string>
     <string name="sign_up">Sign up</string>
     <string name="forget_password">Forget Password</string>
-<!--sign up-->
+    <!--sign up-->
     <string name="first_name">First Name</string>
     <string name="father_name">Father Name</string>
     <string name="grand_father_name">Grand Father Name</string>
@@ -33,5 +33,20 @@
     <string name="region">Region</string>
     <string name="zone">Zone</string>
 
+    <string name="submit">ارسال</string>
+
+    <string name="err_msg_required">Required!</string>
+    <string name="err_msg_email">Please enter a Valid Email</string>
+    <string name="success_meg">You are successfully Registered !!</string>
+    <string name="title_activity_home">Home</string>
+
+
+    <string name="title_activity_side_bar">SideBarActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

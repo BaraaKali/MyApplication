@@ -33,4 +33,21 @@
     <string name="region">المنطقه</string>
     <string name="zone">الحي</string>
 
+    <string name="submit">ارسال</string>
+
+    <string name="err_msg_required">مطلوب!</string>
+    <string name="err_msg_email">يجب ادخال ايميل صحيح</string>
+    <string name="success_meg">تم التسجيل بنجاح</string>
+    <string name="title_activity_home">الرئيسية</string>
+
+
+
+    <string name="title_activity_side_bar">SideBarActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
 </resources>
