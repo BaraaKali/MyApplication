@@ -40,12 +40,16 @@
     <string name="success_meg">تم التسجيل بنجاح</string>
     <string name="title_activity_home">الرئيسية</string>
 
+    <string name="nav_header_title">اسم المستخدم</string>
 
+    <string name="title_activity_my_information">معلوماتي</string>
+
+    <string name="full_name">الاسم الكامل </string>
 
     <string name="title_activity_side_bar">SideBarActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
