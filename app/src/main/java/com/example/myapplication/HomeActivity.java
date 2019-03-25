@@ -65,13 +65,16 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_my_information) {
             Intent myIntent3 = new Intent(this,MyInformation.class);
             startActivity(myIntent3);
-        } else if (id == R.id.nav_slideshow) {
-
+        } else if (id == R.id.nav_all_services) {
+            Intent myIntent4 = new Intent(this,AllServices.class);
+            startActivity(myIntent4);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
+            Intent myIntent5 = new Intent(this,MainActivity.class);
+            startActivity(myIntent5);
 
         }
 

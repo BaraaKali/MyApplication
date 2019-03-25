@@ -46,6 +46,11 @@
 
     <string name="full_name">Full Name</string>
 
+    <string name="title_activity_all_services">Municipality Services</string>
+    <string name="log_out">Log Out</string>
+
+    <string name="wrong_sign_in">wrong username or password</string>
+
     <string name="title_activity_side_bar">SideBarActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

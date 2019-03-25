@@ -3,7 +3,7 @@
     <string name="app_name">البلدية</string>
 <!--sing in-->
     <string name="user_name">اسم المستخدم</string>
-    <string name="password">كلمة السر</string>
+    <string name="password">كلمة المرور</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="sign_up">انشاء حساب جديد</string>
     <string name="forget_password">هل نسيت كلمة السر</string>
@@ -46,6 +46,10 @@
 
     <string name="full_name">الاسم الكامل </string>
 
+    <string name="title_activity_all_services">خدمات البلدية</string>
+    <string name="log_out">تسجيل الخروج</string>
+
+    <string name="wrong_sign_in">خطأ في المستخدم او كلمة المرور</string>
     <string name="title_activity_side_bar">SideBarActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
