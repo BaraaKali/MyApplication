@@ -3,17 +3,14 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
 
 public class MainActivity extends AppCompatActivity {
-    EditText editText_user_name;
-    EditText editText_password;
+    EditText editText_user_name,editText_password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

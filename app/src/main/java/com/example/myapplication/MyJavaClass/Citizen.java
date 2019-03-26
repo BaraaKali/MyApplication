@@ -1,5 +1,7 @@
 package com.example.myapplication.MyJavaClass;
 
+import android.util.Log;
+
 import java.util.Date;
 
 public class Citizen {
@@ -7,7 +9,7 @@ public class Citizen {
     String fatherName;
     String grandFatherName;
     String familyName;
-    int numberOfFamilyName;
+    int numberOfFamilyNumber;
     String gender;
     int identificationNumber;
     Date dateOfBirth;
@@ -60,12 +62,12 @@ public class Citizen {
         this.familyName = familyName;
     }
 
-    public int getNumberOfFamilyName() {
-        return numberOfFamilyName;
+    public int getNumberOfFamilyNumber() {
+        return numberOfFamilyNumber;
     }
 
-    public void setNumberOfFamilyName(int numberOfFamilyName) {
-        this.numberOfFamilyName = numberOfFamilyName;
+    public void setNumberOfFamilyNumber(int numberOfFamilyNumber) {
+        this.numberOfFamilyNumber = numberOfFamilyNumber;
     }
 
     public String getGender() {
@@ -194,5 +196,37 @@ public class Citizen {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Citizen{" +
+                "firstName='" + firstName + '\'' +
+                ", fatherName='" + fatherName + '\'' +
+                ", grandFatherName='" + grandFatherName + '\'' +
+                ", familyName='" + familyName + '\'' +
+                ", numberOfFamilyNumber=" + numberOfFamilyNumber +
+                ", gender='" + gender + '\'' +
+                ", identificationNumber=" + identificationNumber +
+                ", dateOfBirth=" + dateOfBirth +
+                ", placeOfBirth='" + placeOfBirth + '\'' +
+                ", passportNumber=" + passportNumber +
+                ", TelephoneNumber=" + TelephoneNumber +
+                ", mobileNumber=" + mobileNumber +
+                ", email='" + email + '\'' +
+                ", fax=" + fax +
+                ", work='" + work + '\'' +
+                ", address='" + address + '\'' +
+                ", street='" + street + '\'' +
+                ", region='" + region + '\'' +
+                ", zone='" + zone + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
+    public void addToDB() {
+
+        Log.d("newCitizen ",this.toString());
     }
 }

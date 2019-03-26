@@ -4,11 +4,13 @@ package com.example.myapplication;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
@@ -17,11 +19,15 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
 import android.support.design.widget.TextInputLayout;
+
+import com.example.myapplication.MyJavaClass.Citizen;
 
 
 public class SignUpActivity extends AppCompatActivity {
@@ -152,7 +158,38 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
         TextInputLayoutEmail.setErrorEnabled(false);
+        addNewUser();
         Toast.makeText(getApplicationContext(), getString(R.string.success_meg), Toast.LENGTH_SHORT).show();
+        Intent myIntent = new Intent(this,MyInformation.class);
+        startActivity(myIntent);
+    }
+    public void addNewUser(){
+        Citizen newcitizen = new Citizen();
+
+        newcitizen.setFirstName(EditTextFirstName.getText().toString());
+        newcitizen.setFatherName(EditTextFatherName.getText().toString());
+        newcitizen.setGrandFatherName(EditTextGrandFatherName.getText().toString());
+        newcitizen.setFamilyName(EditTextFamilyName.getText().toString());
+        newcitizen.setNumberOfFamilyNumber((int)(Integer.parseInt(((EditText)findViewById(R.id.editText_number_family_member)).getText().toString())));
+        newcitizen.setIdentificationNumber((int)(Integer.parseInt(((EditText)findViewById(R.id.editText_id_number)).getText().toString())));
+        newcitizen.setPlaceOfBirth(((EditText)findViewById(R.id.editText_place_birth)).getText().toString());
+        newcitizen.setPassportNumber((int)(Integer.parseInt(((EditText)findViewById(R.id.editText_passport_number)).getText().toString())));
+        newcitizen.setTelephoneNumber((int)(Integer.parseInt(((EditText)findViewById(R.id.editText_telephone_number)).getText().toString())));
+        newcitizen.setMobileNumber((int)(Integer.parseInt(((EditText)findViewById(R.id.editText_mobile_number)).getText().toString())));
+        newcitizen.setEmail(EditTextEmail.getText().toString());
+        newcitizen.setFax((int)(Integer.parseInt(((EditText)findViewById(R.id.editText_fax)).getText().toString())));
+        newcitizen.setWork(((EditText)findViewById(R.id.editText_work)).getText().toString());
+        newcitizen.setAddress(((EditText)findViewById(R.id.editText_address)).getText().toString());
+        newcitizen.setStreet(((EditText)findViewById(R.id.editText_street)).getText().toString());
+        newcitizen.setRegion(((EditText)findViewById(R.id.editText_region)).getText().toString());
+        newcitizen.setZone (((EditText)findViewById(R.id.editText_zone)).getText().toString());
+        newcitizen.setUsername(EditTextUserName.getText().toString());
+        newcitizen.setPassword(EditTextPassword.getText().toString());
+        RadioGroup radioGroup_gender = ((RadioGroup)findViewById(R.id.radioGroup_gender));
+        RadioButton radiobutton_gender = (RadioButton)findViewById(radioGroup_gender.getCheckedRadioButtonId());
+        newcitizen.setGender(radiobutton_gender.getText().toString());
+        newcitizen.addToDB();
+
     }
     private boolean checkEmail() {
         String email = EditTextEmail.getText().toString().trim();

@@ -117,21 +117,22 @@
              android:textSize="18sp" />
 
          <RadioGroup
+             android:id="@+id/radioGroup_gender"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
              android:layout_margin="10dp"
-             android:checkedButton="@+id/radioButton_gender1"
             >
 
             <RadioButton
-                android:id="@+id/radioButton_gender1"
+                android:id="@+id/male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/gender1"/>
+                android:text="@string/gender1"
+                android:checked="true"/>
 
             <RadioButton
-                android:id="@+id/radioButton_gender2"
+                android:id="@+id/female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
