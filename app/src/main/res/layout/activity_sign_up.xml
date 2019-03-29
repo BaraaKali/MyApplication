@@ -18,14 +18,21 @@
      >
 
 
-    <LinearLayout
+     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="10dp"
-        android:background="@android:color/white"
+        android:background="@drawable/shape_button"
         >
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/name_information"
+    android:textColor="#000000"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:textSize="24dp"/>
         <android.support.design.widget.TextInputLayout
             android:id="@+id/text_input_layout_first_name"
             android:layout_width="match_parent"
@@ -37,7 +44,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="@string/first_name"
-            android:layout_margin="10dp"/>
+            android:layout_margin="20dp"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:id="@+id/text_input_layout_father_name"
@@ -50,7 +57,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="@string/father_name"
-            android:layout_margin="10dp"/>
+            android:layout_margin="20dp"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -65,7 +72,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="@string/grand_father_name"
-            android:layout_margin="10dp"/>
+            android:layout_margin="20dp"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -79,7 +86,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="@string/family_name"
-            android:layout_margin="10dp"/>
+            android:layout_margin="20dp"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -93,7 +100,7 @@
             android:ems="10"
             android:inputType="number"
             android:hint="@string/number_family_member"
-            android:layout_margin="10dp"/>
+            android:layout_margin="20dp"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
@@ -102,16 +109,23 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="10dp"
-        android:background="@android:color/white"
+        android:background="@drawable/shape_button"
         >
-
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/personal_information"
+             android:textColor="#000000"
+             android:textSize="24dp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginTop="10dp"/>
 
          <TextView
              android:id="@+id/textView_gender"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_marginLeft="20dp"
-             android:layout_marginTop="10dp"
+             android:layout_marginTop="20dp"
              android:layout_marginRight="20dp"
              android:text="@string/gender"
              android:textSize="18sp" />
@@ -120,7 +134,7 @@
              android:id="@+id/radioGroup_gender"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-             android:layout_margin="10dp"
+             android:layout_margin="20dp"
             >
 
             <RadioButton
@@ -150,7 +164,7 @@
             android:ems="10"
             android:inputType="number"
             android:hint="@string/id_number"
-            android:layout_margin="10dp"/>
+            android:layout_margin="20dp"/>
          </android.support.design.widget.TextInputLayout>
 
          <LinearLayout
@@ -195,7 +209,7 @@
              android:ems="10"
              android:inputType="textPersonName"
              android:hint="@string/place_birth"
-             android:layout_margin="10dp"/>
+             android:layout_margin="20dp"/>
          </android.support.design.widget.TextInputLayout>
 
      </LinearLayout>
@@ -205,9 +219,17 @@
          android:layout_height="wrap_content"
          android:orientation="vertical"
          android:layout_margin="10dp"
-         android:background="@android:color/white"
+         android:background="@drawable/shape_button"
          >
 
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/contact_information"
+             android:textColor="#000000"
+             android:layout_marginLeft="10dp"
+             android:layout_marginTop="10dp"
+             android:textSize="24dp"/>
 
          <android.support.design.widget.TextInputLayout
              android:id="@+id/text_input_layout_passport_number"
@@ -220,7 +242,7 @@
              android:ems="10"
              android:inputType="number"
              android:hint="@string/passport_number"
-             android:layout_margin="10dp"/>
+             android:layout_margin="20dp"/>
          </android.support.design.widget.TextInputLayout>
 
 
@@ -235,7 +257,7 @@
              android:ems="10"
              android:inputType="number"
              android:hint="@string/telephone_number"
-             android:layout_margin="10dp"/>
+             android:layout_margin="20dp"/>
          </android.support.design.widget.TextInputLayout>
 
          <android.support.design.widget.TextInputLayout
@@ -249,7 +271,7 @@
              android:ems="10"
              android:inputType="number"
              android:hint="@string/mobile_number"
-             android:layout_margin="10dp"/>
+             android:layout_margin="20dp"/>
          </android.support.design.widget.TextInputLayout>
 
          <android.support.design.widget.TextInputLayout
@@ -264,7 +286,7 @@
              android:ems="10"
              android:inputType="textEmailAddress"
              android:hint="@string/email"
-             android:layout_margin="10dp"/>
+             android:layout_margin="20dp"/>
          </android.support.design.widget.TextInputLayout>
 
 
@@ -279,7 +301,7 @@
              android:ems="10"
              android:inputType="number"
              android:hint="@string/fax"
-             android:layout_margin="10dp"/>
+             android:layout_margin="20dp"/>
          </android.support.design.widget.TextInputLayout>
      </LinearLayout>
      <LinearLayout
@@ -287,8 +309,16 @@
      android:layout_height="wrap_content"
      android:orientation="vertical"
      android:layout_margin="10dp"
-     android:background="@android:color/white"
+     android:background="@drawable/shape_button"
      >
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/address_information"
+             android:textColor="#000000"
+             android:layout_marginLeft="10dp"
+             android:layout_marginTop="10dp"
+             android:textSize="24dp"/>
 
      <android.support.design.widget.TextInputLayout
          android:id="@+id/text_input_layout_work"
@@ -301,7 +331,7 @@
              android:ems="10"
              android:inputType="textPersonName"
              android:hint="@string/work"
-             android:layout_margin="10dp"/>
+             android:layout_margin="20dp"/>
      </android.support.design.widget.TextInputLayout>
 
      <android.support.design.widget.TextInputLayout
@@ -315,7 +345,7 @@
              android:ems="10"
              android:inputType="textPersonName"
              android:hint="@string/address"
-             android:layout_margin="10dp"/>
+             android:layout_margin="20dp"/>
      </android.support.design.widget.TextInputLayout>
 
      <android.support.design.widget.TextInputLayout
@@ -329,7 +359,7 @@
              android:ems="10"
              android:inputType="textPersonName"
              android:hint="@string/street"
-             android:layout_margin="10dp"/>
+             android:layout_margin="20dp"/>
      </android.support.design.widget.TextInputLayout>
 
      <android.support.design.widget.TextInputLayout
@@ -343,7 +373,7 @@
              android:ems="10"
              android:inputType="textPersonName"
              android:hint="@string/region"
-             android:layout_margin="10dp"/>
+             android:layout_margin="20dp"/>
      </android.support.design.widget.TextInputLayout>
 
      <android.support.design.widget.TextInputLayout
@@ -357,7 +387,7 @@
              android:ems="10"
              android:inputType="textPersonName"
              android:hint="@string/zone"
-             android:layout_margin="10dp"/>
+             android:layout_margin="20dp"/>
      </android.support.design.widget.TextInputLayout>
  </LinearLayout>
 
@@ -366,8 +396,16 @@
          android:layout_height="wrap_content"
          android:orientation="vertical"
          android:layout_margin="10dp"
-         android:background="@android:color/white"
+         android:background="@drawable/shape_button"
          >
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/account_information"
+             android:textColor="#000000"
+             android:layout_marginLeft="10dp"
+             android:layout_marginTop="10dp"
+             android:textSize="24dp"/>
 
          <android.support.design.widget.TextInputLayout
              android:id="@+id/text_input_layout_username"
@@ -380,7 +418,7 @@
                  android:ems="10"
                  android:inputType="textPersonName"
                  android:hint="@string/user_name"
-                 android:layout_margin="10dp"/>
+                 android:layout_margin="20dp"/>
          </android.support.design.widget.TextInputLayout>
 
          <android.support.design.widget.TextInputLayout
@@ -394,7 +432,7 @@
                  android:ems="10"
                  android:inputType="textPassword"
                  android:hint="@string/password"
-                 android:layout_margin="10dp"/>
+                 android:layout_margin="20dp"/>
          </android.support.design.widget.TextInputLayout>
 
 
@@ -405,7 +443,7 @@
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:text="@string/submit"
-         android:layout_margin="10dp"/>
+         android:layout_margin="20dp"/>
 
  </LinearLayout>
 

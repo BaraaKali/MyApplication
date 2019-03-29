@@ -50,6 +50,13 @@
     <string name="log_out">تسجيل الخروج</string>
 
     <string name="wrong_sign_in">خطأ في المستخدم او كلمة المرور</string>
+
+    <string name="name_information">معلومات الاسم</string>
+    <string name="personal_information">المعلومات شخصية</string>
+    <string name="contact_information">معلومات التواصل</string>
+    <string name="address_information">معلومات العنوان</string>
+    <string name="account_information">معلومات حساب البلدية</string>
+
     <string name="title_activity_side_bar">SideBarActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

@@ -8,11 +8,15 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
 import com.example.myapplication.MyJavaClass.Service;
@@ -24,20 +28,46 @@ public class AllServices extends AppCompatActivity
            {
 
     ListView ListView_all_services;
+    ArrayList<Service> arraylistAllServices;
+    ArrayAdapter arrayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_services);
         ListView_all_services = (ListView)findViewById(R.id.ListView_all_services);
+        arraylistAllServices = new ArrayList<>();
+        arraylistAllServices = GetFromDB.getAllServices();
 
-        ArrayList<Service> listAllServices = new ArrayList<>();
-        listAllServices = GetFromDB.getAllServices();
-
-
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,listAllServices);
+        arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,arraylistAllServices);
         ListView_all_services.setAdapter(arrayAdapter);
+        ListView_all_services.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Service select_service = (Service) ListView_all_services.getItemAtPosition(position);
+                Toast.makeText(getApplicationContext(),select_service.getName(),Toast.LENGTH_SHORT).show();
+                goToPageThisService(select_service.getId());
 
+            }
+        });
 
+        EditText EditText_filter = (EditText) findViewById(R.id.EditText_filter);
+        EditText_filter.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                (AllServices.this).arrayAdapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
 
 
@@ -92,5 +122,13 @@ public class AllServices extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_all_service);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void goToPageThisService(int idService){
+        Intent myIntent = new Intent(this,SpecificSreviceActivity.class);
+        Bundle myBundle = new Bundle();
+        myBundle.putInt("idService",idService);
+        myIntent.putExtras(myBundle);
+        startActivity(myIntent);
     }
 }

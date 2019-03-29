@@ -51,6 +51,13 @@
 
     <string name="wrong_sign_in">wrong username or password</string>
 
+    <string name="name_information">Name Information</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="contact_information">Contact Information</string>
+    <string name="address_information">Address Information</string>
+    <string name="account_information">Account Information</string>
+
+
     <string name="title_activity_side_bar">SideBarActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

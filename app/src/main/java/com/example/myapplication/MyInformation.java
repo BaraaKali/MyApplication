@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,10 +13,17 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+
+import java.io.IOException;
 
 public class MyInformation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+Button selectImage;
+ImageView imageView;
+private  int REQUEST_CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +41,39 @@ public class MyInformation extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_my_information);
         navigationView.setNavigationItemSelectedListener(this);
 
+        selectImage = (Button) findViewById(R.id.buttont);
+        imageView = (ImageView) findViewById(R.id.imageViewt);
+        selectImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"select Picture"),REQUEST_CODE);
+            }
+        });
     }
 
     @Override
+    protected  void onActivityResult(int reqco , int resut , Intent data){
+        super.onActivityResult(reqco, resut, data);
+
+        if(reqco == REQUEST_CODE && resut == RESULT_OK && data != null && data.getData() != null){
+            Log.d("MyApp", "I am here");
+            Uri uri = data.getData();
+
+            try {
+
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+                imageView.setImageBitmap(bitmap);
+
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+}
+
+@Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_my_information);
         if (drawer.isDrawerOpen(GravityCompat.START)) {

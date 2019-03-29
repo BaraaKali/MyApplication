@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AllServices"
+        <activity android:name=".SpecificSreviceActivity"></activity>
+        <activity
+            android:name=".AllServices"
             android:label="@string/title_activity_all_services"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MyInformation"
             android:label="@string/title_activity_my_information"
