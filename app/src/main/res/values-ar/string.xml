@@ -6,7 +6,7 @@
     <string name="password">كلمة المرور</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="sign_up">انشاء حساب جديد</string>
-    <string name="forget_password">هل نسيت كلمة السر</string>
+    <string name="forget_password">هل نسيت كلمة المرور</string>
 <!--sign up-->
     <string name="first_name">الاسم الاول</string>
     <string name="father_name">اسم الاب</string>

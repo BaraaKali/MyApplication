@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
@@ -24,8 +25,7 @@ import com.example.myapplication.MyJavaClass.Service;
 import java.util.ArrayList;
 
 public class AllServices extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener
-           {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     ListView ListView_all_services;
     ArrayList<Service> arraylistAllServices;
@@ -35,41 +35,37 @@ public class AllServices extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_services);
-        ListView_all_services = (ListView)findViewById(R.id.ListView_all_services);
+        ListView_all_services = (ListView) findViewById(R.id.ListView_all_services);
         arraylistAllServices = new ArrayList<>();
         arraylistAllServices = GetFromDB.getAllServices();
 
-        arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,arraylistAllServices);
+        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arraylistAllServices);
         ListView_all_services.setAdapter(arrayAdapter);
+
         ListView_all_services.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Service select_service = (Service) ListView_all_services.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(),select_service.getName(),Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(getApplicationContext(), select_service.getName(), Toast.LENGTH_SHORT).show();
                 goToPageThisService(select_service.getId());
 
             }
         });
 
-        EditText EditText_filter = (EditText) findViewById(R.id.EditText_filter);
-        EditText_filter.addTextChangedListener(new TextWatcher() {
+        SearchView searchView = (SearchView) findViewById(R.id.SearchView_filter);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+            public boolean onQueryTextSubmit(String query) {
+                return false;
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                (AllServices.this).arrayAdapter.getFilter().filter(s);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            public boolean onQueryTextChange(String newText) {
+                arrayAdapter.getFilter().filter(newText);
+                return false;
             }
         });
-
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -95,7 +91,6 @@ public class AllServices extends AppCompatActivity
     }
 
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -103,10 +98,10 @@ public class AllServices extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Intent myIntent2 = new Intent(this,HomeActivity.class);
+            Intent myIntent2 = new Intent(this, HomeActivity.class);
             startActivity(myIntent2);
         } else if (id == R.id.nav_my_information) {
-            Intent myIntent3 = new Intent(this,MyInformation.class);
+            Intent myIntent3 = new Intent(this, MyInformation.class);
             startActivity(myIntent3);
         } else if (id == R.id.nav_all_services) {
 
@@ -115,7 +110,7 @@ public class AllServices extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
-            Intent myIntent5 = new Intent(this,MainActivity.class);
+            Intent myIntent5 = new Intent(this, MainActivity.class);
             startActivity(myIntent5);
         }
 
@@ -124,10 +119,10 @@ public class AllServices extends AppCompatActivity
         return true;
     }
 
-    public void goToPageThisService(int idService){
-        Intent myIntent = new Intent(this,SpecificSreviceActivity.class);
+    public void goToPageThisService(int idService) {
+        Intent myIntent = new Intent(this, SpecificSreviceActivity.class);
         Bundle myBundle = new Bundle();
-        myBundle.putInt("idService",idService);
+        myBundle.putInt("idService", idService);
         myIntent.putExtras(myBundle);
         startActivity(myIntent);
     }
