@@ -1,5 +1,7 @@
 package com.example.myapplication.MyJavaClass;
 
+import java.util.ArrayList;
+
 public class Service {
     int id;
     String name;
@@ -8,6 +10,8 @@ public class Service {
     String caseserv;
     int departmentId;
     int sectionId;
+    ArrayList<Attachment> attachments;
+
 
 
     public Service(int id, String name, Double cost, int days, String caseserv) {
@@ -74,6 +78,13 @@ public class Service {
         this.sectionId = sectionId;
     }
 
+    public ArrayList<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(ArrayList<Attachment> attachments) {
+        this.attachments = attachments;
+    }
 
     @Override
     public String toString() {

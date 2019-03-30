@@ -2,6 +2,7 @@ package com.example.myapplication.MyJavaClass;
 
 import android.util.Log;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class GetFromDB {
@@ -21,6 +22,16 @@ public class GetFromDB {
         return arraylistAllServices;
     }
 
+    public static ArrayList<Attachment> getServiceAttachment(int idService){
+        ArrayList<Attachment> Attachments = new ArrayList<>();
+        //File file = new File("filepath.txt");
+        Attachment a = new Attachment(1,"identifacation");
+        Attachment b = new Attachment(2,"namefilebb");
+        Attachments.add(a);
+        Attachments.add(b);
+        return Attachments;
+    }
+
     public static boolean checkUsers(String username,String password){
         Log.d("MyApppppp", password);
         if((password.equals("1")) && username.equals("1")) {
@@ -28,6 +39,7 @@ public class GetFromDB {
         }
         return false;
     }
+
 
     public static ArrayList<Service> getArraylistAllServices() {
         return arraylistAllServices;

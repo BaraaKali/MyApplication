@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+
 import android.support.design.widget.TextInputLayout;
 
 import com.example.myapplication.MyJavaClass.Citizen;
@@ -32,16 +33,16 @@ import com.example.myapplication.MyJavaClass.Citizen;
 
 public class SignUpActivity extends AppCompatActivity {
 
-     TextInputLayout TextInputLayoutEmail,TextInputLayoutFirstName,TextInputLayoutFatherName,TextInputLayoutGrandFatherName,TextInputLayoutFamilyName,TextInputLayoutIdNumber,TextInputLayoutUserName,TextInputLayoutPassword;
+    TextInputLayout TextInputLayoutEmail, TextInputLayoutFirstName, TextInputLayoutFatherName, TextInputLayoutGrandFatherName, TextInputLayoutFamilyName, TextInputLayoutIdNumber, TextInputLayoutUserName, TextInputLayoutPassword;
 
-     EditText EditTextEmail,EditTextFirstName,EditTextFatherName,EditTextGrandFatherName,EditTextFamilyName,EditTextIdNumber,EditTextUserName,EditTextPassword;
-
-
-     Button ButtonSubmit;
+    EditText EditTextEmail, EditTextFirstName, EditTextFatherName, EditTextGrandFatherName, EditTextFamilyName, EditTextIdNumber, EditTextUserName, EditTextPassword;
 
 
-     Vibrator vib;
-     Animation animShake;
+    Button ButtonSubmit;
+
+
+    Vibrator vib;
+    Animation animShake;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,7 @@ public class SignUpActivity extends AppCompatActivity {
         EditTextPassword = (EditText) findViewById(R.id.editText_New_password);
 
         ButtonSubmit = (Button) findViewById(R.id.button_submit);
-        if(ButtonSubmit != null) {
+        if (ButtonSubmit != null) {
             ButtonSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -77,7 +78,7 @@ public class SignUpActivity extends AppCompatActivity {
             });
         }
 
-        animShake = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.shake);
+        animShake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
         vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     }
 
@@ -87,7 +88,7 @@ public class SignUpActivity extends AppCompatActivity {
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
-        Dialog datePickerDialog=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        Dialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 processDatePickerResult(year, month, dayOfMonth);
@@ -105,7 +106,7 @@ public class SignUpActivity extends AppCompatActivity {
         String year_string = Integer.toString(year);
         // Assign the concatenated strings to dateMessage.
         String dateMessage = (month_string + "/" + day_string + "/" + year_string);
-        ((TextView)findViewById(R.id.textView_date_birth)).setText(dateMessage);
+        ((TextView) findViewById(R.id.textView_date_birth)).setText(dateMessage);
     }
 
     private void submitForm() {
@@ -160,37 +161,39 @@ public class SignUpActivity extends AppCompatActivity {
         TextInputLayoutEmail.setErrorEnabled(false);
         addNewUser();
         Toast.makeText(getApplicationContext(), getString(R.string.success_meg), Toast.LENGTH_SHORT).show();
-        Intent myIntent = new Intent(this,MyInformation.class);
+        Intent myIntent = new Intent(this, MyInformation.class);
         startActivity(myIntent);
     }
-    public void addNewUser(){
+
+    public void addNewUser() {
         Citizen newcitizen = new Citizen();
 
         newcitizen.setFirstName(EditTextFirstName.getText().toString());
         newcitizen.setFatherName(EditTextFatherName.getText().toString());
         newcitizen.setGrandFatherName(EditTextGrandFatherName.getText().toString());
         newcitizen.setFamilyName(EditTextFamilyName.getText().toString());
-        newcitizen.setNumberOfFamilyNumber((int)(Integer.parseInt(((EditText)findViewById(R.id.editText_number_family_member)).getText().toString())));
-        newcitizen.setIdentificationNumber((int)(Integer.parseInt(((EditText)findViewById(R.id.editText_id_number)).getText().toString())));
-        newcitizen.setPlaceOfBirth(((EditText)findViewById(R.id.editText_place_birth)).getText().toString());
-        newcitizen.setPassportNumber((int)(Integer.parseInt(((EditText)findViewById(R.id.editText_passport_number)).getText().toString())));
-        newcitizen.setTelephoneNumber((int)(Integer.parseInt(((EditText)findViewById(R.id.editText_telephone_number)).getText().toString())));
-        newcitizen.setMobileNumber((int)(Integer.parseInt(((EditText)findViewById(R.id.editText_mobile_number)).getText().toString())));
+        newcitizen.setNumberOfFamilyNumber((int) (Integer.parseInt(((EditText) findViewById(R.id.editText_number_family_member)).getText().toString())));
+        newcitizen.setIdentificationNumber((int) (Integer.parseInt(((EditText) findViewById(R.id.editText_id_number)).getText().toString())));
+        newcitizen.setPlaceOfBirth(((EditText) findViewById(R.id.editText_place_birth)).getText().toString());
+        newcitizen.setPassportNumber((int) (Integer.parseInt(((EditText) findViewById(R.id.editText_passport_number)).getText().toString())));
+        newcitizen.setTelephoneNumber((int) (Integer.parseInt(((EditText) findViewById(R.id.editText_telephone_number)).getText().toString())));
+        newcitizen.setMobileNumber((int) (Integer.parseInt(((EditText) findViewById(R.id.editText_mobile_number)).getText().toString())));
         newcitizen.setEmail(EditTextEmail.getText().toString());
-        newcitizen.setFax((int)(Integer.parseInt(((EditText)findViewById(R.id.editText_fax)).getText().toString())));
-        newcitizen.setWork(((EditText)findViewById(R.id.editText_work)).getText().toString());
-        newcitizen.setAddress(((EditText)findViewById(R.id.editText_address)).getText().toString());
-        newcitizen.setStreet(((EditText)findViewById(R.id.editText_street)).getText().toString());
-        newcitizen.setRegion(((EditText)findViewById(R.id.editText_region)).getText().toString());
-        newcitizen.setZone (((EditText)findViewById(R.id.editText_zone)).getText().toString());
+        newcitizen.setFax((int) (Integer.parseInt(((EditText) findViewById(R.id.editText_fax)).getText().toString())));
+        newcitizen.setWork(((EditText) findViewById(R.id.editText_work)).getText().toString());
+        newcitizen.setAddress(((EditText) findViewById(R.id.editText_address)).getText().toString());
+        newcitizen.setStreet(((EditText) findViewById(R.id.editText_street)).getText().toString());
+        newcitizen.setRegion(((EditText) findViewById(R.id.editText_region)).getText().toString());
+        newcitizen.setZone(((EditText) findViewById(R.id.editText_zone)).getText().toString());
         newcitizen.setUsername(EditTextUserName.getText().toString());
         newcitizen.setPassword(EditTextPassword.getText().toString());
-        RadioGroup radioGroup_gender = ((RadioGroup)findViewById(R.id.radioGroup_gender));
-        RadioButton radiobutton_gender = (RadioButton)findViewById(radioGroup_gender.getCheckedRadioButtonId());
+        RadioGroup radioGroup_gender = ((RadioGroup) findViewById(R.id.radioGroup_gender));
+        RadioButton radiobutton_gender = (RadioButton) findViewById(radioGroup_gender.getCheckedRadioButtonId());
         newcitizen.setGender(radiobutton_gender.getText().toString());
         newcitizen.addToDB();
 
     }
+
     private boolean checkEmail() {
         String email = EditTextEmail.getText().toString().trim();
         if (email.isEmpty() || !isValidEmail(email)) {
@@ -204,6 +207,7 @@ public class SignUpActivity extends AppCompatActivity {
         TextInputLayoutEmail.setErrorEnabled(false);
         return true;
     }
+
     private boolean checkFirstName() {
         if (EditTextFirstName.getText().toString().trim().isEmpty()) {
 
@@ -214,6 +218,7 @@ public class SignUpActivity extends AppCompatActivity {
         TextInputLayoutFirstName.setErrorEnabled(false);
         return true;
     }
+
     private boolean checkFatherName() {
         if (EditTextFatherName.getText().toString().trim().isEmpty()) {
 
@@ -224,6 +229,7 @@ public class SignUpActivity extends AppCompatActivity {
         TextInputLayoutFatherName.setErrorEnabled(false);
         return true;
     }
+
     private boolean checkGrandFatherName() {
         if (EditTextGrandFatherName.getText().toString().trim().isEmpty()) {
 
@@ -234,6 +240,7 @@ public class SignUpActivity extends AppCompatActivity {
         TextInputLayoutGrandFatherName.setErrorEnabled(false);
         return true;
     }
+
     private boolean checkFamilyName() {
         if (EditTextFamilyName.getText().toString().trim().isEmpty()) {
 
@@ -244,6 +251,7 @@ public class SignUpActivity extends AppCompatActivity {
         TextInputLayoutFamilyName.setErrorEnabled(false);
         return true;
     }
+
     private boolean checkUserName() {
         if (EditTextUserName.getText().toString().trim().isEmpty()) {
 
@@ -254,6 +262,7 @@ public class SignUpActivity extends AppCompatActivity {
         TextInputLayoutUserName.setErrorEnabled(false);
         return true;
     }
+
     private boolean checkPassword() {
         if (EditTextPassword.getText().toString().trim().isEmpty()) {
 
@@ -264,6 +273,7 @@ public class SignUpActivity extends AppCompatActivity {
         TextInputLayoutPassword.setErrorEnabled(false);
         return true;
     }
+
     private boolean checkIdNumber() {
         if (EditTextIdNumber.getText().toString().trim().isEmpty()) {
 
@@ -274,9 +284,11 @@ public class SignUpActivity extends AppCompatActivity {
         TextInputLayoutIdNumber.setErrorEnabled(false);
         return true;
     }
+
     private static boolean isValidEmail(String email) {
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
+
     private void requestFocus(View view) {
         if (view.requestFocus()) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);

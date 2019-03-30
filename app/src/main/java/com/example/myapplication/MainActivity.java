@@ -1,12 +1,16 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Vibrator;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,6 +18,9 @@ import com.example.myapplication.MyJavaClass.GetFromDB;
 
 public class MainActivity extends AppCompatActivity {
     EditText editText_user_name,editText_password;
+
+    Vibrator vib;
+    Animation animShake;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
           editText_user_name  = (EditText)findViewById(R.id.editText_user_name);
           editText_password  = (EditText)findViewById(R.id.editText_password);
+
+        animShake = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.shake);
+        vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     public void singUp(View view) {
@@ -35,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
             Intent myIntent = new Intent(this, HomeActivity.class);
             startActivity(myIntent);
         }else{
+            editText_user_name.setAnimation(animShake);
+            editText_user_name.startAnimation(animShake);
+            vib.vibrate(120);
+            editText_password.setAnimation(animShake);
+            editText_password.startAnimation(animShake);
+            vib.vibrate(120);
             Toast.makeText(getApplicationContext(), R.string.wrong_sign_in,Toast.LENGTH_SHORT).show();
         }
     }

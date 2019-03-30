@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,17 +10,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.myapplication.MyJavaClass.Attachment;
 import com.example.myapplication.MyJavaClass.GetFromDB;
 import com.example.myapplication.MyJavaClass.Service;
 
 import java.util.ArrayList;
 
 public class SpecificSreviceActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener
-     {
+        implements NavigationView.OnNavigationItemSelectedListener {
+
+    Service service;
+
+    ListView ListView_attachment;
+    ArrayList<Attachment> arraylistAttachment;
+    ArrayAdapter arrayAdapter_attachment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,19 +39,40 @@ public class SpecificSreviceActivity extends AppCompatActivity
 
         Bundle bundle = getIntent().getExtras();
         int idService = bundle.getInt("idService");
-
-        Service service = getServiceFromArray(idService);
+        service = getServiceFromArray(idService);
 
         TextView textView_service_name = findViewById(R.id.textView_service_name);
         textView_service_name.setText(service.getName());
-
+        TextView textView_service_cost = findViewById(R.id.textView_service_cost);
+        textView_service_cost.setText(service.getCost() + "");
+        TextView textView_service_days = findViewById(R.id.textView_service_days);
+        textView_service_days.setText(service.getDays() + "");
         TextView textView_service_case = findViewById(R.id.textView_service_case);
         textView_service_case.setText(service.getCaseserv());
+
+        ListView_attachment = (ListView) findViewById(R.id.ListView_attachment);
+        arraylistAttachment = new ArrayList<>();
+        arraylistAttachment = GetFromDB.getServiceAttachment(idService);
+
+        arrayAdapter_attachment = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arraylistAttachment);
+        ListView_attachment.setAdapter(arrayAdapter_attachment);
+
+        ListView_attachment.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Attachment select_attachment = (Attachment) ListView_attachment.getItemAtPosition(position);
+                Toast.makeText(getApplicationContext(), select_attachment.getName(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_specific_service);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -69,20 +101,20 @@ public class SpecificSreviceActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Intent myIntent2 = new Intent(this,HomeActivity.class);
+            Intent myIntent2 = new Intent(this, HomeActivity.class);
             startActivity(myIntent2);
         } else if (id == R.id.nav_my_information) {
-            Intent myIntent3 = new Intent(this,MyInformation.class);
+            Intent myIntent3 = new Intent(this, MyInformation.class);
             startActivity(myIntent3);
         } else if (id == R.id.nav_all_services) {
-            Intent myIntent3 = new Intent(this,AllServices.class);
+            Intent myIntent3 = new Intent(this, AllServices.class);
             startActivity(myIntent3);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
-            Intent myIntent5 = new Intent(this,MainActivity.class);
+            Intent myIntent5 = new Intent(this, MainActivity.class);
             startActivity(myIntent5);
         }
 
@@ -91,10 +123,10 @@ public class SpecificSreviceActivity extends AppCompatActivity
         return true;
     }
 
-    public Service getServiceFromArray(int idService){
+    public Service getServiceFromArray(int idService) {
 
         ArrayList<Service> arrayListAllServices = GetFromDB.getArraylistAllServices();
-        for (Service service:arrayListAllServices) {
+        for (Service service : arrayListAllServices) {
             if (service.getId() == idService)
                 return service;
         }
