@@ -8,44 +8,33 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-public class HomeActivity extends AppCompatActivity
+public class HelpActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_help);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_home);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_help);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_home);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_help);
         navigationView.setNavigationItemSelectedListener(this);
-    }
 
+    }
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_home);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_help);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -79,20 +68,9 @@ public class HomeActivity extends AppCompatActivity
             startActivity(new Intent(this, MainActivity.class));
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_home);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_help);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-    public void goToAllService(View view) {
-        startActivity(new Intent(this, AllServices.class));
-    }
-    public void goTodoneService(View view) {
-        startActivity(new Intent(this, MyServiceDoneActivity.class));
-    }
-
-    public void goToNotDoneService(View view) {
-        startActivity(new Intent(this, MyServiceNotDoneActivity.class));
-    }
 }
+

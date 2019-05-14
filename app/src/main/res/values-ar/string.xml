@@ -40,6 +40,7 @@
     <string name="success_meg">تم التسجيل بنجاح</string>
     <string name="title_activity_home">الرئيسية</string>
 
+    <string name="muni_information">معلومات البلدية</string>
     <string name="nav_header_title">اسم المستخدم</string>
 
     <string name="title_activity_my_information">معلوماتي</string>
@@ -57,6 +58,23 @@
     <string name="address_information">معلومات العنوان</string>
     <string name="account_information">معلومات حساب البلدية</string>
 
+    <string name="request_service">طلب الخدمة</string>
+    <string name="title_activity_help">مساعدة</string>
+    <string name="title_activity_my_services">خدماتي</string>
+<string name="save_and_send">حفظ وارسال</string>
+
+    <string name="name_service">اسم الخدمة : </string>
+    <string name="cost_service">رسوم الخدمة : </string>
+    <string name="days_service">عدد ايام الاستجابة : </string>
+    <string name="case_service">حالة الخدمة : </string>
+
+    <string name="attachment_service">مرفقات الخدمة : </string>
+
+    <string name="download">تنزيل</string>
+    <string name="upload">تحميل</string>
+    <string name="title_activity_my_done_services">خدماتي المنجزة</string>
+    <string name="title_activity_my_not_done_services">خدماتي قيد التنفيذ</string>
+
     <string name="title_activity_side_bar">SideBarActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -64,5 +82,46 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+
+    <string name="text_alcohol">Alcohol</string>
+    <string name="text_coffee">Coffee</string>
+    <string name="text_pasta">Pasta</string>
+    <string name="text_cold_drinks">Cold Drinks</string>
+    <string name="text_expanded">Expanded</string>
+    <string name="text_collapsed">Collapsed</string>
+
+    <string-array name="string_array_alcohol">
+        <item>Vodka</item>
+        <item>Rum</item>
+        <item>Whiskey</item>
+        <item>Gin</item>
+        <item>Tequila</item>
+    </string-array>
+
+    <string-array name="string_array_coffee">
+        <item>Espresso</item>
+        <item>Macchiato</item>
+        <item>Cappuccino</item>
+        <item>Cafe Latte</item>
+        <item>Ristretto</item>
+    </string-array>
+
+    <string-array name="string_array_pasta">
+        <item>Carbonara</item>
+        <item>Capellini</item>
+        <item>Spaghetti</item>
+        <item>Gnocchi</item>
+        <item>Lasagnette</item>
+    </string-array>
+
+    <string-array name="string_array_cold_drinks">
+        <item>Cola</item>
+        <item>Lemonade</item>
+        <item>Citrus soda</item>
+        <item>Juice</item>
+        <item>Sparkling Water</item>
+    </string-array>
+
 
 </resources>

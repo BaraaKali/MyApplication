@@ -33,12 +33,13 @@
     <string name="region">Region</string>
     <string name="zone">Zone</string>
 
-    <string name="submit">ارسال</string>
+    <string name="submit">Submit</string>
 
     <string name="err_msg_required">Required!</string>
     <string name="err_msg_email">Please enter a Valid Email</string>
     <string name="success_meg">You are successfully Registered !!</string>
     <string name="title_activity_home">Home</string>
+    <string name="muni_information">municipality information</string>
 
     <string name="nav_header_title">User Login Name</string>
 
@@ -56,6 +57,24 @@
     <string name="contact_information">Contact Information</string>
     <string name="address_information">Address Information</string>
     <string name="account_information">Account Information</string>
+    <string name="request_service">Request this Service</string>
+    <string name="title_activity_help">Help</string>
+    <string name="title_activity_my_services">My Services</string>
+    <string name="save_and_send">Save and Send</string>
+
+    <string name="name_service"> Service Name : </string>
+    <string name="cost_service"> Service Cost : </string>
+    <string name="days_service">Response days : </string>
+    <string name="case_service"> Service Case : </string>
+
+    <string name="attachment_service">Service Attachment : </string>
+    <string name="download">Download</string>
+    <string name="upload">Upload</string>
+
+
+    <string name="title_activity_my_done_services">Done Services</string>
+    <string name="title_activity_my_not_done_services">Not Done Services</string>
+
 
 
     <string name="title_activity_side_bar">SideBarActivity</string>
@@ -66,5 +85,45 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+
+    <string name="text_alcohol">Alcohol</string>
+    <string name="text_coffee">Coffee</string>
+    <string name="text_pasta">Pasta</string>
+    <string name="text_cold_drinks">Cold Drinks</string>
+    <string name="text_expanded">Expanded</string>
+    <string name="text_collapsed">Collapsed</string>
+
+    <string-array name="string_array_alcohol">
+        <item>Vodka</item>
+        <item>Rum</item>
+        <item>Whiskey</item>
+        <item>Gin</item>
+        <item>Tequila</item>
+    </string-array>
+
+    <string-array name="string_array_coffee">
+        <item>Espresso</item>
+        <item>Macchiato</item>
+        <item>Cappuccino</item>
+        <item>Cafe Latte</item>
+        <item>Ristretto</item>
+    </string-array>
+
+    <string-array name="string_array_pasta">
+        <item>Carbonara</item>
+        <item>Capellini</item>
+        <item>Spaghetti</item>
+        <item>Gnocchi</item>
+        <item>Lasagnette</item>
+    </string-array>
+
+    <string-array name="string_array_cold_drinks">
+        <item>Cola</item>
+        <item>Lemonade</item>
+        <item>Citrus soda</item>
+        <item>Juice</item>
+        <item>Sparkling Water</item>
+    </string-array>
 
 </resources>

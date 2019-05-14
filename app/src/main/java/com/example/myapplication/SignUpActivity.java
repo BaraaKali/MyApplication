@@ -33,10 +33,15 @@ import com.example.myapplication.MyJavaClass.Citizen;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    TextInputLayout TextInputLayoutEmail, TextInputLayoutFirstName, TextInputLayoutFatherName, TextInputLayoutGrandFatherName, TextInputLayoutFamilyName, TextInputLayoutIdNumber, TextInputLayoutUserName, TextInputLayoutPassword;
+    TextInputLayout TextInputLayoutEmail, TextInputLayoutFirstName,
+                    TextInputLayoutFatherName, TextInputLayoutGrandFatherName,
+                    TextInputLayoutFamilyName, TextInputLayoutIdNumber,
+                    TextInputLayoutUserName, TextInputLayoutPassword;
 
-    EditText EditTextEmail, EditTextFirstName, EditTextFatherName, EditTextGrandFatherName, EditTextFamilyName, EditTextIdNumber, EditTextUserName, EditTextPassword;
-
+    EditText EditTextEmail, EditTextFirstName,
+             EditTextFatherName, EditTextGrandFatherName,
+             EditTextFamilyName, EditTextIdNumber,
+             EditTextUserName, EditTextPassword;
 
     Button ButtonSubmit;
 

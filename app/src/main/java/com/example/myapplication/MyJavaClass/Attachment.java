@@ -6,6 +6,7 @@ public class Attachment {
     int id;
     String name;
     File src;
+    String note;
 
 
     public Attachment(int id, String name, File src) {
@@ -45,6 +46,14 @@ public class Attachment {
 
     public void setSrc(File src) {
         this.src = src;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     @Override

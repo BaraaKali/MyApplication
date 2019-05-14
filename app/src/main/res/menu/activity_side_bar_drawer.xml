@@ -17,17 +17,25 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/title_activity_all_services" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_my_services"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="@string/title_activity_my_services" />
+        <item
+            android:id="@+id/nav_my_done_services"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/title_activity_my_done_services" />
+        <item
+            android:id="@+id/nav_my_not_done_services"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/title_activity_my_not_done_services" />
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_help"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="@string/title_activity_help" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"

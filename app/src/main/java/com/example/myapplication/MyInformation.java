@@ -92,21 +92,21 @@ private  int REQUEST_CODE = 1;
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Log.d("MyApp", "I am here");
-            Intent myIntent2 = new Intent(this,HomeActivity.class);
-            startActivity(myIntent2);
+            startActivity(new Intent(this, HomeActivity.class));
         } else if (id == R.id.nav_my_information) {
-
+            startActivity(new Intent(this, MyInformation.class));
         } else if (id == R.id.nav_all_services) {
-            Intent myIntent3 = new Intent(this,AllServices.class);
-            startActivity(myIntent3);
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
+            startActivity(new Intent(this, AllServices.class));
+        } else if (id == R.id.nav_my_services) {
+            startActivity(new Intent(this, MyServicesActivity.class));
+        } else if (id == R.id.nav_my_done_services) {
+            startActivity(new Intent(this, MyServiceDoneActivity.class));
+        } else if (id == R.id.nav_my_not_done_services) {
+            startActivity(new Intent(this, MyServiceNotDoneActivity.class));
+        } else if (id == R.id.nav_help) {
+            startActivity(new Intent(this, HelpActivity.class));
         } else if (id == R.id.nav_send) {
-            Intent myIntent5 = new Intent(this,MainActivity.class);
-            startActivity(myIntent5);
+            startActivity(new Intent(this, MainActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_my_information);

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class GetFromDB {
 
     static  ArrayList<Service> arraylistAllServices = new ArrayList<>();
-
+    static  ArrayList<Departmant> arrayListDepartmant = new ArrayList<>();
     public GetFromDB() {
 
     }
@@ -22,12 +22,69 @@ public class GetFromDB {
         return arraylistAllServices;
     }
 
+    public static ArrayList<Departmant> getDepartmants(){
+        arrayListDepartmant.clear();
+       Departmant d =  new Departmant(1,"department 1 ");
+
+        ArrayList<Service> arraylistAllServices2 = new ArrayList<>();
+        arraylistAllServices2.add(new Service(1,"aaaaa",1.1,11,"notvalid"));
+        arraylistAllServices2.add(new Service(2,"bbbbb",2.2,22,"valid"));
+        d.setServices(arraylistAllServices2);
+
+        arrayListDepartmant.add(d);
+
+        Departmant d2 =  new Departmant(2,"department 2 ");
+
+        ArrayList<Service> arraylistAllServices3 = new ArrayList<>();
+        arraylistAllServices3.add(new Service(3,"ccc dcc",3.3,33,"valid"));
+        arraylistAllServices3.add(new Service(4,"ddddd",4.4,44,"notvalid"));
+        d2.setServices(arraylistAllServices3);
+
+        arrayListDepartmant.add(d2);
+
+        return arrayListDepartmant;
+    }
+
+    public static ArrayList<ServiceCitizen> getServicesCitizen(){
+        //Date
+        ArrayList<ServiceCitizen> myService = new ArrayList<>();
+        Service s = new Service(1,"aaaaa",1.1,11,"notvalid");
+        ServiceCitizen cs = new ServiceCitizen(1,s,1,"2012-2-5","done");
+        ServiceCitizen cs1 = new ServiceCitizen(2,s,1,"1019-4-1","notdone");
+        myService.add(cs);
+        myService.add(cs1);
+        return myService;
+    }
+    public static ArrayList<ServiceCitizen> getDoneServicesCitizen(){
+        //Date
+        ArrayList<ServiceCitizen> myService = new ArrayList<>();
+        Service s = new Service(1,"aaaaa",1.1,11,"valid");
+        ServiceCitizen cs = new ServiceCitizen(1,s,1,"2012-2-5","done");
+        myService.add(cs);
+        return myService;
+    }
+    public static ArrayList<ServiceCitizen> getNotDoneServicesCitizen(){
+        //Date
+        ArrayList<ServiceCitizen> myService = new ArrayList<>();
+        Service s = new Service(1,"aaaaa",1.1,11,"valid");
+        ServiceCitizen cs1 = new ServiceCitizen(2,s,1,"1019-4-1","notdone");
+        myService.add(cs1);
+        return myService;
+    }
     public static ArrayList<Attachment> getServiceAttachment(int idService){
         ArrayList<Attachment> Attachments = new ArrayList<>();
         //File file = new File("filepath.txt");
         Attachment a = new Attachment(1,"identifacation");
+        a.setNote("kkkk hggf trxcngf");
+        a.setSrc(new File("aa"));
         Attachment b = new Attachment(2,"namefilebb");
+        b.setNote("lkhg rwsagrs fdshrg");
         Attachments.add(a);
+        Attachments.add(b);
+        Attachments.add(b);
+        Attachments.add(b);
+        Attachments.add(b);
+        Attachments.add(b);
         Attachments.add(b);
         return Attachments;
     }

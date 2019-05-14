@@ -87,9 +87,9 @@ public class SideBarActivity extends AppCompatActivity
             Log.d("MyApp", "I am here");
         } else if (id == R.id.nav_all_services) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_my_services) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_help) {
 
         } else if (id == R.id.nav_send) {
 
