@@ -47,9 +47,10 @@
                 android:layout_margin="20dp"
                 android:background="@drawable/shape_button"
                 android:drawableTop="@drawable/ic_location_city_black_24dp"
+                android:onClick="goToAllService"
                 android:padding="15dp"
                 android:text="@string/title_activity_all_services"
-                android:onClick="goToAllService"/>
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -75,7 +76,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:drawableTop="@drawable/ic_thumb_up_black_24dp"
-                        android:text="@string/title_activity_my_done_services" />
+                        android:text="@string/title_activity_my_done_services"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -102,7 +104,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:drawableTop="@drawable/ic_build_black_24dp"
-                        android:text="@string/title_activity_my_not_done_services" />
+                        android:text="@string/title_activity_my_not_done_services"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"

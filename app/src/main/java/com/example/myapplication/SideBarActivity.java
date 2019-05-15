@@ -83,13 +83,17 @@ public class SideBarActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_my_information) {
+        }
+        else if (id == R.id.nav_my_information) {
             Log.d("MyApp", "I am here");
-        } else if (id == R.id.nav_all_services) {
+        }
+        else if (id == R.id.nav_all_services) {
 
-        } else if (id == R.id.nav_my_services) {
-
-        } else if (id == R.id.nav_help) {
+        }
+//        else if (id == R.id.nav_my_services) {
+//
+//        } 
+        else if (id == R.id.nav_help) {
 
         } else if (id == R.id.nav_send) {
 

@@ -10,31 +10,31 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-public class HelpActivity extends AppCompatActivity
+public class MunicipalityInformation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help);
+        setContentView(R.layout.activity_municipality_information);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_help);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_municipality_information);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_help);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_municipality_information);
         navigationView.setNavigationItemSelectedListener(this);
 
     }
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_help);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_municipality_information);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -72,7 +72,7 @@ public class HelpActivity extends AppCompatActivity
             startActivity(new Intent(this, MunicipalityInformation.class));
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_help);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_municipality_information);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

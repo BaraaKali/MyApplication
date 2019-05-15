@@ -6,23 +6,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_menu_city_black"
             android:title="@string/title_activity_home" />
         <item
             android:id="@+id/nav_my_information"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_person_black_24dp"
             android:title="@string/title_activity_my_information" />
         <item
             android:id="@+id/nav_all_services"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_add_shopping_cart_black"
             android:title="@string/title_activity_all_services" />
-        <item
-            android:id="@+id/nav_my_services"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/title_activity_my_services" />
+        <!--<item-->
+            <!--android:id="@+id/nav_my_services"-->
+            <!--android:icon="@drawable/ic_menu_manage"-->
+            <!--android:title="@string/title_activity_my_services" />-->
         <item
             android:id="@+id/nav_my_done_services"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_menu_thumb_up_black"
             android:title="@string/title_activity_my_done_services" />
         <item
             android:id="@+id/nav_my_not_done_services"
@@ -33,12 +33,16 @@
     <item android:title="Communicate">
         <menu>
             <item
+                android:id="@+id/nav_municipality_information"
+                android:icon="@drawable/ic_menu_info_outline_black"
+                android:title="@string/muni_information" />
+            <item
                 android:id="@+id/nav_help"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic__menu_help_black"
                 android:title="@string/title_activity_help" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_menu_lock_outline_black"
                 android:title="@string/log_out" />
         </menu>
     </item>

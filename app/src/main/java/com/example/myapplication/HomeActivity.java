@@ -67,9 +67,11 @@ public class HomeActivity extends AppCompatActivity
             startActivity(new Intent(this, MyInformation.class));
         } else if (id == R.id.nav_all_services) {
             startActivity(new Intent(this, AllServices.class));
-        } else if (id == R.id.nav_my_services) {
-            startActivity(new Intent(this, MyServicesActivity.class));
-        } else if (id == R.id.nav_my_done_services) {
+        }
+//        else if (id == R.id.nav_my_services) {
+//            startActivity(new Intent(this, MyServicesActivity.class));
+//        }
+        else if (id == R.id.nav_my_done_services) {
             startActivity(new Intent(this, MyServiceDoneActivity.class));
         } else if (id == R.id.nav_my_not_done_services) {
             startActivity(new Intent(this, MyServiceNotDoneActivity.class));
@@ -77,6 +79,8 @@ public class HomeActivity extends AppCompatActivity
             startActivity(new Intent(this, HelpActivity.class));
         } else if (id == R.id.nav_send) {
             startActivity(new Intent(this, MainActivity.class));
+        } else if (id == R.id.nav_municipality_information) {
+            startActivity(new Intent(this, MunicipalityInformation.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_home);

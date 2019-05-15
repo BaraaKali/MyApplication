@@ -12,11 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyServiceNotDoneActivity"
+
+        <activity android:name=".ShowServiceDone" />
+        <activity
+            android:name=".MyServiceNotDoneActivity"
             android:label="@string/title_activity_my_not_done_services"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".MyServiceDoneActivity"
+        <activity
+            android:name=".MyServiceDoneActivity"
             android:label="@string/title_activity_my_done_services"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -26,6 +29,10 @@
         <activity
             android:name=".HelpActivity"
             android:label="@string/title_activity_help"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MunicipalityInformation"
+            android:label="@string/muni_information"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RequestServiceActivity"

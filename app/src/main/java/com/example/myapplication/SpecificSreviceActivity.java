@@ -126,15 +126,19 @@ public class SpecificSreviceActivity extends AppCompatActivity
         } else if (id == R.id.nav_all_services) {
             Intent myIntent3 = new Intent(this, AllServices.class);
             startActivity(myIntent3);
-        } else if (id == R.id.nav_my_services) {
-            Intent myIntent6 = new Intent(this, MyServicesActivity.class);
-            startActivity(myIntent6);
-        } else if (id == R.id.nav_help) {
+        }
+//        else if (id == R.id.nav_my_services) {
+//            Intent myIntent6 = new Intent(this, MyServicesActivity.class);
+//            startActivity(myIntent6);
+//        }
+        else if (id == R.id.nav_help) {
             Intent myIntent5 = new Intent(this, HelpActivity.class);
             startActivity(myIntent5);
         } else if (id == R.id.nav_send) {
             Intent myIntent5 = new Intent(this, MainActivity.class);
             startActivity(myIntent5);
+        } else if (id == R.id.nav_municipality_information) {
+            startActivity(new Intent(this, MunicipalityInformation.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_specific_service);
