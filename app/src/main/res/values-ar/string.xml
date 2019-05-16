@@ -53,8 +53,8 @@
     <string name="wrong_sign_in">خطأ في المستخدم او كلمة المرور</string>
 
     <string name="name_information">معلومات الاسم</string>
-    <string name="personal_information">المعلومات شخصية</string>
-    <string name="contact_information">معلومات التواصل</string>
+    <string name="personal_information">المعلومات الشخصية</string>
+    <string name="contact_information">معلومات الاتصال</string>
     <string name="address_information">معلومات العنوان</string>
     <string name="account_information">معلومات حساب البلدية</string>
 

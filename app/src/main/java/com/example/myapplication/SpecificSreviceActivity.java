@@ -118,25 +118,23 @@ public class SpecificSreviceActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Intent myIntent2 = new Intent(this, HomeActivity.class);
-            startActivity(myIntent2);
+            startActivity(new Intent(this, HomeActivity.class));
         } else if (id == R.id.nav_my_information) {
-            Intent myIntent3 = new Intent(this, MyInformation.class);
-            startActivity(myIntent3);
+            startActivity(new Intent(this, MyInformation.class));
         } else if (id == R.id.nav_all_services) {
-            Intent myIntent3 = new Intent(this, AllServices.class);
-            startActivity(myIntent3);
+            startActivity(new Intent(this, AllServices.class));
         }
 //        else if (id == R.id.nav_my_services) {
-//            Intent myIntent6 = new Intent(this, MyServicesActivity.class);
-//            startActivity(myIntent6);
+//            startActivity(new Intent(this, MyServicesActivity.class));
 //        }
-        else if (id == R.id.nav_help) {
-            Intent myIntent5 = new Intent(this, HelpActivity.class);
-            startActivity(myIntent5);
+        else if (id == R.id.nav_my_done_services) {
+            startActivity(new Intent(this, MyServiceDoneActivity.class));
+        } else if (id == R.id.nav_my_not_done_services) {
+            startActivity(new Intent(this, MyServiceNotDoneActivity.class));
+        } else if (id == R.id.nav_help) {
+            startActivity(new Intent(this, HelpActivity.class));
         } else if (id == R.id.nav_send) {
-            Intent myIntent5 = new Intent(this, MainActivity.class);
-            startActivity(myIntent5);
+            startActivity(new Intent(this, MainActivity.class));
         } else if (id == R.id.nav_municipality_information) {
             startActivity(new Intent(this, MunicipalityInformation.class));
         }

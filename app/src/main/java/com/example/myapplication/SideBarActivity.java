@@ -92,7 +92,7 @@ public class SideBarActivity extends AppCompatActivity
         }
 //        else if (id == R.id.nav_my_services) {
 //
-//        } 
+//        }
         else if (id == R.id.nav_help) {
 
         } else if (id == R.id.nav_send) {
