@@ -57,11 +57,11 @@ public class GetFromDB {
     }
     public static ArrayList<ServiceCitizen> getDoneServicesCitizen(){
         //Date
-        ArrayList<ServiceCitizen> myService = new ArrayList<>();
+        ArrayList<ServiceCitizen> myServices = new ArrayList<>();
         Service s = new Service(1,"aaaaa",1.1,11,"valid");
         ServiceCitizen cs = new ServiceCitizen(1,s,1,"2012-2-5","done");
-        myService.add(cs);
-        return myService;
+        myServices.add(cs);
+        return myServices;
     }
     public static ArrayList<ServiceCitizen> getNotDoneServicesCitizen(){
         //Date

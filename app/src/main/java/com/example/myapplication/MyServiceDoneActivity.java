@@ -67,9 +67,10 @@ public class MyServiceDoneActivity extends AppCompatActivity
              newTextView1.setTextColor(Color.parseColor("#388E3C"));
              newTextView1.setTypeface(null, Typeface.BOLD);
 
-            TextView newTextView3 = new TextView(this);
-            newTextView3.setText(newServiceCitizen.getDate()+"d");
-             newTextView3.setLayoutParams(layoutParams);
+//            TextView newTextView3 = new TextView(this);
+//            newTextView3.setText(newServiceCitizen.getDate()+"d");
+//             newTextView3.setLayoutParams(layoutParams);
+
 //            TextView newTextView3 = new TextView(this);
 //            newTextView3.setText(newServiceCitizen.getStatus());
 
@@ -88,7 +89,7 @@ public class MyServiceDoneActivity extends AppCompatActivity
 
 
             linearLayouth.addView(newTextView1);
-            linearLayouth.addView(newTextView3);
+            //linearLayouth.addView(newTextView3);
 
             linearLayouth.setPadding(20,20,50,20);
 

@@ -7,6 +7,9 @@ public class ServiceCitizen {
     String date;
     String status;
 
+    public ServiceCitizen() {
+    }
+
     public ServiceCitizen(int id, Service service, int citizenId, String date, String status) {
         this.id = id;
         this.service = service;

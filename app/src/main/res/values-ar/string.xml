@@ -41,6 +41,9 @@
     <string name="title_activity_home">الرئيسية</string>
 
     <string name="muni_information">معلومات البلدية</string>
+    <string name="muni_name">اسم البلدية</string>
+    <string name="city"> المدينة</string>
+
     <string name="nav_header_title">اسم المستخدم</string>
 
     <string name="title_activity_my_information">معلوماتي</string>

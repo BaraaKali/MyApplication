@@ -34,22 +34,27 @@
             </LinearLayout>
         </FrameLayout>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/colorbackground">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_margin="20dp"
-                android:background="@drawable/shape_button"
-                android:drawableTop="@drawable/ic_location_city_black_24dp"
+                android:background="@drawable/shape_orange"
                 android:onClick="goToAllService"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:text="@string/title_activity_all_services"
+                android:textAlignment="center"
+                android:textColor="@color/icon"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -65,63 +70,325 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
+                    android:layout_marginLeft="10dp"
                     android:background="@drawable/shape_button"
                     android:orientation="horizontal"
-                    android:padding="5dp"
                     android:onClick="goTodoneService">
+
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:padding="15dp"-->
+                        <!--android:text="77"-->
+                        <!--android:textColor="@color/colorPrimaryDark"-->
+                        <!--android:textSize="24sp"-->
+                        <!--android:textStyle="bold" />-->
 
                     <TextView
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:drawableTop="@drawable/ic_thumb_up_black_24dp"
+                        android:drawableLeft="@drawable/ic_thumb_up_black_24dp"
                         android:text="@string/title_activity_my_done_services"
+                        android:padding="10dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:padding="15dp"
-                        android:text="77"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
                     android:background="@drawable/shape_button"
+                    android:onClick="goToNotDoneService"
                     android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:onClick="goToNotDoneService">
+                    android:padding="5dp">
 
                     <TextView
                         android:id="@+id/textView5"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:drawableTop="@drawable/ic_build_black_24dp"
+                        android:drawableLeft="@drawable/ic_build_black_24dp"
                         android:text="@string/title_activity_my_not_done_services"
+                        android:textSize="18sp"
+                        android:padding="10dp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:paddingTop="15dp"
-                        android:text="77"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:paddingTop="15dp"-->
+                        <!--android:text="7"-->
+                        <!--android:textColor="@color/colorPrimaryDark"-->
+                        <!--android:textSize="24sp"-->
+                        <!--android:textStyle="bold" />-->
                 </LinearLayout>
             </LinearLayout>
+
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="20dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/muni_information"
+                        android:layout_margin="5dp"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/shape_blue">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/muni_name"
+                            android:textColor="@color/icon"
+                            android:gravity="center"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView_muni_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textSize="18sp"
+                            android:textColor="@color/icon"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_green"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="5dp">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:textColor="@color/icon"
+                                android:text="@string/city"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textView_muni_city"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/city"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:textColor="@color/icon"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_red"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/zone"
+                                android:textColor="@color/icon"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textView_muni_zone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:textColor="@color/icon"
+                                android:text="@string/zone"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_button"
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/street"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textView_muni_street"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:text="@string/street"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:background="@drawable/shape_orange"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/email"
+                                android:textColor="@color/icon"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textView_muni_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:textColor="@color/icon"
+                                android:text="@string/email"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:background="@drawable/shape_green2"
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/telephone_number"
+                                android:textColor="@color/icon"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textView_muni_telephone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:textColor="@color/icon"
+                                android:text="@string/telephone_number"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_blue2"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/fax"
+                                android:textColor="@color/icon"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textView_muni_fax"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:textColor="@color/icon"
+                                android:text="@string/fax"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
 
 
         </LinearLayout>
 
 
+        </ScrollView>
 
             <!--<Button-->
             <!--android:id="@+id/button5"-->

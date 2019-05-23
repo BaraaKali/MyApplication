@@ -13,6 +13,8 @@ public class Service {
     ArrayList<Attachment> attachments;
 
 
+    public Service() {
+    }
 
     public Service(int id, String name, Double cost, int days, String caseserv) {
         this.id = id;
