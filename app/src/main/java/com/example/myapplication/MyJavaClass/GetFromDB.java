@@ -24,16 +24,17 @@ public class GetFromDB {
 
     public static ArrayList<Departmant> getDepartmants(){
         arrayListDepartmant.clear();
-       Departmant d =  new Departmant(1,"department 1 ");
+       Departmant d =  new Departmant(1,"department 1 ","fa-fire");
 
         ArrayList<Service> arraylistAllServices2 = new ArrayList<>();
         arraylistAllServices2.add(new Service(1,"aaaaa",1.1,11,"notvalid"));
         arraylistAllServices2.add(new Service(2,"bbbbb",2.2,22,"valid"));
+
         d.setServices(arraylistAllServices2);
 
         arrayListDepartmant.add(d);
 
-        Departmant d2 =  new Departmant(2,"department 2 ");
+        Departmant d2 =  new Departmant(2,"department 2 ","fa-dollar-sign");
 
         ArrayList<Service> arraylistAllServices3 = new ArrayList<>();
         arraylistAllServices3.add(new Service(3,"ccc dcc",3.3,33,"valid"));
@@ -41,6 +42,24 @@ public class GetFromDB {
         d2.setServices(arraylistAllServices3);
 
         arrayListDepartmant.add(d2);
+
+        Departmant d3 =  new Departmant(2,"department 2 ","fa-users");
+
+        ArrayList<Service> arraylistAllServices4 = new ArrayList<>();
+        arraylistAllServices4.add(new Service(3,"ccc dcc",3.3,33,"valid"));
+        arraylistAllServices4.add(new Service(4,"ddddd",4.4,44,"notvalid"));
+        d2.setServices(arraylistAllServices4);
+
+        arrayListDepartmant.add(d3);
+
+        Departmant d4 =  new Departmant(2,"department 2 ","fa-drafting-compass");
+
+        ArrayList<Service> arraylistAllServices5 = new ArrayList<>();
+        arraylistAllServices5.add(new Service(3,"ccc dcc",3.3,33,"valid"));
+        arraylistAllServices5.add(new Service(4,"ddddd",4.4,44,"notvalid"));
+        d2.setServices(arraylistAllServices5);
+
+        arrayListDepartmant.add(d4);
 
         return arrayListDepartmant;
     }
