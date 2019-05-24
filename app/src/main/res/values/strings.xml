@@ -66,11 +66,11 @@
     <string name="save_and_send">Save and Send</string>
 
     <string name="name_service"> Service Name : </string>
-    <string name="cost_service"> Service Cost : </string>
-    <string name="days_service">Response days : </string>
+    <string name="cost_service"> Service Cost</string>
+    <string name="days_service">Response days</string>
     <string name="case_service"> Service Case : </string>
 
-    <string name="attachment_service">Service Attachment : </string>
+    <string name="attachment_service">Service Attachment</string>
     <string name="download">Download</string>
     <string name="upload">Upload</string>
 

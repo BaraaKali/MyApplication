@@ -67,7 +67,7 @@ public class GetFromDB {
 
     public static ArrayList<Service> getServicesInDep(int idDep){
         arraylistServicesInDepartment.clear();
-        arraylistServicesInDepartment.add(new Service(1,"aaaaa",1.1,11,"valid"));
+        arraylistServicesInDepartment.add(new Service(1,"طلب عداد",1.1,11,"valid"));
         arraylistServicesInDepartment.add(new Service(2,"bbbbb",2.2,22,"valid"));
         arraylistServicesInDepartment.add(new Service(3,"ccc dcc",3.3,33,"valid"));
         arraylistServicesInDepartment.add(new Service(4,"ddddd",4.4,44,"valid"));

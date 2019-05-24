@@ -51,14 +51,13 @@ public class SpecificSreviceActivity extends AppCompatActivity
         int idService = bundle.getInt("idService");
         service = getServiceFromArray(idService);
 
-        TextView textView_service_name = findViewById(R.id.textView_service_name);
-        textView_service_name.setText(service.getName());
+//        TextView textView_service_name = findViewById(R.id.textView_service_name);
+//        textView_service_name.setText(service.getName());
+
         TextView textView_service_cost = findViewById(R.id.textView_service_cost);
         textView_service_cost.setText(service.getCost() + "");
         TextView textView_service_days = findViewById(R.id.textView_service_days);
         textView_service_days.setText(service.getDays() + "");
-        TextView textView_service_case = findViewById(R.id.textView_service_case);
-        textView_service_case.setText(service.getCaseserv());
 
         linearLayout = (LinearLayout) findViewById(R.id.LinerLayout_service);
         arraylistAttachment = new ArrayList<>();
@@ -84,6 +83,7 @@ public class SpecificSreviceActivity extends AppCompatActivity
 //            }
 //        });
 
+        setTitle(service.getName());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -205,6 +205,10 @@ public class SpecificSreviceActivity extends AppCompatActivity
             }
             layoutParams.setMargins(30, 20, 30, 10);
             linearLayout.addView(linearLayouth,layoutParams);
+            TextView line = new TextView(this);
+            line.setText("");
+            line.setBackgroundResource(R.drawable.shape_green);
+            linearLayout.addView(line,layoutParams);
         }
 
     }

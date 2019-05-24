@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -72,14 +73,21 @@ public class ServicesInDepartment extends AppCompatActivity
             textView.setTextColor(Color.WHITE);
             textView.setTextSize(28);
             textView.setGravity(Gravity.CENTER);
+            textView.setTypeface(null, Typeface.BOLD);
             textView.setBackgroundResource(R.drawable.shape_orange);
-            textView.setPadding(20,20,20,20);
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    goToPageThisService(s.getId());
-                }
-            });
+            textView.setPadding(0,20,0,20);
+            if(s.getCaseserv().equals("valid")){
+                textView.setBackgroundResource(R.drawable.shape_green);
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        goToPageThisService(s.getId());
+                    }
+                });
+            }else {
+                textView.setBackgroundResource(R.drawable.shape_red);
+            }
+
             linearLayout.addView(textView,layoutParams);
 
         }

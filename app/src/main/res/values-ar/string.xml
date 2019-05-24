@@ -67,11 +67,11 @@
 <string name="save_and_send">حفظ وارسال</string>
 
     <string name="name_service">اسم الخدمة : </string>
-    <string name="cost_service">رسوم الخدمة : </string>
-    <string name="days_service">عدد ايام الاستجابة : </string>
+    <string name="cost_service">رسوم الخدمة</string>
+    <string name="days_service">عدد ايام الاستجابة</string>
     <string name="case_service">حالة الخدمة : </string>
 
-    <string name="attachment_service">مرفقات الخدمة : </string>
+    <string name="attachment_service">مرفقات الخدمة </string>
 
     <string name="download">تنزيل</string>
     <string name="upload">تحميل</string>
