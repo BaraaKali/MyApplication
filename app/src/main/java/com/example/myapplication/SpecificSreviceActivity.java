@@ -203,12 +203,13 @@ public class SpecificSreviceActivity extends AppCompatActivity
                 button2.setText(getString(R.string.download));
                 linearLayouth.addView(button2,layoutParams);
             }
+            linearLayouth.setBackgroundResource(R.drawable.shape_silver);
             layoutParams.setMargins(30, 20, 30, 10);
             linearLayout.addView(linearLayouth,layoutParams);
-            TextView line = new TextView(this);
-            line.setText("");
-            line.setBackgroundResource(R.drawable.shape_green);
-            linearLayout.addView(line,layoutParams);
+//
+//            TextView line = new TextView(this);
+//            line.setBackgroundResource(R.drawable.shape_silver);
+//            linearLayout.addView(line);
         }
 
     }
@@ -238,6 +239,9 @@ public class SpecificSreviceActivity extends AppCompatActivity
                 }
             }
         }
+    }
+
+    public void requesrService(View view) {
     }
 }
 

@@ -117,6 +117,9 @@ public class GetFromDB {
         Attachments.add(b);
         Attachments.add(b);
         Attachments.add(b);
+        Attachments.add(b);
+        Attachments.add(b);
+        Attachments.add(b);
         return Attachments;
     }
 

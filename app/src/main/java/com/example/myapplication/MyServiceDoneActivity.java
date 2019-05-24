@@ -64,7 +64,7 @@ public class MyServiceDoneActivity extends AppCompatActivity
             newTextView1.setTextSize(24);
             newTextView1.setTypeface(Typeface.DEFAULT_BOLD);
             newTextView1.setText(newServiceCitizen.getService().getName());
-             newTextView1.setTextColor(Color.parseColor("#388E3C"));
+             newTextView1.setTextColor(Color.parseColor("#ffffff"));
              newTextView1.setTypeface(null, Typeface.BOLD);
 
 //            TextView newTextView3 = new TextView(this);
@@ -83,7 +83,7 @@ public class MyServiceDoneActivity extends AppCompatActivity
 
             LinearLayout linearLayouth = new LinearLayout(this);
             linearLayouth.setOrientation(LinearLayout.HORIZONTAL);
-            linearLayouth.setBackgroundResource(R.drawable.shape_button);
+            linearLayouth.setBackgroundResource(R.drawable.shape_green);
 
 //            linearLayouth.addView(linearLayoutv);
 

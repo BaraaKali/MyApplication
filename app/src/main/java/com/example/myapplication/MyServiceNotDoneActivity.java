@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -58,12 +59,14 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
             ServiceCitizen newServiceCitizen = arraylistMyNotDoneServices.get(i);
 
             TextView newTextView1 = new TextView(this);
-            newTextView1.setTextSize(18);
+            newTextView1.setTextSize(24);
             newTextView1.setTypeface(Typeface.DEFAULT_BOLD);
             newTextView1.setText(newServiceCitizen.getService().getName());
+            newTextView1.setTextColor(Color.parseColor("#ffffff"));
+            newTextView1.setTypeface(null, Typeface.BOLD);
 
-            TextView newTextView2 = new TextView(this);
-            newTextView2.setText(newServiceCitizen.getDate());
+//            TextView newTextView2 = new TextView(this);
+//            newTextView2.setText(newServiceCitizen.getDate());
 
             TextView newTextView3 = new TextView(this);
             newTextView3.setText(newServiceCitizen.getDate()+"d");
@@ -72,12 +75,14 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
             LinearLayout linearLayoutv = new LinearLayout(this);
             linearLayoutv.setOrientation(LinearLayout.VERTICAL);
             linearLayoutv.addView(newTextView1);
-            linearLayoutv.addView(newTextView2);
+            //linearLayoutv.addView(newTextView2);
 
 
             LinearLayout linearLayouth = new LinearLayout(this);
             linearLayouth.setOrientation(LinearLayout.HORIZONTAL);
-            linearLayouth.setBackgroundResource(R.drawable.shape_button);
+            linearLayouth.setBackgroundResource(R.drawable.shape_orange);
+
+            linearLayouth.setPadding(20,20,50,20);
 
             linearLayouth.addView(linearLayoutv);
             layoutParams.setMargins(50, 0, 50, 0);

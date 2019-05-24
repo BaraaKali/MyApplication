@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
 import com.example.myapplication.MyJavaClass.Service;
@@ -86,6 +87,14 @@ public class ServicesInDepartment extends AppCompatActivity
                 });
             }else {
                 textView.setBackgroundResource(R.drawable.shape_red);
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),R.string.not_valid,Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
             }
 
             linearLayout.addView(textView,layoutParams);

@@ -71,6 +71,9 @@
     <string name="days_service">عدد ايام الاستجابة</string>
     <string name="case_service">حالة الخدمة : </string>
 
+
+    <string name="not_valid">غير فعالة</string>
+
     <string name="attachment_service">مرفقات الخدمة </string>
 
     <string name="download">تنزيل</string>

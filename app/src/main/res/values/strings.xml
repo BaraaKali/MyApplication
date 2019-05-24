@@ -70,6 +70,9 @@
     <string name="days_service">Response days</string>
     <string name="case_service"> Service Case : </string>
 
+    <string name="not_valid">Not Valid</string>
+
+
     <string name="attachment_service">Service Attachment</string>
     <string name="download">Download</string>
     <string name="upload">Upload</string>

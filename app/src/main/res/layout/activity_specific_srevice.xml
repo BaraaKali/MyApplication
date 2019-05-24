@@ -112,7 +112,7 @@
 
         </LinearLayout>
 
-            <LinearLayout
+        <LinearLayout
                 android:id="@+id/LinerLayout_service"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,16 +129,15 @@
                     android:textSize="24sp"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
+
             </LinearLayout>
 
         <Button
             android:id="@+id/button12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:onClick="requesrService"
             android:text="@string/save_and_send" />
-
 
     </LinearLayout>
 
