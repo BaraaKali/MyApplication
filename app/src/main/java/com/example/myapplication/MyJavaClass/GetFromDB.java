@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class GetFromDB {
 
     static  ArrayList<Service> arraylistAllServices = new ArrayList<>();
+    static  ArrayList<Service> arraylistServicesInDepartment = new ArrayList<>();
     static  ArrayList<Departmant> arrayListDepartmant = new ArrayList<>();
     public GetFromDB() {
 
@@ -62,6 +63,17 @@ public class GetFromDB {
         arrayListDepartmant.add(d4);
 
         return arrayListDepartmant;
+    }
+
+    public static ArrayList<Service> getServicesInDep(int idDep){
+        arraylistServicesInDepartment.clear();
+        arraylistServicesInDepartment.add(new Service(1,"aaaaa",1.1,11,"valid"));
+        arraylistServicesInDepartment.add(new Service(2,"bbbbb",2.2,22,"valid"));
+        arraylistServicesInDepartment.add(new Service(3,"ccc dcc",3.3,33,"valid"));
+        arraylistServicesInDepartment.add(new Service(4,"ddddd",4.4,44,"valid"));
+        arraylistServicesInDepartment.add(new Service(5,"eeeeed",1.1,11,"valid"));
+        arraylistServicesInDepartment.add(new Service(6,"ffffr",2.2,22,"notvalid"));
+        return arraylistServicesInDepartment;
     }
 
     public static ArrayList<ServiceCitizen> getServicesCitizen(){
@@ -123,5 +135,13 @@ public class GetFromDB {
 
     public static void setArraylistAllServices(ArrayList<Service> arraylistAllServices) {
         GetFromDB.arraylistAllServices = arraylistAllServices;
+    }
+
+    public static ArrayList<Service> getArraylistServicesInDepartment() {
+        return arraylistServicesInDepartment;
+    }
+
+    public static void setArraylistServicesInDepartment(ArrayList<Service> arraylistServicesInDepartment) {
+        GetFromDB.arraylistServicesInDepartment = arraylistServicesInDepartment;
     }
 }

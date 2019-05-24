@@ -78,6 +78,8 @@
     <string name="title_activity_my_done_services">خدماتي المنجزة</string>
     <string name="title_activity_my_not_done_services">خدماتي قيد التنفيذ</string>
 
+    <string name="title_activity_services_in_department"></string>
+
     <string name="title_activity_side_bar">SideBarActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

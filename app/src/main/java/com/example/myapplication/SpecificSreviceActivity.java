@@ -146,7 +146,7 @@ public class SpecificSreviceActivity extends AppCompatActivity
 
     public Service getServiceFromArray(int idService) {
 
-        ArrayList<Service> arrayListAllServices = GetFromDB.getArraylistAllServices();
+        ArrayList<Service> arrayListAllServices = GetFromDB.getArraylistServicesInDepartment();
         for (Service service : arrayListAllServices) {
             if (service.getId() == idService)
                 return service;

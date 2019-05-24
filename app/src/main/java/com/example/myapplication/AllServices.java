@@ -87,13 +87,13 @@ public class AllServices extends AppCompatActivity
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        //layoutParams.setMargins(20, 0, 20, 0);
+        layoutParams.setMargins(20, 0, 20, 0);
 
 
 
         TableRow tableRow = new TableRow(this);
         for (int i = 0 ; i< arrayListDepartmant.size() ; i++){
-            Departmant d = arrayListDepartmant.get(i);
+            final Departmant d = arrayListDepartmant.get(i);
             if( (i%3) == 0 ){
                 tableLayout.addView(tableRow);
                 tableRow = new TableRow(this);
@@ -132,18 +132,22 @@ public class AllServices extends AppCompatActivity
             textView.setTypeface(null, Typeface.BOLD);
 
             textView.setBackgroundResource(R.drawable.shape_button);
-            textView.setPadding(20,20,20,20);
 
-            layoutParams.setMargins(20, 0, 20, 0);
+            textView.setPadding(20,20,20,20);
             linearLayoutV.addView(textViewicon,layoutParams);
-            
-            layoutParams.setMargins(20, 0, 20, 20);
+
             linearLayoutV.addView(textView,layoutParams);
 
+            linearLayoutV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    goToPageServicesInThisDepartment(d.getId(), d.getName());
+                }
+            });
 
             tableRow.addView(linearLayoutV);
         }
-      tableLayout.addView(tableRow);
+        tableLayout.addView(tableRow);
     }
 
 
@@ -191,14 +195,16 @@ public class AllServices extends AppCompatActivity
         return true;
     }
 
-    public void goToPageThisService(int idService) {
-        Intent myIntent = new Intent(this, SpecificSreviceActivity.class);
+
+    public void goToPageServicesInThisDepartment(int idDepartment , String nameDepartment) {
+        Intent myIntent = new Intent(this, ServicesInDepartment.class);
         Bundle myBundle = new Bundle();
-        myBundle.putInt("idService", idService);
+        myBundle.putInt("idDepartment", idDepartment);
+        myBundle.putString("nameDepartment", nameDepartment);
+
         myIntent.putExtras(myBundle);
         startActivity(myIntent);
     }
-
 
 
 
