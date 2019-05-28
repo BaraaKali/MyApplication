@@ -70,7 +70,7 @@
     <string name="cost_service">رسوم الخدمة</string>
     <string name="days_service">عدد ايام الاستجابة</string>
     <string name="case_service">حالة الخدمة : </string>
-
+    <string name="note_service">ملاحظات الخدمة : </string>
 
     <string name="not_valid">غير فعالة</string>
 

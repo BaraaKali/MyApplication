@@ -10,18 +10,20 @@ public class Service {
     String caseserv;
     int departmentId;
     int sectionId;
+    String note;
     ArrayList<Attachment> attachments;
 
 
     public Service() {
     }
 
-    public Service(int id, String name, Double cost, int days, String caseserv) {
+    public Service(int id, String name, Double cost, int days, String caseserv,String note) {
         this.id = id;
         this.name = name;
         this.cost = cost;
         this.days = days;
         this.caseserv = caseserv;
+        this.note = note;
     }
 
     public int getId() {
@@ -86,6 +88,14 @@ public class Service {
 
     public void setAttachments(ArrayList<Attachment> attachments) {
         this.attachments = attachments;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     @Override

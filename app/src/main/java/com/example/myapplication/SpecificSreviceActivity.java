@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,11 +14,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -58,6 +61,8 @@ public class SpecificSreviceActivity extends AppCompatActivity
         textView_service_cost.setText(service.getCost() + "");
         TextView textView_service_days = findViewById(R.id.textView_service_days);
         textView_service_days.setText(service.getDays() + "");
+        TextView textView_service_note = findViewById(R.id.textView_service_note);
+        textView_service_note.setText(service.getNote() + "");
 
         linearLayout = (LinearLayout) findViewById(R.id.LinerLayout_service);
         arraylistAttachment = new ArrayList<>();
@@ -165,26 +170,30 @@ public class SpecificSreviceActivity extends AppCompatActivity
             newTextView1.setText(arraylistAttachment.get(i).getName());
             newTextView1.setTextSize(18);
             newTextView1.setTypeface(Typeface.DEFAULT_BOLD);
-
+            newTextView1.setTextColor(Color.BLACK);
+            newTextView1.setPadding(30,30,30,10);
 
             LinearLayout linearLayoutv = new LinearLayout(this);
             linearLayoutv.setOrientation(LinearLayout.VERTICAL);
             TextView newTextView2 = new TextView(this);
+            newTextView2.setTextColor(Color.BLACK);
             newTextView2.setText(arraylistAttachment.get(i).getNote());
+            newTextView2.setPadding(40,10,40,30);
+
             linearLayoutv.addView(newTextView1);
             linearLayoutv.addView(newTextView2);
 
 
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(10, 0, 10, 0);
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(10, 0, 10, 30);
 
-            linearLayouth.addView(linearLayoutv);
+            //linearLayouth.addView(linearLayoutv);
 
             Button button1 = new Button(this);
-            button1.setText(getString(R.string.upload));
-            linearLayouth.addView(button1,layoutParams);
-
+            button1.setBackgroundResource(R.drawable.ic_cloud_upload_black_24dp);
+            linearLayouth.addView(button1);
+            linearLayouth.setGravity(Gravity.LEFT);
             button1.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
@@ -200,12 +209,14 @@ public class SpecificSreviceActivity extends AppCompatActivity
 
             if(arraylistAttachment.get(i).getSrc() != null){
                 Button button2 = new Button(this);
-                button2.setText(getString(R.string.download));
-                linearLayouth.addView(button2,layoutParams);
+                button2.setBackgroundResource(R.drawable.ic_cloud_download_black_24dp);
+                linearLayouth.addView(button2);
             }
-            linearLayouth.setBackgroundResource(R.drawable.shape_silver);
-            layoutParams.setMargins(30, 20, 30, 10);
-            linearLayout.addView(linearLayouth,layoutParams);
+            linearLayoutv.addView(linearLayouth,layoutParams);
+
+            linearLayoutv.setBackgroundResource(R.drawable.shape_button);
+            //layoutParams.setMargins(30, 20, 30, 10);
+            linearLayout.addView(linearLayoutv,layoutParams);
 //
 //            TextView line = new TextView(this);
 //            line.setBackgroundResource(R.drawable.shape_silver);

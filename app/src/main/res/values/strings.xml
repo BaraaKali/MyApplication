@@ -69,7 +69,7 @@
     <string name="cost_service"> Service Cost</string>
     <string name="days_service">Response days</string>
     <string name="case_service"> Service Case : </string>
-
+    <string name="note_service">Service note</string>
     <string name="not_valid">Not Valid</string>
 
 

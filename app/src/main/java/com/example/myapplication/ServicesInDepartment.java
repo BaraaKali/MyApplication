@@ -69,25 +69,30 @@ public class ServicesInDepartment extends AppCompatActivity
         for (int i = 0 ; i< arraylistServices.size() ; i++){
              final Service s = arraylistServices.get(i);
 
+            LinearLayout linearLayouth = new LinearLayout(this);
+            linearLayouth.setOrientation(LinearLayout.HORIZONTAL);
+
             TextView textView = new TextView(this);
             textView.setText(s.getName());
-            textView.setTextColor(Color.WHITE);
-            textView.setTextSize(28);
+            textView.setTextColor(Color.BLACK);
+            textView.setTextSize(26);
             textView.setGravity(Gravity.CENTER);
-            textView.setTypeface(null, Typeface.BOLD);
-            textView.setBackgroundResource(R.drawable.shape_orange);
+//            textView.setTypeface(null, Typeface.BOLD);
             textView.setPadding(0,20,0,20);
             if(s.getCaseserv().equals("valid")){
-                textView.setBackgroundResource(R.drawable.shape_green);
-                textView.setOnClickListener(new View.OnClickListener() {
+                textView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_assignment_turned_in_black_24dp,0);
+
+                linearLayouth.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         goToPageThisService(s.getId());
                     }
                 });
             }else {
-                textView.setBackgroundResource(R.drawable.shape_red);
-                textView.setOnClickListener(new View.OnClickListener() {
+//                textView.setBackgroundResource(R.drawable.shape_around_red);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_assignment_late_black_24dp,0);
+                linearLayouth.setOnClickListener(new View.OnClickListener() {
+
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(getApplicationContext(),R.string.not_valid,Toast.LENGTH_SHORT).show();
@@ -96,8 +101,9 @@ public class ServicesInDepartment extends AppCompatActivity
                 });
 
             }
-
-            linearLayout.addView(textView,layoutParams);
+            linearLayouth.setBackgroundResource(R.drawable.shape_button);
+            linearLayouth.addView(textView);
+            linearLayout.addView(linearLayouth,layoutParams);
 
         }
 
