@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.Date;
 
-public class Citizen {
+public class MyCitizen {
     String firstName;
     String fatherName;
     String grandFatherName;
@@ -27,7 +27,7 @@ public class Citizen {
     String username;
     String password;
 
-    public Citizen() {
+    public MyCitizen() {
     }
 
     public String getFirstName() {
@@ -200,7 +200,7 @@ public class Citizen {
 
     @Override
     public String toString() {
-        return "Citizen{" +
+        return "MyCitizen{" +
                 "firstName='" + firstName + '\'' +
                 ", fatherName='" + fatherName + '\'' +
                 ", grandFatherName='" + grandFatherName + '\'' +

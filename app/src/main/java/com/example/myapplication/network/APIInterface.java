@@ -1,5 +1,6 @@
 package com.example.myapplication.network;
 
+import com.example.myapplication.models.Citizen;
 import com.example.myapplication.models.MunInfo;
 import com.example.myapplication.models.Service;
 import com.example.myapplication.models.ServiceCitizen;
@@ -21,5 +22,8 @@ public interface APIInterface {
 
     @GET("MunicipalityInformation")
     Call<MunInfo> getMunicipalityInformationeCall();
+
+    @GET("Profile?username=baraa&passWord=baraa")
+    Call<Citizen> getProfileCall();
 
 }

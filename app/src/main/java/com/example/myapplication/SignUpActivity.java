@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
@@ -28,7 +27,7 @@ import java.util.Calendar;
 
 import android.support.design.widget.TextInputLayout;
 
-import com.example.myapplication.MyJavaClass.Citizen;
+import com.example.myapplication.MyJavaClass.MyCitizen;
 
 
 public class SignUpActivity extends AppCompatActivity {
@@ -171,7 +170,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void addNewUser() {
-        Citizen newcitizen = new Citizen();
+        MyCitizen newcitizen = new MyCitizen();
 
         newcitizen.setFirstName(EditTextFirstName.getText().toString());
         newcitizen.setFatherName(EditTextFatherName.getText().toString());
