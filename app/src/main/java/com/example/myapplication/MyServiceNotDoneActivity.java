@@ -62,7 +62,7 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
             newTextView1.setTextSize(24);
             newTextView1.setTypeface(Typeface.DEFAULT_BOLD);
             newTextView1.setText(newServiceCitizen.getService().getName());
-            newTextView1.setTextColor(Color.parseColor("#ffffff"));
+            newTextView1.setTextColor(Color.parseColor("#FF9800"));
             newTextView1.setTypeface(null, Typeface.BOLD);
 
 //            TextView newTextView2 = new TextView(this);
@@ -80,7 +80,7 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
 
             LinearLayout linearLayouth = new LinearLayout(this);
             linearLayouth.setOrientation(LinearLayout.HORIZONTAL);
-            linearLayouth.setBackgroundResource(R.drawable.shape_orange);
+            linearLayouth.setBackgroundResource(R.drawable.shape_button);
 
             linearLayouth.setPadding(20,20,50,20);
 

@@ -2,7 +2,7 @@ package com.example.myapplication.MyJavaClass;
 
 public class ServiceCitizen {
     int id;
-    Service service;
+    MyService service;
     int citizenId;
     String date;
     String status;
@@ -10,7 +10,7 @@ public class ServiceCitizen {
     public ServiceCitizen() {
     }
 
-    public ServiceCitizen(int id, Service service, int citizenId, String date, String status) {
+    public ServiceCitizen(int id, MyService service, int citizenId, String date, String status) {
         this.id = id;
         this.service = service;
         this.citizenId = citizenId;
@@ -26,11 +26,11 @@ public class ServiceCitizen {
         this.id = id;
     }
 
-    public Service getService() {
+    public MyService getService() {
         return service;
     }
 
-    public void setService(Service service) {
+    public void setService(MyService service) {
         this.service = service;
     }
 

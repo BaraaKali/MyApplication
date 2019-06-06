@@ -2,23 +2,23 @@ package com.example.myapplication.MyJavaClass;
 
 import java.util.ArrayList;
 
-public class Departmant {
+public class MyDepartmant {
     int id;
     String name;
     String image;
 
-    ArrayList<Service> services;
+    ArrayList<MyService> services;
 
-    public Departmant() {
+    public MyDepartmant() {
         services = new ArrayList<>();
     }
 
-    public Departmant(int id, String name) {
+    public MyDepartmant(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Departmant(int id, String name, String image) {
+    public MyDepartmant(int id, String name, String image) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -40,7 +40,7 @@ public class Departmant {
         this.name = name;
     }
 
-    public ArrayList<Service> getServices() {
+    public ArrayList<MyService> getServices() {
         return services;
     }
 
@@ -52,7 +52,7 @@ public class Departmant {
         this.image = image;
     }
 
-    public void setServices(ArrayList<Service> services) {
+    public void setServices(ArrayList<MyService> services) {
         this.services = services;
     }
 

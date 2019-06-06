@@ -2,7 +2,7 @@ package com.example.myapplication.MyJavaClass;
 
 import java.util.ArrayList;
 
-public class Service {
+public class MyService {
     int id;
     String name;
     Double cost;
@@ -14,10 +14,10 @@ public class Service {
     ArrayList<Attachment> attachments;
 
 
-    public Service() {
+    public MyService() {
     }
 
-    public Service(int id, String name, Double cost, int days, String caseserv,String note) {
+    public MyService(int id, String name, Double cost, int days, String caseserv, String note) {
         this.id = id;
         this.name = name;
         this.cost = cost;

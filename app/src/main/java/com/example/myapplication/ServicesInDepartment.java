@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,7 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
-import com.example.myapplication.MyJavaClass.Service;
+import com.example.myapplication.MyJavaClass.MyService;
+import com.example.myapplication.models.Service;
 
 import java.util.ArrayList;
 
@@ -79,7 +79,7 @@ public class ServicesInDepartment extends AppCompatActivity
             textView.setGravity(Gravity.CENTER);
 //            textView.setTypeface(null, Typeface.BOLD);
             textView.setPadding(0,20,0,20);
-            if(s.getCaseserv().equals("valid")){
+            if(s.getStatus().equals("valid")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_assignment_turned_in_black_24dp,0);
 
                 linearLayouth.setOnClickListener(new View.OnClickListener() {

@@ -12,6 +12,19 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+
+import com.example.myapplication.MyJavaClass.GetFromDB;
+import com.example.myapplication.models.Service;
+import com.example.myapplication.network.APIInterface;
+import com.example.myapplication.network.RetrofitClient;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,6 +45,7 @@ public class HomeActivity extends AppCompatActivity
 //                        .setAction("Action", null).show();
 //            }
 //        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_home);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -90,7 +104,28 @@ public class HomeActivity extends AppCompatActivity
 
 
     public void goToAllService(View view) {
+        R_loadAllService();
         startActivity(new Intent(this, AllServices.class));
+    }
+
+    private void R_loadAllService() {
+        APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
+        Call<List<Service>> call = apiInterface.getServiceCall();
+        call.enqueue(new Callback<List<Service>>() {
+
+            @Override
+            public void onResponse(Call<List<Service>> call, Response<List<Service>> response) {
+                GetFromDB.setListAllServices(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Service>> call, Throwable t) {
+
+                Log.i("Error Message", t.getMessage());
+            }
+        });
+
+
     }
     public void goTodoneService(View view) {
         startActivity(new Intent(this, MyServiceDoneActivity.class));

@@ -10,16 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
-import com.example.myapplication.MyJavaClass.Service;
 import com.example.myapplication.MyJavaClass.ServiceCitizen;
 
 import java.util.ArrayList;
@@ -53,7 +48,7 @@ public class MyServicesActivity extends AppCompatActivity
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //
-//                Service select_service = (Service) ListView_my_services.getItemAtPosition(position);
+//                MyService select_service = (MyService) ListView_my_services.getItemAtPosition(position);
 //                Toast.makeText(getApplicationContext(), select_service.getName(), Toast.LENGTH_SHORT).show();
 //
 //            }

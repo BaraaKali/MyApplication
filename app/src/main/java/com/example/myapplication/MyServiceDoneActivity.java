@@ -64,32 +64,33 @@ public class MyServiceDoneActivity extends AppCompatActivity
             newTextView1.setTextSize(24);
             newTextView1.setTypeface(Typeface.DEFAULT_BOLD);
             newTextView1.setText(newServiceCitizen.getService().getName());
-             newTextView1.setTextColor(Color.parseColor("#ffffff"));
+             newTextView1.setTextColor(Color.parseColor("#1cc88a"));
              newTextView1.setTypeface(null, Typeface.BOLD);
 
-//            TextView newTextView3 = new TextView(this);
-//            newTextView3.setText(newServiceCitizen.getDate()+"d");
+            TextView newTextView3 = new TextView(this);
+            newTextView3.setText(newServiceCitizen.getDate()+"d");
 //             newTextView3.setLayoutParams(layoutParams);
 
 //            TextView newTextView3 = new TextView(this);
 //            newTextView3.setText(newServiceCitizen.getStatus());
 
 
-//            LinearLayout linearLayoutv = new LinearLayout(this);
-//            linearLayoutv.setOrientation(LinearLayout.VERTICAL);
-//            linearLayoutv.addView(newTextView1);
+            LinearLayout linearLayoutv = new LinearLayout(this);
+            linearLayoutv.setOrientation(LinearLayout.VERTICAL);
+            linearLayoutv.addView(newTextView1);
 //            linearLayoutv.addView(newTextView2);
 
 
             LinearLayout linearLayouth = new LinearLayout(this);
             linearLayouth.setOrientation(LinearLayout.HORIZONTAL);
-            linearLayouth.setBackgroundResource(R.drawable.shape_green);
+            linearLayouth.setBackgroundResource(R.drawable.shape_button);
 
-//            linearLayouth.addView(linearLayoutv);
+            linearLayouth.addView(linearLayoutv);
 
 
-            linearLayouth.addView(newTextView1);
-            //linearLayouth.addView(newTextView3);
+            //linearLayouth.addView(newTextView1);
+            layoutParams.setMargins(50, 0, 50, 0);
+            linearLayouth.addView(newTextView3,layoutParams);
 
             linearLayouth.setPadding(20,20,50,20);
 

@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -17,18 +16,15 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.MyJavaClass.Attachment;
 import com.example.myapplication.MyJavaClass.GetFromDB;
-import com.example.myapplication.MyJavaClass.Service;
+import com.example.myapplication.MyJavaClass.MyService;
+import com.example.myapplication.models.Service;
 import com.nbsp.materialfilepicker.MaterialFilePicker;
 import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 
@@ -52,7 +48,7 @@ public class SpecificSreviceActivity extends AppCompatActivity
 
         Bundle bundle = getIntent().getExtras();
         int idService = bundle.getInt("idService");
-        service = getServiceFromArray(idService);
+        service = GetFromDB.getSelectedService(idService);
 
 //        TextView textView_service_name = findViewById(R.id.textView_service_name);
 //        textView_service_name.setText(service.getName());
@@ -149,15 +145,7 @@ public class SpecificSreviceActivity extends AppCompatActivity
         return true;
     }
 
-    public Service getServiceFromArray(int idService) {
 
-        ArrayList<Service> arrayListAllServices = GetFromDB.getArraylistServicesInDepartment();
-        for (Service service : arrayListAllServices) {
-            if (service.getId() == idService)
-                return service;
-        }
-        return null;
-    }
 
 
 

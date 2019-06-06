@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.design.widget.NavigationView;
@@ -10,52 +9,28 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ExpandableListAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.myapplication.MyJavaClass.Departmant;
+import com.example.myapplication.MyJavaClass.MyDepartmant;
 import com.example.myapplication.MyJavaClass.GetFromDB;
-import com.example.myapplication.MyJavaClass.Service;
+import com.example.myapplication.models.Department;
 
 import java.util.ArrayList;
 
-
-
-
-
-
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 //import com.androidtutorialshub.expandablelistview.adapter.ExpandableListViewAdapter;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 
 
 public class AllServices extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    ArrayList<Departmant> arrayListDepartmant ;
+    ArrayList<Department> arrayListDepartmant ;
     TableLayout tableLayout ;
 
 
@@ -93,8 +68,8 @@ public class AllServices extends AppCompatActivity
 
         TableRow tableRow = new TableRow(this);
         for (int i = 0 ; i< arrayListDepartmant.size() ; i++){
-            final Departmant d = arrayListDepartmant.get(i);
-            if( (i%3) == 0 ){
+            final Department d = arrayListDepartmant.get(i);
+            if( (i%2) == 0 ){
                 tableLayout.addView(tableRow);
                 tableRow = new TableRow(this);
 
@@ -128,7 +103,7 @@ public class AllServices extends AppCompatActivity
             textViewicon.setPadding(0,25,0,0);
 
             TextView textView = new TextView(this);
-            textView.setText(d.getName());
+            textView.setText(d.getNameA());
             textView.setTypeface(null, Typeface.BOLD);
 
             textView.setBackgroundResource(R.drawable.shape_button);
@@ -141,7 +116,7 @@ public class AllServices extends AppCompatActivity
             linearLayoutV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    goToPageServicesInThisDepartment(d.getId(), d.getName());
+                    goToPageServicesInThisDepartment(d.getId(), d.getNameA());
                 }
             });
 
