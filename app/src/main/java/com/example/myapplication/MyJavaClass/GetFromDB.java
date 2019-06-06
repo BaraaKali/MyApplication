@@ -141,25 +141,25 @@ public class GetFromDB {
         return myService;
     }
 
-    public static ArrayList<Attachment> getServiceAttachment(int idService) {
-        ArrayList<Attachment> Attachments = new ArrayList<>();
+    public static ArrayList<MyAttachment> getServiceAttachment(int idService) {
+        ArrayList<MyAttachment> myAttachments = new ArrayList<>();
         //File file = new File("filepath.txt");
-        Attachment a = new Attachment(1, "طلب عداد");
+        MyAttachment a = new MyAttachment(1, "طلب عداد");
         a.setNote("يجب ان ");
         a.setSrc(new File("aa"));
-        Attachment b = new Attachment(2, "هوية");
+        MyAttachment b = new MyAttachment(2, "هوية");
         b.setNote("يجب ام تكاون واضحه ");
-        Attachments.add(a);
-        Attachments.add(b);
-        Attachments.add(b);
-        Attachments.add(b);
-        Attachments.add(b);
-        Attachments.add(b);
-        Attachments.add(b);
-        Attachments.add(b);
-        Attachments.add(b);
-        Attachments.add(b);
-        return Attachments;
+        myAttachments.add(a);
+        myAttachments.add(b);
+        myAttachments.add(b);
+        myAttachments.add(b);
+        myAttachments.add(b);
+        myAttachments.add(b);
+        myAttachments.add(b);
+        myAttachments.add(b);
+        myAttachments.add(b);
+        myAttachments.add(b);
+        return myAttachments;
     }
 
     public static boolean checkUsers(String username, String password) {

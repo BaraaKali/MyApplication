@@ -21,14 +21,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.MyJavaClass.Attachment;
+import com.example.myapplication.MyJavaClass.MyAttachment;
 import com.example.myapplication.MyJavaClass.GetFromDB;
-import com.example.myapplication.MyJavaClass.MyService;
+import com.example.myapplication.models.Attachment;
+import com.example.myapplication.models.AttwhithFile;
 import com.example.myapplication.models.Service;
 import com.nbsp.materialfilepicker.MaterialFilePicker;
 import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class SpecificSreviceActivity extends AppCompatActivity
@@ -36,11 +38,11 @@ public class SpecificSreviceActivity extends AppCompatActivity
 
     Service service;
 
-   // ListView ListView_attachment;
-    ArrayList<Attachment> arraylistAttachment;
-   // ArrayAdapter arrayAdapter_attachment;
-    LinearLayout linearLayout;
 
+    LinearLayout linearLayout_attachment;
+    LinearLayout linearLayout_requirements;
+    List<Attachment> arraylistrequirements;
+    List<AttwhithFile> arraylistAttachment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +52,6 @@ public class SpecificSreviceActivity extends AppCompatActivity
         int idService = bundle.getInt("idService");
         service = GetFromDB.getSelectedService(idService);
 
-//        TextView textView_service_name = findViewById(R.id.textView_service_name);
-//        textView_service_name.setText(service.getName());
 
         TextView textView_service_cost = findViewById(R.id.textView_service_cost);
         textView_service_cost.setText(service.getCost() + "");
@@ -60,29 +60,15 @@ public class SpecificSreviceActivity extends AppCompatActivity
         TextView textView_service_note = findViewById(R.id.textView_service_note);
         textView_service_note.setText(service.getNote() + "");
 
-        linearLayout = (LinearLayout) findViewById(R.id.LinerLayout_service);
-        arraylistAttachment = new ArrayList<>();
-        arraylistAttachment = GetFromDB.getServiceAttachment(idService);
-        Log.d("MyApp", arraylistAttachment.size()+"");
+        linearLayout_requirements = (LinearLayout) findViewById(R.id.LinerLayout_service_requirements);
+        arraylistrequirements = service.getAttachment();
+        drawRequirements();
 
+
+        linearLayout_attachment = (LinearLayout) findViewById(R.id.LinerLayout_attachment);
+        arraylistAttachment = service.getAttwhithFile();
         drawAttachment();
 
-//        ListView_attachment = (ListView) findViewById(R.id.ListView_attachment);
-//        arraylistAttachment = new ArrayList<>();
-//        arraylistAttachment = GetFromDB.getServiceAttachment(idService);
-//
-//        arrayAdapter_attachment = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arraylistAttachment);
-//        ListView_attachment.setAdapter(arrayAdapter_attachment);
-//
-//        ListView_attachment.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                Attachment select_attachment = (Attachment) ListView_attachment.getItemAtPosition(position);
-//                Toast.makeText(getApplicationContext(), select_attachment.getName(), Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
 
         setTitle(service.getName());
 
@@ -148,14 +134,13 @@ public class SpecificSreviceActivity extends AppCompatActivity
 
 
 
-
-    public void drawAttachment(){
-        for (int i = 0 ; i < arraylistAttachment.size() ; i++){
+    public void drawRequirements(){
+        for (int i = 0; i < arraylistrequirements.size() ; i++){
             LinearLayout linearLayouth = new LinearLayout(this);
             linearLayouth.setOrientation(LinearLayout.HORIZONTAL);
 
             TextView newTextView1 = new TextView(this);
-            newTextView1.setText(arraylistAttachment.get(i).getName());
+            newTextView1.setText(arraylistrequirements.get(i).getName());
             newTextView1.setTextSize(18);
             newTextView1.setTypeface(Typeface.DEFAULT_BOLD);
             newTextView1.setTextColor(Color.BLACK);
@@ -165,7 +150,7 @@ public class SpecificSreviceActivity extends AppCompatActivity
             linearLayoutv.setOrientation(LinearLayout.VERTICAL);
             TextView newTextView2 = new TextView(this);
             newTextView2.setTextColor(Color.BLACK);
-            newTextView2.setText(arraylistAttachment.get(i).getNote());
+            newTextView2.setText(arraylistrequirements.get(i).getNotes());
             newTextView2.setPadding(40,10,40,30);
 
             linearLayoutv.addView(newTextView1);
@@ -175,8 +160,6 @@ public class SpecificSreviceActivity extends AppCompatActivity
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(10, 0, 10, 30);
-
-            //linearLayouth.addView(linearLayoutv);
 
             Button button1 = new Button(this);
             button1.setBackgroundResource(R.drawable.ic_cloud_upload_black_24dp);
@@ -195,20 +178,76 @@ public class SpecificSreviceActivity extends AppCompatActivity
                 }
             });
 
-            if(arraylistAttachment.get(i).getSrc() != null){
-                Button button2 = new Button(this);
-                button2.setBackgroundResource(R.drawable.ic_cloud_download_black_24dp);
-                linearLayouth.addView(button2);
-            }
             linearLayoutv.addView(linearLayouth,layoutParams);
 
             linearLayoutv.setBackgroundResource(R.drawable.shape_button);
-            //layoutParams.setMargins(30, 20, 30, 10);
-            linearLayout.addView(linearLayoutv,layoutParams);
-//
-//            TextView line = new TextView(this);
-//            line.setBackgroundResource(R.drawable.shape_silver);
-//            linearLayout.addView(line);
+            linearLayout_requirements.addView(linearLayoutv,layoutParams);
+
+        }
+
+    }
+
+
+    public void drawAttachment(){
+        for (int i = 0; i < arraylistAttachment.size() ; i++){
+            LinearLayout linearLayouth = new LinearLayout(this);
+            linearLayouth.setOrientation(LinearLayout.HORIZONTAL);
+
+            TextView newTextView1 = new TextView(this);
+            newTextView1.setText(arraylistAttachment.get(i).getName());
+            newTextView1.setTextSize(18);
+            newTextView1.setTypeface(Typeface.DEFAULT_BOLD);
+            newTextView1.setTextColor(Color.BLACK);
+            newTextView1.setPadding(30,30,30,10);
+
+            LinearLayout linearLayoutv = new LinearLayout(this);
+            linearLayoutv.setOrientation(LinearLayout.VERTICAL);
+            TextView newTextView2 = new TextView(this);
+            newTextView2.setTextColor(Color.BLACK);
+            newTextView2.setText(arraylistAttachment.get(i).getNotes());
+            newTextView2.setPadding(40,10,40,30);
+
+            linearLayoutv.addView(newTextView1);
+            linearLayoutv.addView(newTextView2);
+
+
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(10, 0, 10, 30);
+
+
+            Button button1 = new Button(this);
+            button1.setBackgroundResource(R.drawable.ic_cloud_upload_black_24dp);
+            linearLayouth.addView(button1);
+            linearLayouth.setGravity(Gravity.LEFT);
+            button1.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    new MaterialFilePicker()
+                            .withActivity(SpecificSreviceActivity.this)
+                            .withRequestCode(1000)
+                            .withFilter(Pattern.compile(".*\\.jpg")) // Filtering files and directories by file name using regexp
+
+                            .withHiddenFiles(true) // Show hidden files and folders
+                            .start();
+                }
+            });
+
+                Button button2 = new Button(this);
+                button2.setBackgroundResource(R.drawable.ic_cloud_download_black_24dp);
+                linearLayouth.addView(button2);
+                button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
+            linearLayoutv.addView(linearLayouth,layoutParams);
+
+            linearLayoutv.setBackgroundResource(R.drawable.shape_button);
+            linearLayout_attachment.addView(linearLayoutv,layoutParams);
+
         }
 
     }

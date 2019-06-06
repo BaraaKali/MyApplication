@@ -75,6 +75,7 @@
     <string name="not_valid">غير فعالة</string>
 
     <string name="attachment_service">مرفقات الخدمة </string>
+    <string name="service_requirements">متطلبات الخدمة </string>
 
     <string name="download">تنزيل</string>
     <string name="upload">تحميل</string>

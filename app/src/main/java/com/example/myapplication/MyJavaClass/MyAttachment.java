@@ -2,25 +2,25 @@ package com.example.myapplication.MyJavaClass;
 
 import java.io.File;
 
-public class Attachment {
+public class MyAttachment {
     int id;
     String name;
     File src;
     String note;
 
 
-    public Attachment(int id, String name, File src) {
+    public MyAttachment(int id, String name, File src) {
         this.id = id;
         this.name = name;
         this.src = src;
     }
 
-    public Attachment(int id, String name) {
+    public MyAttachment(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Attachment(int id) {
+    public MyAttachment(int id) {
         this.id = id;
     }
 

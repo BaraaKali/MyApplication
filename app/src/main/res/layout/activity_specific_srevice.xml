@@ -15,7 +15,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="600dp">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
 
             <LinearLayout
@@ -155,7 +156,26 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/LinerLayout_service"
+                    android:id="@+id/LinerLayout_service_requirements"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="@string/service_requirements"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/LinerLayout_attachment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -173,17 +193,31 @@
 
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:textSize="70sp" />
 
             </LinearLayout>
 
-        </ScrollView>
 
+        </ScrollView>
         <Button
             android:id="@+id/button12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorAccent"
             android:onClick="requesrService"
-            android:text="@string/save_and_send" />
+            android:text="@string/save_and_send"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+
 
     </LinearLayout>
 

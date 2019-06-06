@@ -73,7 +73,8 @@
     <string name="not_valid">Not Valid</string>
 
 
-    <string name="attachment_service">Service Attachment</string>
+    <string name="attachment_service">Service myAttachments</string>
+    <string name="service_requirements">Service Requirements</string>
     <string name="download">Download</string>
     <string name="upload">Upload</string>
 

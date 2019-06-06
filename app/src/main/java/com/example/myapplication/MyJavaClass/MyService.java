@@ -11,7 +11,7 @@ public class MyService {
     int departmentId;
     int sectionId;
     String note;
-    ArrayList<Attachment> attachments;
+    ArrayList<MyAttachment> myAttachments;
 
 
     public MyService() {
@@ -82,12 +82,12 @@ public class MyService {
         this.sectionId = sectionId;
     }
 
-    public ArrayList<Attachment> getAttachments() {
-        return attachments;
+    public ArrayList<MyAttachment> getMyAttachments() {
+        return myAttachments;
     }
 
-    public void setAttachments(ArrayList<Attachment> attachments) {
-        this.attachments = attachments;
+    public void setMyAttachments(ArrayList<MyAttachment> myAttachments) {
+        this.myAttachments = myAttachments;
     }
 
     public String getNote() {
