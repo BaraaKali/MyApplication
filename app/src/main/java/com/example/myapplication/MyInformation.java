@@ -16,8 +16,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.myapplication.models.MunInfo;
+import com.example.myapplication.network.APIInterface;
+import com.example.myapplication.network.RetrofitClient;
 
 import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MyInformation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,6 +37,7 @@ private  int REQUEST_CODE = 1;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_information);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,6 +63,7 @@ private  int REQUEST_CODE = 1;
             }
         });
     }
+
 
     @Override
     protected  void onActivityResult(int reqco , int resut , Intent data){

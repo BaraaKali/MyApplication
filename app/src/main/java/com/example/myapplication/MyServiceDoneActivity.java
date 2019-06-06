@@ -10,20 +10,30 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
-import com.example.myapplication.MyJavaClass.ServiceCitizen;
+import com.example.myapplication.MyJavaClass.MyServiceCitizen;
+import com.example.myapplication.models.Service;
+import com.example.myapplication.models.ServiceCitizen;
+import com.example.myapplication.network.APIInterface;
+import com.example.myapplication.network.RetrofitClient;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MyServiceDoneActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    ArrayList<ServiceCitizen> arraylistMyDoneServices;
+    List<ServiceCitizen> listDoneServices;
     private LinearLayout linearLayout;
 
     @Override
@@ -31,8 +41,10 @@ public class MyServiceDoneActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_service_done);
 
-        arraylistMyDoneServices = new ArrayList<>();
-        arraylistMyDoneServices = GetFromDB.getDoneServicesCitizen();
+        R_loadDoneServiceCitizen();
+
+        listDoneServices = new ArrayList<>();
+        listDoneServices = GetFromDB.getDoneServicesCitizen();
 
 
         linearLayout = (LinearLayout) findViewById(R.id.LinerLayout_my_done_services);
@@ -52,13 +64,33 @@ public class MyServiceDoneActivity extends AppCompatActivity
 
     }
 
+    private void R_loadDoneServiceCitizen() {
+        APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
+        Call<List<ServiceCitizen>> call = apiInterface.getDoneServiceCitizenCall();
+        call.enqueue(new Callback<List<ServiceCitizen>>() {
+
+            @Override
+            public void onResponse(Call<List<ServiceCitizen>> call, Response<List<ServiceCitizen>> response) {
+                GetFromDB.setDoneServicesCitizen(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<ServiceCitizen>> call, Throwable t) {
+
+                Log.i("Error Message", t.getMessage());
+            }
+        });
+
+
+    }
+
     private void drawMyServices() {
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(30, 0, 30, 0);
-        for (int i = 0 ; i < arraylistMyDoneServices.size() ; i++) {
-            final ServiceCitizen newServiceCitizen = arraylistMyDoneServices.get(i);
+        for (int i = 0 ; i < listDoneServices.size() ; i++) {
+            final ServiceCitizen newServiceCitizen = listDoneServices.get(i);
 
             TextView newTextView1 = new TextView(this);
             newTextView1.setTextSize(24);
@@ -106,9 +138,9 @@ public class MyServiceDoneActivity extends AppCompatActivity
     }
 
     public void goToPageThisService(ServiceCitizen serviceCitizen) {
-        int idServiceCitizen =serviceCitizen.getId();
+        int idServiceCitizen =serviceCitizen.getServiceCitizenID();
         int idServiceProvided =serviceCitizen.getService().getId();
-        int idCitizen = serviceCitizen.getCitizenId();
+        int idCitizen = serviceCitizen.getCitID();
 
         Intent myIntent = new Intent(this, ShowServiceDone.class);
         Bundle myBundle = new Bundle();

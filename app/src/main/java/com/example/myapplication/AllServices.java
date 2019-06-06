@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -19,8 +20,16 @@ import android.widget.TextView;
 import com.example.myapplication.MyJavaClass.MyDepartmant;
 import com.example.myapplication.MyJavaClass.GetFromDB;
 import com.example.myapplication.models.Department;
+import com.example.myapplication.models.Service;
+import com.example.myapplication.network.APIInterface;
+import com.example.myapplication.network.RetrofitClient;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 //import com.androidtutorialshub.expandablelistview.adapter.ExpandableListViewAdapter;
@@ -38,6 +47,9 @@ public class AllServices extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_services);
+
+        R_loadAllService();
+
         arrayListDepartmant = GetFromDB.getDepartmants();
         tableLayout = (TableLayout) findViewById(R.id.table_all_Depardments);
         drawDepartments();
@@ -55,6 +67,25 @@ public class AllServices extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_all_services);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+    private void R_loadAllService() {
+        APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
+        Call<List<Service>> call = apiInterface.getServiceCall();
+        call.enqueue(new Callback<List<Service>>() {
+
+            @Override
+            public void onResponse(Call<List<Service>> call, Response<List<Service>> response) {
+                GetFromDB.setListAllServices(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Service>> call, Throwable t) {
+
+                Log.i("Error Message", t.getMessage());
+            }
+        });
+
+
     }
 
 

@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.myapplication.models.Department;
 import com.example.myapplication.models.Service;
+import com.example.myapplication.models.ServiceCitizen;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,8 +13,12 @@ import java.util.List;
 public class GetFromDB {
 
     static List<Service> listAllServices = new ArrayList<>();
+
     static ArrayList<MyService> MyarraylistAllServices = new ArrayList<>();
     static ArrayList<MyService> arraylistServicesInDepartment = new ArrayList<>();
+
+    static List<ServiceCitizen> doneServicesCitizen = new ArrayList<>();
+    static List<ServiceCitizen> notDoneServicesCitizen = new ArrayList<>();
 
     //static  ArrayList<MyDepartmant> arrayListDepartmant = new ArrayList<>();
     public GetFromDB() {
@@ -112,33 +117,33 @@ public class GetFromDB {
         return services;
     }
 
-    public static ArrayList<ServiceCitizen> getServicesCitizen() {
+    public static ArrayList<MyServiceCitizen> getServicesCitizen() {
         //Date
-        ArrayList<ServiceCitizen> myService = new ArrayList<>();
+        ArrayList<MyServiceCitizen> myService = new ArrayList<>();
         MyService s = new MyService(1, "aaaaa", 1.1, 11, "notvalid", "يجب ان ملاحظات الخدمة ");
-        ServiceCitizen cs = new ServiceCitizen(1, s, 1, "2012-2-5", "done");
-        ServiceCitizen cs1 = new ServiceCitizen(2, s, 1, "1019-4-1", "notdone");
+        MyServiceCitizen cs = new MyServiceCitizen(1, s, 1, "2012-2-5", "done");
+        MyServiceCitizen cs1 = new MyServiceCitizen(2, s, 1, "1019-4-1", "notdone");
         myService.add(cs);
         myService.add(cs1);
         return myService;
     }
 
-    public static ArrayList<ServiceCitizen> getDoneServicesCitizen() {
+    public static List<ServiceCitizen> getDoneServicesCitizen() {
         //Date
-        ArrayList<ServiceCitizen> myServices = new ArrayList<>();
-        MyService s = new MyService(1, "طلب عداد", 1.1, 11, "valid", "يجب ان ملاحظات الخدمة ");
-        ServiceCitizen cs = new ServiceCitizen(1, s, 1, "2012-2-5", "done");
-        myServices.add(cs);
-        return myServices;
+//        ArrayList<MyServiceCitizen> myServices = new ArrayList<>();
+//        MyService s = new MyService(1, "طلب عداد", 1.1, 11, "valid", "يجب ان ملاحظات الخدمة ");
+//        MyServiceCitizen cs = new MyServiceCitizen(1, s, 1, "2012-2-5", "done");
+//        myServices.add(cs);
+        return doneServicesCitizen;
     }
 
-    public static ArrayList<ServiceCitizen> getNotDoneServicesCitizen() {
+    public static List<ServiceCitizen> getNotDoneServicesCitizen() {
         //Date
-        ArrayList<ServiceCitizen> myService = new ArrayList<>();
-        MyService s = new MyService(1, "طلب عداد", 1.1, 11, "valid", "يجب ان ملاحظات الخدمة ");
-        ServiceCitizen cs1 = new ServiceCitizen(2, s, 1, "1019-4-1", "notdone");
-        myService.add(cs1);
-        return myService;
+//        ArrayList<MyServiceCitizen> myService = new ArrayList<>();
+//        MyService s = new MyService(1, "طلب عداد", 1.1, 11, "valid", "يجب ان ملاحظات الخدمة ");
+//        MyServiceCitizen cs1 = new MyServiceCitizen(2, s, 1, "1019-4-1", "notdone");
+//        myService.add(cs1);
+        return notDoneServicesCitizen;
     }
 
     public static ArrayList<MyAttachment> getServiceAttachment(int idService) {
@@ -185,6 +190,14 @@ public class GetFromDB {
 
     public static void setArraylistServicesInDepartment(ArrayList<MyService> arraylistServicesInDepartment) {
         GetFromDB.arraylistServicesInDepartment = arraylistServicesInDepartment;
+    }
+
+    public static void setDoneServicesCitizen(List<ServiceCitizen> doneServicesCitizen) {
+        GetFromDB.doneServicesCitizen = doneServicesCitizen;
+    }
+
+    public static void setNotDoneServicesCitizen(List<ServiceCitizen> notDoneServicesCitizen) {
+        GetFromDB.notDoneServicesCitizen = notDoneServicesCitizen;
     }
 
     public static Service getSelectedService(int idService) {

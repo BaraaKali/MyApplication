@@ -20,9 +20,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="5dp"
+            android:layout_weight="1"
             android:background="@drawable/shape_blue"
             android:orientation="vertical"
             android:padding="15dp">
@@ -32,9 +33,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="10dp"
                 android:text="@string/muni_name"
                 android:textColor="@color/icon"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -44,19 +46,20 @@
                 android:gravity="center"
                 android:text="TextView"
                 android:textColor="@color/icon"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/shape_green"
@@ -73,7 +76,7 @@
                     android:layout_weight="1"
                     android:text="@string/city"
                     android:textColor="@color/icon"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -84,13 +87,13 @@
                     android:layout_marginRight="10dp"
                     android:text="@string/city"
                     android:textColor="@color/icon"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/shape_red"
                 android:orientation="vertical"
@@ -105,7 +108,7 @@
                     android:layout_weight="1"
                     android:text="@string/zone"
                     android:textColor="@color/icon"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -116,35 +119,36 @@
                     android:layout_marginRight="10dp"
                     android:text="@string/zone"
                     android:textColor="@color/icon"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/shape_button"
-                android:layout_marginLeft="5dp"
-                android:padding="15dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:text="@string/street"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -154,28 +158,28 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:text="@string/street"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:background="@drawable/shape_orange"
-                android:padding="15dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:text="@string/email"
                     android:textColor="@color/icon"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -184,38 +188,39 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:textColor="@color/icon"
                     android:text="@string/email"
-                    android:textSize="18sp" />
+                    android:textColor="@color/icon"
+                    android:textSize="20sp" />
             </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:background="@drawable/shape_green2"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
-                android:padding="15dp"
-                android:orientation="vertical">
+                android:layout_weight="1"
+                android:background="@drawable/shape_green2"
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:text="@string/telephone_number"
                     android:textColor="@color/icon"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -224,29 +229,29 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:textColor="@color/icon"
                     android:text="@string/telephone_number"
-                    android:textSize="18sp" />
+                    android:textColor="@color/icon"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="15dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
                 android:background="@drawable/shape_blue2"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:text="@string/fax"
                     android:textColor="@color/icon"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -255,10 +260,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:textColor="@color/icon"
                     android:text="@string/fax"
-                    android:textSize="18sp" />
+                    android:textColor="@color/icon"
+                    android:textSize="20sp" />
             </LinearLayout>
+
+
         </LinearLayout>
     </LinearLayout>
 

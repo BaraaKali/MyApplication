@@ -1,16 +1,16 @@
 package com.example.myapplication.MyJavaClass;
 
-public class ServiceCitizen {
+public class MyServiceCitizen {
     int id;
     MyService service;
     int citizenId;
     String date;
     String status;
 
-    public ServiceCitizen() {
+    public MyServiceCitizen() {
     }
 
-    public ServiceCitizen(int id, MyService service, int citizenId, String date, String status) {
+    public MyServiceCitizen(int id, MyService service, int citizenId, String date, String status) {
         this.id = id;
         this.service = service;
         this.citizenId = citizenId;

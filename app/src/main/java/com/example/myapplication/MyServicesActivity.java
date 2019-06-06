@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
-import com.example.myapplication.MyJavaClass.ServiceCitizen;
+import com.example.myapplication.MyJavaClass.MyServiceCitizen;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class MyServicesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     ListView ListView_my_services;
-    ArrayList<ServiceCitizen> arraylistMyServices;
+    ArrayList<MyServiceCitizen> arraylistMyServices;
     //ArrayAdapter arrayAdapter;
 
     private LinearLayout linearLayout;
@@ -76,7 +76,7 @@ public class MyServicesActivity extends AppCompatActivity
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(30, 20, 30, 10);
         for (int i = 0 ; i < arraylistMyServices.size() ; i++) {
-            ServiceCitizen newServiceCitizen = arraylistMyServices.get(i);
+            MyServiceCitizen newServiceCitizen = arraylistMyServices.get(i);
 
             TextView newTextView1 = new TextView(this);
             newTextView1.setTextSize(18);

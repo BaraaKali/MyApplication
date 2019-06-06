@@ -171,7 +171,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="TextView"
                             android:textSize="18sp"
                             android:textColor="@color/icon"/>
                     </LinearLayout>
@@ -324,17 +323,17 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:background="@drawable/shape_green2"
                             android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_green2"
                             android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
                                 android:layout_marginTop="10dp"
+                                android:layout_marginRight="10dp"
                                 android:layout_weight="1"
                                 android:text="@string/telephone_number"
                                 android:textColor="@color/icon"
@@ -347,15 +346,15 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
-                                android:textColor="@color/icon"
                                 android:text="@string/telephone_number"
+                                android:textColor="@color/icon"
                                 android:textSize="18sp" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:background="@drawable/shape_blue2"
                             android:orientation="vertical">
 
@@ -363,8 +362,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
                                 android:layout_marginTop="10dp"
+                                android:layout_marginRight="10dp"
                                 android:layout_weight="1"
                                 android:text="@string/fax"
                                 android:textColor="@color/icon"
@@ -377,8 +376,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
-                                android:textColor="@color/icon"
                                 android:text="@string/fax"
+                                android:textColor="@color/icon"
                                 android:textSize="18sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -416,10 +415,5 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_side_bar"
         app:menu="@menu/activity_side_bar_drawer" />
-
-
-
-
-
 
 </android.support.v4.widget.DrawerLayout>
