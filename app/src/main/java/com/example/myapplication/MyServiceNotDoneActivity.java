@@ -1,8 +1,13 @@
 package com.example.myapplication;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,7 +18,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
@@ -81,10 +88,11 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
 
 
     }
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void drawMyServices() {
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         layoutParams.setMargins(30, 20, 30, 10);
         for (int i = 0 ; i < listNotDoneServices.size() ; i++) {
             final ServiceCitizen newServiceCitizen = listNotDoneServices.get(i);
@@ -100,14 +108,23 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
 //            newTextView2.setText(newServiceCitizen.getDate());
 
             TextView newTextView3 = new TextView(this);
-            newTextView3.setText(newServiceCitizen.getDate()+"d");
+            newTextView3.setText(newServiceCitizen.getDate());
             newTextView3.setTextColor(Color.BLACK);
 
 
             LinearLayout linearLayoutv = new LinearLayout(this);
             linearLayoutv.setOrientation(LinearLayout.VERTICAL);
             linearLayoutv.addView(newTextView1);
-            //linearLayoutv.addView(newTextView2);
+            linearLayoutv.addView(newTextView3);
+
+            ProgressBar progressBar = new  ProgressBar(this,null,android.R.attr.progressBarStyleHorizontal);
+            progressBar.setProgress(20);
+
+//        Drawable draw = getDrawable(R.drawable.circle);
+//        progressBar.setProgressDrawable(draw);
+
+            linearLayoutv.addView(progressBar);
+
 
 
             LinearLayout linearLayouth = new LinearLayout(this);
@@ -116,9 +133,10 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
 
             linearLayouth.setPadding(20,40,50,40);
 
-            linearLayouth.addView(linearLayoutv);
-            layoutParams.setMargins(50, 0, 50, 0);
-            linearLayouth.addView(newTextView3,layoutParams);
+            linearLayouth.addView(linearLayoutv,layoutParams);
+            //linearLayouth.addView(newTextView3,layoutParams);
+
+
 
             linearLayouth.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -127,9 +145,18 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
                 }
             });
 
+
+
             layoutParams.setMargins(30, 20, 30, 10);
             linearLayout.addView(linearLayouth, layoutParams);
+
+
+
+
         }
+
+
+
     }
 
 
@@ -137,12 +164,14 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
         int idServiceCitizen =serviceCitizen.getServiceCitizenID();
         int idServiceProvided =serviceCitizen.getService().getId();
         int idCitizen = serviceCitizen.getCitID();
+        String name = serviceCitizen.getService().getName();
 
         Intent myIntent = new Intent(this, ShowServiceDone.class);
         Bundle myBundle = new Bundle();
         myBundle.putInt("idServiceCitizen", idServiceCitizen);
         myBundle.putInt("idServiceProvided", idServiceProvided);
         myBundle.putInt("idCitizen", idCitizen);
+        myBundle.putString("name", name);
         myIntent.putExtras(myBundle);
         startActivity(myIntent);
     }

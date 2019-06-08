@@ -99,6 +99,8 @@
 
     <string name="emp_com">تعليق الموظف </string>
     <string name="emp_cost">تكلفه الموظف </string>
+    <string name="emp_att">مرفقات الموظف  </string>
+
 
 
     <string name="title_activity_side_bar">SideBarActivity</string>

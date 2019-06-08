@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -8,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -73,39 +76,100 @@ public class PathInDep extends AppCompatActivity implements NavigationView.OnNav
 
             LinearLayout linearLayoutv = new LinearLayout(this);
             linearLayoutv.setOrientation(LinearLayout.VERTICAL);
-            linearLayoutv.setBackgroundResource(R.drawable.shape_button);
 
             TextView newTextView1 = new TextView(this);
             newTextView1.setText(section.getSection().getName());
+            newTextView1.setTextSize(24);
+            newTextView1.setTypeface(Typeface.DEFAULT_BOLD);
+            newTextView1.setTextColor(Color.rgb(255,152,0));
+            newTextView1.setGravity(Gravity.CENTER);
+            newTextView1.setPadding(30,30,30,5);
+
 
             linearLayout.addView(newTextView1);
 
             for (int j = 0 ; j < section.getJob().size(); j++) {
+
+                LinearLayout linearLayoutv1 = new LinearLayout(this);
+                linearLayoutv1.setOrientation(LinearLayout.VERTICAL);
+                linearLayoutv1.setBackgroundResource(R.drawable.shape_button);
+
                 final StepsAndDecsionsJob job = section.getJob().get(j);
 
                 TextView newTextView2 = new TextView(this);
-                newTextView2.setText(job.getJobPath().getName());
+                newTextView2.setText(job.getJobPath().getName()+" : ");
+                newTextView2.setTextSize(18);
+                newTextView2.setTypeface(Typeface.DEFAULT_BOLD);
+                newTextView2.setTextColor(Color.rgb(33,150,243));
+                newTextView2.setPadding(30,30,30,5);
+
                 TextView newTextView3 = new TextView(this);
                 newTextView3.setText(job.getDecisionsJob().getEmployee().getEmpName());
+                newTextView3.setTextSize(18);
+                newTextView3.setTypeface(Typeface.DEFAULT_BOLD);
+                newTextView3.setTextColor(Color.BLACK);
+                newTextView3.setPadding(30,30,30,5);
                 LinearLayout linearLayouth1 = new LinearLayout(this);
                 linearLayouth1.setOrientation(LinearLayout.HORIZONTAL);
                 linearLayouth1.addView(newTextView2);
                 linearLayouth1.addView(newTextView3);
-                linearLayoutv.addView(linearLayouth1);
+                linearLayoutv1.addView(linearLayouth1);
 
                 TextView newTextView4 = new TextView(this);
                 newTextView4.setText(R.string.emp_com);
+                newTextView4.setTextSize(18);
+                newTextView4.setTypeface(Typeface.DEFAULT_BOLD);
+                newTextView4.setTextColor(Color.rgb(33,150,243));
+                newTextView4.setPadding(30,30,30,5);
+
                 TextView newTextView5 = new TextView(this);
                 newTextView5.setText(job.getDecisionsJob().getExternalMessage());
-                LinearLayout linearLayouth2 = new LinearLayout(this);
-                linearLayouth2.setOrientation(LinearLayout.HORIZONTAL);
-                linearLayouth2.addView(newTextView4);
-                linearLayouth2.addView(newTextView5);
-                linearLayoutv.addView(linearLayouth2);
+                newTextView5.setTextSize(18);
+                newTextView5.setTypeface(Typeface.DEFAULT_BOLD);
+                newTextView5.setTextColor(Color.BLACK);
+                newTextView5.setPadding(30,30,30,5);
+                LinearLayout linearLayouth2v = new LinearLayout(this);
+                linearLayouth2v.setOrientation(LinearLayout.VERTICAL);
+                linearLayouth2v.addView(newTextView4);
+                linearLayouth2v.addView(newTextView5);
+                linearLayoutv1.addView(linearLayouth2v);
 
+                TextView newTextView6 = new TextView(this);
+                newTextView6.setText(R.string.emp_cost);
+                newTextView6.setTextSize(18);
+                newTextView6.setTypeface(Typeface.DEFAULT_BOLD);
+                newTextView6.setTextColor(Color.rgb(33,150,243));
+                newTextView6.setPadding(30,30,30,5);
+
+                TextView newTextView7 = new TextView(this);
+                newTextView7.setText(""+job.getDecisionsJob().getCost());
+                newTextView7.setTextSize(18);
+                newTextView7.setTypeface(Typeface.DEFAULT_BOLD);
+                newTextView7.setTextColor(Color.BLACK);
+                newTextView7.setPadding(30,30,30,5);
+                LinearLayout linearLayouth3 = new LinearLayout(this);
+                linearLayouth3.setOrientation(LinearLayout.HORIZONTAL);
+                linearLayouth3.addView(newTextView6);
+                linearLayouth3.addView(newTextView7);
+                linearLayoutv1.addView(linearLayouth3);
+
+                TextView newTextView8 = new TextView(this);
+                newTextView8.setText(R.string.emp_att);
+                newTextView8.setTextSize(18);
+                newTextView8.setTypeface(Typeface.DEFAULT_BOLD);
+                newTextView8.setTextColor(Color.rgb(33,150,243));
+                newTextView8.setPadding(30,30,30,5);
+
+
+                LinearLayout linearLayouth4 = new LinearLayout(this);
+                linearLayouth4.setOrientation(LinearLayout.VERTICAL);
+                linearLayouth4.addView(newTextView8);
+                linearLayoutv1.addView(linearLayouth4);
+
+
+                linearLayoutv.addView(linearLayoutv1,layoutParams);
 
             }
-
 
 
 
