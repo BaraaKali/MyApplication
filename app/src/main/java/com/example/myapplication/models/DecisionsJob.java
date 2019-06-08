@@ -7,31 +7,31 @@ public class DecisionsJob {
 
     @SerializedName("job")
     @Expose
-    private Object job;
+    private JobPath job;
     @SerializedName("idEmployee")
     @Expose
     private Integer idEmployee;
     @SerializedName("employee")
     @Expose
-    private Object employee;
+    private Employee employee;
     @SerializedName("status")
     @Expose
-    private Object status;
+    private String status;
     @SerializedName("runing")
     @Expose
-    private Object runing;
+    private String runing;
     @SerializedName("cost")
     @Expose
     private Double cost;
     @SerializedName("internalMessage")
     @Expose
-    private Object internalMessage;
+    private String internalMessage;
     @SerializedName("externalMessage")
     @Expose
-    private Object externalMessage;
+    private String externalMessage;
     @SerializedName("date")
     @Expose
-    private Object date;
+    private String date;
     @SerializedName("services_Provided_ID")
     @Expose
     private Integer servicesProvidedID;
@@ -45,11 +45,11 @@ public class DecisionsJob {
     @Expose
     private Boolean run;
 
-    public Object getJob() {
+    public JobPath getJob() {
         return job;
     }
 
-    public void setJob(Object job) {
+    public void setJob(JobPath job) {
         this.job = job;
     }
 
@@ -61,27 +61,27 @@ public class DecisionsJob {
         this.idEmployee = idEmployee;
     }
 
-    public Object getEmployee() {
+    public Employee getEmployee() {
         return employee;
     }
 
-    public void setEmployee(Object employee) {
+    public void setEmployee(Employee employee) {
         this.employee = employee;
     }
 
-    public Object getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Object status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public Object getRuning() {
+    public String getRuning() {
         return runing;
     }
 
-    public void setRuning(Object runing) {
+    public void setRuning(String runing) {
         this.runing = runing;
     }
 
@@ -93,27 +93,27 @@ public class DecisionsJob {
         this.cost = cost;
     }
 
-    public Object getInternalMessage() {
+    public String getInternalMessage() {
         return internalMessage;
     }
 
-    public void setInternalMessage(Object internalMessage) {
+    public void setInternalMessage(String internalMessage) {
         this.internalMessage = internalMessage;
     }
 
-    public Object getExternalMessage() {
+    public String getExternalMessage() {
         return externalMessage;
     }
 
-    public void setExternalMessage(Object externalMessage) {
+    public void setExternalMessage(String externalMessage) {
         this.externalMessage = externalMessage;
     }
 
-    public Object getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Object date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

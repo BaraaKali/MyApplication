@@ -101,6 +101,8 @@ public class MyServiceDoneActivity extends AppCompatActivity
 
             TextView newTextView3 = new TextView(this);
             newTextView3.setText(newServiceCitizen.getDate()+"d");
+            newTextView3.setTextColor(Color.BLACK);
+
 //             newTextView3.setLayoutParams(layoutParams);
 
 //            TextView newTextView3 = new TextView(this);
@@ -124,7 +126,7 @@ public class MyServiceDoneActivity extends AppCompatActivity
             layoutParams.setMargins(50, 0, 50, 0);
             linearLayouth.addView(newTextView3,layoutParams);
 
-            linearLayouth.setPadding(20,20,50,20);
+            linearLayouth.setPadding(20,40,50,40);
 
             linearLayouth.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -141,12 +143,15 @@ public class MyServiceDoneActivity extends AppCompatActivity
         int idServiceCitizen =serviceCitizen.getServiceCitizenID();
         int idServiceProvided =serviceCitizen.getService().getId();
         int idCitizen = serviceCitizen.getCitID();
+        String name = serviceCitizen.getService().getName();
 
         Intent myIntent = new Intent(this, ShowServiceDone.class);
         Bundle myBundle = new Bundle();
         myBundle.putInt("idServiceCitizen", idServiceCitizen);
         myBundle.putInt("idServiceProvided", idServiceProvided);
         myBundle.putInt("idCitizen", idCitizen);
+        myBundle.putString("name", name);
+
         myIntent.putExtras(myBundle);
         startActivity(myIntent);
     }

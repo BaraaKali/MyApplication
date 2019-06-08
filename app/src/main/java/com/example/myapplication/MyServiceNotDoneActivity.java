@@ -101,6 +101,7 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
 
             TextView newTextView3 = new TextView(this);
             newTextView3.setText(newServiceCitizen.getDate()+"d");
+            newTextView3.setTextColor(Color.BLACK);
 
 
             LinearLayout linearLayoutv = new LinearLayout(this);
@@ -113,7 +114,7 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
             linearLayouth.setOrientation(LinearLayout.HORIZONTAL);
             linearLayouth.setBackgroundResource(R.drawable.shape_button);
 
-            linearLayouth.setPadding(20,20,50,20);
+            linearLayouth.setPadding(20,40,50,40);
 
             linearLayouth.addView(linearLayoutv);
             layoutParams.setMargins(50, 0, 50, 0);

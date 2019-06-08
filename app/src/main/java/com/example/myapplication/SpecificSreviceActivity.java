@@ -1,11 +1,19 @@
 package com.example.myapplication;
 
+import android.Manifest;
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,6 +25,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +38,11 @@ import com.example.myapplication.models.Service;
 import com.nbsp.materialfilepicker.MaterialFilePicker;
 import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -189,7 +203,11 @@ public class SpecificSreviceActivity extends AppCompatActivity
 
 
     public void drawAttachment(){
+
+
         for (int i = 0; i < arraylistAttachment.size() ; i++){
+            final AttwhithFile wf = arraylistAttachment.get(i);
+
             LinearLayout linearLayouth = new LinearLayout(this);
             linearLayouth.setOrientation(LinearLayout.HORIZONTAL);
 
@@ -216,7 +234,7 @@ public class SpecificSreviceActivity extends AppCompatActivity
             layoutParams.setMargins(10, 0, 10, 30);
 
 
-            Button button1 = new Button(this);
+            final Button button1 = new Button(this);
             button1.setBackgroundResource(R.drawable.ic_cloud_upload_black_24dp);
             linearLayouth.addView(button1);
             linearLayouth.setGravity(Gravity.LEFT);
@@ -239,9 +257,41 @@ public class SpecificSreviceActivity extends AppCompatActivity
                 button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //InputStream inputForData = new ByteArrayInputStream(wf.getOutputfinal());
 
-                }
+//                    DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+//                    DownloadManager.Request request = new DownloadManager.Request(file);
+//                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+//                    Long referancd = downloadManager.enqueue(request);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                        Log.i("tag1","Permission is granted");
+
+                        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                            == PackageManager.PERMISSION_GRANTED){
+                        // Permission is not granted
+                            Log.i("tag2","Permission is granted");
+
+//                    byte[] b = wf.getOutputfinal().getBytes();
+                        File imgFile = new File("/sdcard/Download/profile_icon.png");
+                        //imgFile = writeByte(b);
+                        if (imgFile.exists()) {
+                            //Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+                            //ImageView myImage = (ImageView) findViewById(R.id.imageviewTest);
+//                            Log.i("tag3",""+myImage.getId());
+//                             myImage.setImageBitmap(myBitmap);
+                            showim();
+
+                        } else {
+                        }
+
+                    }else{
+                            ActivityCompat.requestPermissions(SpecificSreviceActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                            Log.i("Not Exxteeeee", "Not Existseeeee");
+
+                        }
+                }}
             });
+
 
             linearLayoutv.addView(linearLayouth,layoutParams);
 
@@ -252,6 +302,36 @@ public class SpecificSreviceActivity extends AppCompatActivity
 
     }
 
+    public File writeByte(byte[] bytes)
+    {
+        try {
+
+
+             File file = new File("");
+
+            // Initialize a pointer
+            // in file using OutputStream
+            OutputStream os = new FileOutputStream(file);
+            Log.i(" yesss","yesss");
+
+            // Starts writing the bytes in it
+            os.write(bytes);
+
+
+            // Close the file
+            os.close();
+            return file;
+        }
+
+        catch (Exception e) {
+            Log.i("Not Exxt",e.toString());
+        }
+        return null;
+    }
+
+    public void showim() {
+        startActivity(new Intent(this, ShowImage.class));
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

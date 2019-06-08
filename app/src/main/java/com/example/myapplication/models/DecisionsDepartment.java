@@ -1,6 +1,10 @@
 package com.example.myapplication.models;
 
+import android.content.Context;
+
 import java.util.List;
+
+import com.example.myapplication.R;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -14,28 +18,28 @@ public class DecisionsDepartment {
     private Integer depOrder;
     @SerializedName("status")
     @Expose
-    private Object status;
+    private String status;
     @SerializedName("cost")
     @Expose
     private Double cost;
     @SerializedName("internalMessage")
     @Expose
-    private Object internalMessage;
+    private String internalMessage;
     @SerializedName("externalMessage")
     @Expose
-    private Object externalMessage;
+    private String externalMessage;
     @SerializedName("date")
     @Expose
-    private Object date;
+    private String date;
     @SerializedName("depName")
     @Expose
-    private Object depName;
+    private String depName;
     @SerializedName("decision")
     @Expose
-    private Object decision;
+    private String decision;
     @SerializedName("section")
     @Expose
-    private List<Object> section = null;
+    private List<Section> section = null;
     @SerializedName("totalDepCost")
     @Expose
     private Double totalDepCost;
@@ -65,11 +69,11 @@ public class DecisionsDepartment {
         this.depOrder = depOrder;
     }
 
-    public Object getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Object status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -81,51 +85,51 @@ public class DecisionsDepartment {
         this.cost = cost;
     }
 
-    public Object getInternalMessage() {
+    public String getInternalMessage() {
         return internalMessage;
     }
 
-    public void setInternalMessage(Object internalMessage) {
+    public void setInternalMessage(String internalMessage) {
         this.internalMessage = internalMessage;
     }
 
-    public Object getExternalMessage() {
+    public String getExternalMessage() {
         return externalMessage;
     }
 
-    public void setExternalMessage(Object externalMessage) {
+    public void setExternalMessage(String externalMessage) {
         this.externalMessage = externalMessage;
     }
 
-    public Object getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Object date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Object getDepName() {
+    public String getDepName() {
         return depName;
     }
 
-    public void setDepName(Object depName) {
+    public void setDepName(String depName) {
         this.depName = depName;
     }
 
-    public Object getDecision() {
+    public String getDecision() {
         return decision;
     }
 
-    public void setDecision(Object decision) {
+    public void setDecision(String decision) {
         this.decision = decision;
     }
 
-    public List<Object> getSection() {
+    public List<Section> getSection() {
         return section;
     }
 
-    public void setSection(List<Object> section) {
+    public void setSection(List<Section> section) {
         this.section = section;
     }
 
@@ -160,5 +164,24 @@ public class DecisionsDepartment {
     public void setServiceCitizenID(Integer serviceCitizenID) {
         this.serviceCitizenID = serviceCitizenID;
     }
+
+
+    public int nameStatus() {
+        if ("done".equals(status)) {
+
+            return R.string.ser_cas_done;
+        }
+        return  R.string.ser_cas_else;
+    }
+
+    public int nameDecision() {
+        if ("yse".equals(decision)) {
+            return R.string.ser_des_yes;
+        } else if ("no".equals(decision)) {
+            return R.string.ser_des_no;
+        }
+        return R.string.ser_des_else;
+    }
+
 
 }

@@ -79,8 +79,31 @@
 
     <string name="download">تنزيل</string>
     <string name="upload">تحميل</string>
+    <string name="notes">ملاحظات</string>
     <string name="title_activity_my_done_services">خدماتي المنجزة</string>
     <string name="title_activity_my_not_done_services">خدماتي قيد التنفيذ</string>
+
+
+
+
+    <string name="ser_cas">حالة الخدمة </string>
+    <string name="ser_cas_done">جاهزه</string>
+    <string name="ser_cas_else">قيد الانتظار</string>
+
+    <string name="ser_des">قرار الدائرة</string>
+    <string name="ser_des_yes">تم القبول</string>
+    <string name="ser_des_no">تم الرفض </string>
+    <string name="ser_des_else">لم يتحدد</string>
+
+    <string name="ser_com">تعليق الدائرة </string>
+    <string name="ser_cost">مجموع تكلفة الدائره = </string>
+
+    <string name="emp_com">تعليق الموظف </string>
+    <string name="emp_cost">تكلفه الموظف </string>
+
+
+
+
 
     <string name="title_activity_services_in_department"></string>
 

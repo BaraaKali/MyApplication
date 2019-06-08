@@ -5,12 +5,15 @@ import android.util.Log;
 import com.example.myapplication.models.Department;
 import com.example.myapplication.models.Service;
 import com.example.myapplication.models.ServiceCitizen;
+import com.example.myapplication.models.StepsAndDecsions;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GetFromDB {
+
+    static  String idCitizen= "";
 
     static List<Service> listAllServices = new ArrayList<>();
 
@@ -19,6 +22,8 @@ public class GetFromDB {
 
     static List<ServiceCitizen> doneServicesCitizen = new ArrayList<>();
     static List<ServiceCitizen> notDoneServicesCitizen = new ArrayList<>();
+
+    static List<StepsAndDecsions> stepsAndDecsions = new ArrayList<>();
 
     //static  ArrayList<MyDepartmant> arrayListDepartmant = new ArrayList<>();
     public GetFromDB() {
@@ -209,4 +214,19 @@ public class GetFromDB {
 
     }
 
+    public static List<StepsAndDecsions> getStepsAndDecsions() {
+        return stepsAndDecsions;
+    }
+
+    public static void setStepsAndDecsions(List<StepsAndDecsions> stepsAndDecsions) {
+        GetFromDB.stepsAndDecsions = stepsAndDecsions;
+    }
+
+    public static String getIdCitizen() {
+        return idCitizen;
+    }
+
+    public static void setIdCitizen(String idCitizen) {
+        GetFromDB.idCitizen = idCitizen;
+    }
 }
