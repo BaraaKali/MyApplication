@@ -92,15 +92,19 @@ public class MyServiceDoneActivity extends AppCompatActivity
         for (int i = 0 ; i < listDoneServices.size() ; i++) {
             final ServiceCitizen newServiceCitizen = listDoneServices.get(i);
 
+            TextView newTextView2 = new TextView(this);
+            newTextView2.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_check_circle_black_24dp,0);
+
+
             TextView newTextView1 = new TextView(this);
             newTextView1.setTextSize(24);
             newTextView1.setTypeface(Typeface.DEFAULT_BOLD);
             newTextView1.setText(newServiceCitizen.getService().getName());
              newTextView1.setTextColor(Color.parseColor("#1cc88a"));
-             newTextView1.setTypeface(null, Typeface.BOLD);
+            newTextView1.setTypeface(null, Typeface.BOLD);
 
             TextView newTextView3 = new TextView(this);
-            newTextView3.setText(newServiceCitizen.getDate()+"d");
+            newTextView3.setText(newServiceCitizen.getDate());
             newTextView3.setTextColor(Color.BLACK);
 
 //             newTextView3.setLayoutParams(layoutParams);
@@ -112,19 +116,19 @@ public class MyServiceDoneActivity extends AppCompatActivity
             LinearLayout linearLayoutv = new LinearLayout(this);
             linearLayoutv.setOrientation(LinearLayout.VERTICAL);
             linearLayoutv.addView(newTextView1);
-//            linearLayoutv.addView(newTextView2);
+            linearLayoutv.addView(newTextView3);
 
 
             LinearLayout linearLayouth = new LinearLayout(this);
             linearLayouth.setOrientation(LinearLayout.HORIZONTAL);
             linearLayouth.setBackgroundResource(R.drawable.shape_button);
-
+            linearLayouth.addView(newTextView2);
             linearLayouth.addView(linearLayoutv);
 
 
             //linearLayouth.addView(newTextView1);
-            layoutParams.setMargins(50, 0, 50, 0);
-            linearLayouth.addView(newTextView3,layoutParams);
+//            layoutParams.setMargins(50, 0, 50, 0);
+//            linearLayouth.addView(newTextView3,layoutParams);
 
             linearLayouth.setPadding(20,40,50,40);
 

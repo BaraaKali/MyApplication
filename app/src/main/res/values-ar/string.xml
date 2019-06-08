@@ -95,12 +95,14 @@
     <string name="ser_des_no">تم الرفض </string>
     <string name="ser_des_else">لم يتحدد</string>
 
-    <string name="ser_com">تعليق الدائرة </string>
-    <string name="ser_cost">مجموع تكلفة الدائره = </string>
+    <string name="ser_com">تعليق الدائرة : </string>
+    <string name="ser_cost"> تكلفة الدائره</string>
 
     <string name="emp_com">تعليق الموظف : </string>
     <string name="emp_cost">تكلفه الموظف : </string>
     <string name="emp_att">مرفقات الموظف  </string>
+    <string name="money">شيقل</string>
+
 
 
 
