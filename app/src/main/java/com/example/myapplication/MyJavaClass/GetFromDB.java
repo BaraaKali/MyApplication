@@ -13,7 +13,10 @@ import java.util.List;
 
 public class GetFromDB {
 
-    static  String idCitizen= "";
+    static  int idCitizen = 7 ;
+    static String username = "baraa";
+    static String passWord = "baraa";
+
 
     static List<Service> listAllServices = new ArrayList<>();
 
@@ -53,7 +56,7 @@ public class GetFromDB {
         ArrayList<Department> departmants = new ArrayList<>();
         for (int i = 0; i < listAllServices.size(); i++) {
             flag = false;
-            for (int j = 0; j < i; j++) {
+            for (int j = 0; j < departmants.size(); j++) {
                 if (listAllServices.get(i).getDepartment().getId().equals(departmants.get(j).getId())) {
                     flag = true;
                     break;
@@ -222,11 +225,27 @@ public class GetFromDB {
         GetFromDB.stepsAndDecsions = stepsAndDecsions;
     }
 
-    public static String getIdCitizen() {
+    public static int getIdCitizen() {
         return idCitizen;
     }
 
-    public static void setIdCitizen(String idCitizen) {
+    public static void setIdCitizen(int idCitizen) {
         GetFromDB.idCitizen = idCitizen;
+    }
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public static void setUsername(String username) {
+        GetFromDB.username = username;
+    }
+
+    public static String getPassWord() {
+        return passWord;
+    }
+
+    public static void setPassWord(String passWord) {
+        GetFromDB.passWord = passWord;
     }
 }

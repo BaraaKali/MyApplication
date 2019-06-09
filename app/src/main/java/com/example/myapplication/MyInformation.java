@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.example.myapplication.MyJavaClass.GetFromDB;
 import com.example.myapplication.models.Citizen;
 import com.example.myapplication.models.MunInfo;
 import com.example.myapplication.network.APIInterface;
@@ -97,7 +98,7 @@ public class MyInformation extends AppCompatActivity
 
     private void R_loadProfile() {
         APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
-        Call<Citizen> call = apiInterface.getProfileCall();
+        Call<Citizen> call = apiInterface.getProfileCall(GetFromDB.getUsername(),GetFromDB.getPassWord());
         call.enqueue(new Callback<Citizen>() {
 
             @Override

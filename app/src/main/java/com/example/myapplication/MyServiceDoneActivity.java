@@ -66,7 +66,7 @@ public class MyServiceDoneActivity extends AppCompatActivity
 
     private void R_loadDoneServiceCitizen() {
         APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
-        Call<List<ServiceCitizen>> call = apiInterface.getDoneServiceCitizenCall();
+        Call<List<ServiceCitizen>> call = apiInterface.getDoneServiceCitizenCall(GetFromDB.getIdCitizen());
         call.enqueue(new Callback<List<ServiceCitizen>>() {
 
             @Override
