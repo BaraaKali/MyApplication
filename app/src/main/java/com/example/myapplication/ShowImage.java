@@ -8,6 +8,9 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.myapplication.MyJavaClass.GetFromDB;
+import com.example.myapplication.models.Service;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -21,22 +24,28 @@ public class ShowImage extends AppCompatActivity {
         setContentView(R.layout.activity_show_image);
         try {
 
-            String s = "U0VMRUNUICogRlJPTSBvc3MuZGVjaXNpb25zX2RlcGFydG1lbnQgYXMgZGQgaW5uZXIgam9pbiAoU0VMRUNUIERlcF9JRCAsIG1pbihPcmRlcl9EZXBhcnRtYW50KSBhcyBtaW5kIEZST00gb3NzLmRlY2lzaW9uc19kZXBhcnRtZW50IHdoZXJlIFN0YXR1cyA9ICdub3Rkb25lJyBncm91cCBieSAgRGVwX0lEICkgYXMgbWRkIG9uIGRkLkRlcF9JRCA9IG1kZC5EZXBfSUQgYW5kIGRkLk9yZGVyX0RlcGFydG1hbnQgPSBtaW5kOw==";
+//            Service service = GetFromDB.getSelectedService(12);
+//            Log.i("tag3", "" + service.getAttwhithFile().get(1).getNameFile());
+//            String s = service.getAttwhithFile().get(1).getOutputfinal();
+//            byte[] bytes = s.getBytes();
+//
+//
+//
+//            File newFile = new File("/sdcard/Download/profile_icon.png");
+//            newFile.createNewFile();
+//
+//            FileOutputStream fOut = new FileOutputStream("profile_icon.png");
+//            fOut.write(bytes);
+//            fOut.close();
+//            fOut.close();
 
-            File newFile = new File("/sdcard/Download/quere.txt");
-            newFile.createNewFile();
-
-            FileOutputStream fOut = new FileOutputStream(newFile);
-            OutputStreamWriter myOutWriter =new OutputStreamWriter(fOut);
-            myOutWriter.write(s);
-            myOutWriter.close();
-            fOut.close();
-
-            File imgFile = new File("/sdcard/Download/quere.txt");
+            File imgFile = new File("/sdcard/Download/profile_icon.png");
             if (imgFile.exists()) {
+
+                Log.i("tag3", "" + "in if exists");
                 Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
                 ImageView myImage = (ImageView) findViewById(R.id.imageviewTest);
-                Log.i("tag3", "" + myImage.getId());
+                Log.i("tag4", "" + myImage.getId());
                 myImage.setImageBitmap(myBitmap);
             }
 

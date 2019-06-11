@@ -20,6 +20,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -41,8 +43,10 @@ import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -57,10 +61,16 @@ public class SpecificSreviceActivity extends AppCompatActivity
     LinearLayout linearLayout_requirements;
     List<Attachment> arraylistrequirements;
     List<AttwhithFile> arraylistAttachment;
+
+    TextView newTextViewfilename;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specific_srevice);
+
+        newTextViewfilename = new TextView(this);
+
 
         Bundle bundle = getIntent().getExtras();
         int idService = bundle.getInt("idService");
@@ -176,7 +186,21 @@ public class SpecificSreviceActivity extends AppCompatActivity
             layoutParams.setMargins(10, 0, 10, 30);
 
             Button button1 = new Button(this);
-            button1.setBackgroundResource(R.drawable.ic_cloud_upload_black_24dp);
+            SpannableString spanString = new SpannableString(getString(R.string.upload));
+            spanString.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString.length(), 0);
+            button1.setText(spanString);
+            button1.setTextSize(20);
+            button1.setBackgroundColor(Color.rgb(33, 150, 243));
+            button1.setTextColor(Color.WHITE);
+            button1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_file_upload_black_24dp,0,0,0);
+
+
+            newTextViewfilename.setTextSize(18);
+            newTextViewfilename.setTypeface(Typeface.DEFAULT_BOLD);
+            newTextViewfilename.setTextColor(Color.BLACK);
+            newTextViewfilename.setPadding(30,30,30,10);
+
+            linearLayouth.addView(newTextViewfilename);
             linearLayouth.addView(button1);
             linearLayouth.setGravity(Gravity.LEFT);
             button1.setOnClickListener(new View.OnClickListener(){
@@ -186,7 +210,6 @@ public class SpecificSreviceActivity extends AppCompatActivity
                             .withActivity(SpecificSreviceActivity.this)
                             .withRequestCode(1000)
                             .withFilter(Pattern.compile(".*\\.jpg")) // Filtering files and directories by file name using regexp
-
                             .withHiddenFiles(true) // Show hidden files and folders
                             .start();
                 }
@@ -206,7 +229,7 @@ public class SpecificSreviceActivity extends AppCompatActivity
 
 
         for (int i = 0; i < arraylistAttachment.size() ; i++){
-            final AttwhithFile wf = arraylistAttachment.get(i);
+            final AttwhithFile attwhithFile = arraylistAttachment.get(i);
 
             LinearLayout linearLayouth = new LinearLayout(this);
             linearLayouth.setOrientation(LinearLayout.HORIZONTAL);
@@ -234,8 +257,15 @@ public class SpecificSreviceActivity extends AppCompatActivity
             layoutParams.setMargins(10, 0, 10, 30);
 
 
-            final Button button1 = new Button(this);
-            button1.setBackgroundResource(R.drawable.ic_cloud_upload_black_24dp);
+            Button button1 = new Button(this);
+            SpannableString spanString = new SpannableString(getString(R.string.upload));
+            spanString.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString.length(), 0);
+            button1.setText(spanString);
+            button1.setTextSize(20);
+            button1.setBackgroundColor(Color.rgb(33, 150, 243));
+            button1.setTextColor(Color.WHITE);
+            button1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_file_upload_black_24dp,0,0,0);
+
             linearLayouth.addView(button1);
             linearLayouth.setGravity(Gravity.LEFT);
             button1.setOnClickListener(new View.OnClickListener(){
@@ -251,38 +281,33 @@ public class SpecificSreviceActivity extends AppCompatActivity
                 }
             });
 
-                Button button2 = new Button(this);
-                button2.setBackgroundResource(R.drawable.ic_cloud_download_black_24dp);
-                linearLayouth.addView(button2);
+            Button button2 = new Button(this);
+            SpannableString spanString2 = new SpannableString(getString(R.string.download));
+            spanString2.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString.length(), 0);
+            button2.setText(spanString2);
+            button2.setTextSize(20);
+            button2.setBackgroundColor(Color.rgb(255, 152, 0));
+            button2.setTextColor(Color.WHITE);
+            button2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_file_download_black_24dp,0,0,0);
+
+
+            linearLayouth.addView(button2);
                 button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //InputStream inputForData = new ByteArrayInputStream(wf.getOutputfinal());
-
 //                    DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
 //                    DownloadManager.Request request = new DownloadManager.Request(file);
 //                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
 //                    Long referancd = downloadManager.enqueue(request);
+
+
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                         Log.i("tag1","Permission is granted");
-
                         if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                             == PackageManager.PERMISSION_GRANTED){
-                        // Permission is not granted
                             Log.i("tag2","Permission is granted");
-
-//                    byte[] b = wf.getOutputfinal().getBytes();
-                        File imgFile = new File("/sdcard/Download/profile_icon.png");
-                        //imgFile = writeByte(b);
-                        if (imgFile.exists()) {
-                            //Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-                            //ImageView myImage = (ImageView) findViewById(R.id.imageviewTest);
-//                            Log.i("tag3",""+myImage.getId());
-//                             myImage.setImageBitmap(myBitmap);
-                            showim();
-
-                        } else {
-                        }
+                            showimage(attwhithFile);
 
                     }else{
                             ActivityCompat.requestPermissions(SpecificSreviceActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
@@ -302,35 +327,38 @@ public class SpecificSreviceActivity extends AppCompatActivity
 
     }
 
-    public File writeByte(byte[] bytes)
-    {
+
+    public void showimage(AttwhithFile attwhithFile) {
+       // startActivity(new Intent(this, ShowImage.class));
+
         try {
 
+            String s = attwhithFile.getOutputfinal();
+            byte[] bytes = s.getBytes();
 
-             File file = new File("");
+            File newFile = new File("/sdcard/Download/"+attwhithFile.getNameFile());
+            newFile.createNewFile();
+            newFile.setWritable(true);
 
-            // Initialize a pointer
-            // in file using OutputStream
-            OutputStream os = new FileOutputStream(file);
-            Log.i(" yesss","yesss");
+            FileOutputStream fOut = new FileOutputStream(newFile);
+            OutputStreamWriter myOutWriter =new OutputStreamWriter(fOut);
+            myOutWriter.write(s);
+            myOutWriter.close();
+            fOut.close();
 
-            // Starts writing the bytes in it
-            os.write(bytes);
+//            Log.i("tag4", "after creat" );
+//            FileOutputStream fOut = new FileOutputStream(attwhithFile.getNameFile());
+//            Log.i("tag5", "after fout" );
+//            fOut.write(bytes);
+//            fOut.close();
 
 
-            // Close the file
-            os.close();
-            return file;
+            Toast.makeText(this, getString(R.string.download)+"  "+attwhithFile.getNameFile(), Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        catch (Exception e) {
-            Log.i("Not Exxt",e.toString());
-        }
-        return null;
-    }
 
-    public void showim() {
-        startActivity(new Intent(this, ShowImage.class));
     }
 
     @Override

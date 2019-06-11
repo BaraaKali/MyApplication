@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -103,6 +104,11 @@ public class AllServices extends AppCompatActivity
             if( (i%2) == 0 ){
                 tableLayout.addView(tableRow);
                 tableRow = new TableRow(this);
+                TextView textV = new TextView(this);
+                textV.setTextSize(10);
+                tableRow.addView(textV);
+                tableLayout.addView(tableRow);
+                tableRow = new TableRow(this);
 
             }
 
@@ -139,7 +145,7 @@ public class AllServices extends AppCompatActivity
 
             textView.setBackgroundResource(R.drawable.shape_button);
 
-            textView.setPadding(20,20,20,20);
+            textView.setPadding(90,20,20,20);
             linearLayoutV.addView(textViewicon,layoutParams);
 
             linearLayoutV.addView(textView,layoutParams);
@@ -151,8 +157,10 @@ public class AllServices extends AppCompatActivity
                 }
             });
 
+
             tableRow.addView(linearLayoutV);
         }
+
         tableLayout.addView(tableRow);
     }
 
