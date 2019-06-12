@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,102 +18,153 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
-import com.example.myapplication.MyJavaClass.MyService;
+import com.example.myapplication.models.AttachmentArchiveCitizen;
 import com.example.myapplication.models.Service;
+import com.example.myapplication.models.ServiceCitizen;
+import com.example.myapplication.network.APIInterface;
+import com.example.myapplication.network.RetrofitClient;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ServicesInDepartment extends AppCompatActivity
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class MyAttachment extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    ArrayList<Service> arraylistServices;
     LinearLayout linearLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_services_in_department);
+        setContentView(R.layout.activity_my_attachment);
 
-        Bundle bundle = getIntent().getExtras();
-        int idDepartment = bundle.getInt("idDepartment");
-        String nameDepartment = bundle.getString("nameDepartment");
-        arraylistServices = GetFromDB.getServicesInDep(idDepartment);
 
-        linearLayout = (LinearLayout) findViewById(R.id.LinerLayout_service_in_dep);
-        drawServices();
+        linearLayout = (LinearLayout) findViewById(R.id.LinerLayout_citizen_attachment);
 
-        setTitle(nameDepartment);
+        R_loadAttachmentCitizen();
+        drawAttachment();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_services_in_department);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_my_attachment);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_services_in_department);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_my_attachment);
         navigationView.setNavigationItemSelectedListener(this);
+
+    }
+
+
+    private void R_loadAttachmentCitizen() {
+        APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
+        Call<List<AttachmentArchiveCitizen>> call = apiInterface.getAttachmentArchiveCitizen(GetFromDB.getIdCitizen());
+        call.enqueue(new Callback<List<AttachmentArchiveCitizen>>() {
+
+            @Override
+            public void onResponse(Call<List<AttachmentArchiveCitizen>> call, Response<List<AttachmentArchiveCitizen>> response) {
+                GetFromDB.setAttachmentsArchiveCitizen(response.body());
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<AttachmentArchiveCitizen>> call, Throwable t) {
+                Log.i("Error Message", t.getMessage());
+
+            }
+        });
 
 
     }
 
-    private void drawServices() {
+    private void drawAttachment() {
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(35, 0, 35, 35);
 
+        List<AttachmentArchiveCitizen> attachmentsArchiveCitizen = GetFromDB.getAttachmentsArchiveCitizen();
 
-        for (int i = 0 ; i< arraylistServices.size() ; i++){
-             final Service s = arraylistServices.get(i);
+
+        int id = 0;
+        if (!attachmentsArchiveCitizen.isEmpty()) {
+            AttachmentArchiveCitizen ar = attachmentsArchiveCitizen.get(0);
+            id = ar.getServiceAttachmentNameID();
 
             LinearLayout linearLayouth = new LinearLayout(this);
             linearLayouth.setOrientation(LinearLayout.HORIZONTAL);
 
             TextView textView = new TextView(this);
-            textView.setText(s.getName());
+            textView.setText(ar.getNameAtt());
             textView.setTextColor(Color.BLACK);
             textView.setTextSize(26);
             textView.setGravity(Gravity.CENTER);
-//            textView.setTypeface(null, Typeface.BOLD);
             textView.setPadding(0,20,0,20);
-            if(s.getStatus().equals("valid")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_assignment_turned_in_black_24dp,0);
 
-                linearLayouth.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        goToPageThisService(s.getId());
-                    }
-                });
-            }else {
-//                textView.setBackgroundResource(R.drawable.shape_around_red);
-                textView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_assignment_late_black_24dp,0);
-                linearLayouth.setOnClickListener(new View.OnClickListener() {
+            linearLayouth.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    goToPageThisAttachment();
+                }
+            });
 
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(),R.string.not_valid,Toast.LENGTH_SHORT).show();
 
-                    }
-                });
-
-            }
             linearLayouth.setBackgroundResource(R.drawable.shape_button);
             linearLayouth.addView(textView);
             linearLayout.addView(linearLayouth,layoutParams);
 
+            //a.add(ar);
+            for (AttachmentArchiveCitizen archivesCitizen : attachmentsArchiveCitizen) {
+                Log.i(" Message 1", ""+archivesCitizen.getServiceAttachmentNameID());
+                Log.i(" Message 2", ""+id);
+
+
+                if (archivesCitizen.getServiceAttachmentNameID() != id) {
+
+                    LinearLayout linearLayouth2 = new LinearLayout(this);
+                    linearLayouth2.setOrientation(LinearLayout.HORIZONTAL);
+
+                    TextView textView2 = new TextView(this);
+                    textView2.setText(archivesCitizen.getNameAtt());
+                    textView2.setTextColor(Color.BLACK);
+                    textView2.setTextSize(26);
+                    textView2.setGravity(Gravity.CENTER);
+                    textView2.setPadding(0,20,0,20);
+
+                    linearLayouth2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            goToPageThisAttachment();
+                        }
+                    });
+
+
+                    linearLayouth2.setBackgroundResource(R.drawable.shape_button);
+                    linearLayouth2.addView(textView2);
+                    linearLayout.addView(linearLayouth2,layoutParams);
+
+                    id = archivesCitizen.getServiceAttachmentNameID();
+                }
+            }
         }
+
+    }
+
+
+    public void goToPageThisAttachment(){
 
 
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_services_in_department);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_my_attachment);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -152,17 +204,9 @@ public class ServicesInDepartment extends AppCompatActivity
             startActivity(new Intent(this, MyAttachment.class));
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_services_in_department);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_my_attachment);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    public void goToPageThisService(int idService) {
-        Intent myIntent = new Intent(this, SpecificSreviceActivity.class);
-        Bundle myBundle = new Bundle();
-        myBundle.putInt("idService", idService);
-        myIntent.putExtras(myBundle);
-        startActivity(myIntent);
-    }
-
 }
+

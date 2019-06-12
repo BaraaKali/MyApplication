@@ -16,10 +16,7 @@
             android:id="@+id/nav_all_services"
             android:icon="@drawable/ic_menu_add_shopping_cart_black"
             android:title="@string/title_activity_all_services" />
-        <!--<item-->
-            <!--android:id="@+id/nav_my_services"-->
-            <!--android:icon="@drawable/ic_menu_manage"-->
-            <!--android:title="@string/title_activity_my_services" />-->
+
         <item
             android:id="@+id/nav_my_done_services"
             android:icon="@drawable/ic_menu_thumb_up_black"
@@ -28,6 +25,12 @@
             android:id="@+id/nav_my_not_done_services"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/title_activity_my_not_done_services" />
+
+        <item
+            android:id="@+id/nav_my_attachment"
+            android:icon="@drawable/ic_folder_48dp"
+            android:title="@string/title_activity_my_attachment" />
+
     </group>
 
     <item android:title="Communicate">

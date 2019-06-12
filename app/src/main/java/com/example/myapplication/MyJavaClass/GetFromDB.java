@@ -2,6 +2,7 @@ package com.example.myapplication.MyJavaClass;
 
 import android.util.Log;
 
+import com.example.myapplication.models.AttachmentArchiveCitizen;
 import com.example.myapplication.models.Department;
 import com.example.myapplication.models.Service;
 import com.example.myapplication.models.ServiceCitizen;
@@ -27,6 +28,9 @@ public class GetFromDB {
     static List<ServiceCitizen> notDoneServicesCitizen = new ArrayList<>();
 
     static List<StepsAndDecsions> stepsAndDecsions = new ArrayList<>();
+
+    static List<AttachmentArchiveCitizen> attachmentsArchiveCitizen = new ArrayList<>();
+
 
     //static  ArrayList<MyDepartmant> arrayListDepartmant = new ArrayList<>();
     public GetFromDB() {
@@ -181,6 +185,7 @@ public class GetFromDB {
             return true;
         }
         return false;
+
     }
 
 
@@ -247,5 +252,14 @@ public class GetFromDB {
 
     public static void setPassWord(String passWord) {
         GetFromDB.passWord = passWord;
+    }
+
+
+    public static List<AttachmentArchiveCitizen> getAttachmentsArchiveCitizen() {
+        return attachmentsArchiveCitizen;
+    }
+
+    public static void setAttachmentsArchiveCitizen(List<AttachmentArchiveCitizen> attachmentsArchiveCitizen) {
+        GetFromDB.attachmentsArchiveCitizen = attachmentsArchiveCitizen;
     }
 }

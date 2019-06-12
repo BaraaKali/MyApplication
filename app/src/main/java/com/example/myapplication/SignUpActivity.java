@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
@@ -24,10 +25,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.List;
 
 import android.support.design.widget.TextInputLayout;
 
+import com.example.myapplication.MyJavaClass.GetFromDB;
 import com.example.myapplication.MyJavaClass.MyCitizen;
+import com.example.myapplication.models.CitizenRequest;
+import com.example.myapplication.models.ServiceCitizen;
+import com.example.myapplication.network.APIInterface;
+import com.example.myapplication.network.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class SignUpActivity extends AppCompatActivity {
@@ -165,37 +176,38 @@ public class SignUpActivity extends AppCompatActivity {
         TextInputLayoutEmail.setErrorEnabled(false);
         addNewUser();
         Toast.makeText(getApplicationContext(), getString(R.string.success_meg), Toast.LENGTH_SHORT).show();
-        Intent myIntent = new Intent(this, MyInformation.class);
+        Intent myIntent = new Intent(this, HomeActivity.class);
         startActivity(myIntent);
     }
 
     public void addNewUser() {
-        MyCitizen newcitizen = new MyCitizen();
+        CitizenRequest newcitizen = new CitizenRequest();
 
-        newcitizen.setFirstName(EditTextFirstName.getText().toString());
-        newcitizen.setFatherName(EditTextFatherName.getText().toString());
-        newcitizen.setGrandFatherName(EditTextGrandFatherName.getText().toString());
-        newcitizen.setFamilyName(EditTextFamilyName.getText().toString());
-        newcitizen.setNumberOfFamilyNumber((int) (Integer.parseInt(((EditText) findViewById(R.id.editText_number_family_member)).getText().toString())));
-        newcitizen.setIdentificationNumber((int) (Integer.parseInt(((EditText) findViewById(R.id.editText_id_number)).getText().toString())));
-        newcitizen.setPlaceOfBirth(((EditText) findViewById(R.id.editText_place_birth)).getText().toString());
-        newcitizen.setPassportNumber((int) (Integer.parseInt(((EditText) findViewById(R.id.editText_passport_number)).getText().toString())));
-        newcitizen.setTelephoneNumber((int) (Integer.parseInt(((EditText) findViewById(R.id.editText_telephone_number)).getText().toString())));
-        newcitizen.setMobileNumber((int) (Integer.parseInt(((EditText) findViewById(R.id.editText_mobile_number)).getText().toString())));
-        newcitizen.setEmail(EditTextEmail.getText().toString());
-        newcitizen.setFax((int) (Integer.parseInt(((EditText) findViewById(R.id.editText_fax)).getText().toString())));
-        newcitizen.setWork(((EditText) findViewById(R.id.editText_work)).getText().toString());
-        newcitizen.setAddress(((EditText) findViewById(R.id.editText_address)).getText().toString());
-        newcitizen.setStreet(((EditText) findViewById(R.id.editText_street)).getText().toString());
-        newcitizen.setRegion(((EditText) findViewById(R.id.editText_region)).getText().toString());
-        newcitizen.setZone(((EditText) findViewById(R.id.editText_zone)).getText().toString());
-        newcitizen.setUsername(EditTextUserName.getText().toString());
-        newcitizen.setPassword(EditTextPassword.getText().toString());
+        newcitizen.setCitFirstName(EditTextFirstName.getText().toString());
+        newcitizen.setCitFatherName(EditTextFatherName.getText().toString());
+        newcitizen.setCitGrandfatherName(EditTextGrandFatherName.getText().toString());
+        newcitizen.setCitLastName(EditTextFamilyName.getText().toString());
+        newcitizen.setCitFamilyMembers((int) (Integer.parseInt(((EditText) findViewById(R.id.editText_number_family_member)).getText().toString())));
+        newcitizen.setCitIDCard(((EditText) findViewById(R.id.editText_id_number)).getText().toString());
+        newcitizen.setCitPlaceOfBirth(((EditText) findViewById(R.id.editText_place_birth)).getText().toString());
+        newcitizen.setCitPassportNumber(((EditText) findViewById(R.id.editText_passport_number)).getText().toString());
+        newcitizen.setCitTelephone(((EditText) findViewById(R.id.editText_telephone_number)).getText().toString());
+        newcitizen.setCitMobile(((EditText) findViewById(R.id.editText_mobile_number)).getText().toString());
+        newcitizen.setCitEmail(EditTextEmail.getText().toString());
+        newcitizen.setCitFax(((EditText) findViewById(R.id.editText_fax)).getText().toString());
+        newcitizen.setCitJob(((EditText) findViewById(R.id.editText_work)).getText().toString());
+        newcitizen.setCitAddress(((EditText) findViewById(R.id.editText_address)).getText().toString());
+        newcitizen.setCitStreet(((EditText) findViewById(R.id.editText_street)).getText().toString());
+        newcitizen.setCitRegion(((EditText) findViewById(R.id.editText_region)).getText().toString());
+        newcitizen.setCitQuarter(((EditText) findViewById(R.id.editText_zone)).getText().toString());
+        newcitizen.setCitUsername(EditTextUserName.getText().toString());
+        newcitizen.setCitPassword(EditTextPassword.getText().toString());
         RadioGroup radioGroup_gender = ((RadioGroup) findViewById(R.id.radioGroup_gender));
         RadioButton radiobutton_gender = (RadioButton) findViewById(radioGroup_gender.getCheckedRadioButtonId());
-        newcitizen.setGender(radiobutton_gender.getText().toString());
-        newcitizen.addToDB();
+        newcitizen.setCitGender(radiobutton_gender.getText().toString());
 
+        //newcitizen.addToDB();
+        R_loadDoneAddCitizen(newcitizen);
     }
 
     private boolean checkEmail() {
@@ -298,4 +310,27 @@ public class SignUpActivity extends AppCompatActivity {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
     }
+
+
+    private void R_loadDoneAddCitizen(CitizenRequest citizenRequest) {
+        APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
+
+        Call<String> call = apiInterface.AddCitizenRequest(citizenRequest);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.i(" Message","success");
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.i("Error Message", t.getMessage());
+
+            }
+        });
+
+    }
+
 }

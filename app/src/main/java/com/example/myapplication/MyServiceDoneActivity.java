@@ -100,7 +100,7 @@ public class MyServiceDoneActivity extends AppCompatActivity
             newTextView1.setTextSize(24);
             newTextView1.setTypeface(Typeface.DEFAULT_BOLD);
             newTextView1.setText(newServiceCitizen.getService().getName());
-             newTextView1.setTextColor(Color.parseColor("#1cc88a"));
+            newTextView1.setTextColor(Color.parseColor("#1cc88a"));
             newTextView1.setTypeface(null, Typeface.BOLD);
 
             TextView newTextView3 = new TextView(this);
@@ -197,6 +197,8 @@ public class MyServiceDoneActivity extends AppCompatActivity
             startActivity(new Intent(this, MainActivity.class));
         } else if (id == R.id.nav_municipality_information) {
             startActivity(new Intent(this, MunicipalityInformation.class));
+        } else if (id == R.id.nav_my_attachment) {
+            startActivity(new Intent(this, MyAttachment.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_my_done_services);

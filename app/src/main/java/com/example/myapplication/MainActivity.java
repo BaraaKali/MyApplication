@@ -15,6 +15,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
+import com.example.myapplication.models.Citizen;
+import com.example.myapplication.network.APIInterface;
+import com.example.myapplication.network.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     EditText editText_user_name,editText_password;
@@ -53,6 +60,37 @@ public class MainActivity extends AppCompatActivity {
             vib.vibrate(120);
             Toast.makeText(getApplicationContext(), R.string.wrong_sign_in,Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public  boolean checkUsers(String username, String password) {
+        Log.d("MyApppppp", password);
+        if ((password.equals(editText_user_name.getText().toString())) && username.equals(editText_password.getText().toString())) {
+            return true;
+        }
+        return false;
+
+    }
+
+    private void R_loadCitizen() {
+        APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
+        Call<Citizen> call = apiInterface.getProfileCall(GetFromDB.getUsername(),GetFromDB.getPassWord());
+        call.enqueue(new Callback<Citizen>() {
+
+            @Override
+            public void onResponse(Call<Citizen> call, Response<Citizen> response) {
+                Citizen citizen = response.body();
+                if(citizen != null)
+                checkUsers(citizen.getAccount().getUserName(),citizen.getAccount().getPassword());
+            }
+
+            @Override
+            public void onFailure(Call<Citizen> call, Throwable t) {
+                Log.i("Error Message", t.getMessage());
+
+            }
+        });
+
+
     }
 
     @Override

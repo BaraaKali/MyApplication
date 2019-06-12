@@ -22,9 +22,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
 import com.example.myapplication.models.Citizen;
+import com.example.myapplication.models.CitizenRequest;
 import com.example.myapplication.models.MunInfo;
 import com.example.myapplication.network.APIInterface;
 import com.example.myapplication.network.RetrofitClient;
@@ -74,6 +76,7 @@ public class MyInformation extends AppCompatActivity
                 startActivityForResult(Intent.createChooser(intent, "select Picture"), REQUEST_CODE);
             }
         });
+
     }
 
 
@@ -171,6 +174,9 @@ public class MyInformation extends AppCompatActivity
         EditText editText_zone = (EditText) findViewById(R.id.editText_zone);
         editText_zone.setText(citizen.getQuarter());
 
+        EditText editText_New_password = (EditText) findViewById(R.id.editText_New_password);
+        editText_New_password.setText(citizen.getAccount().getPassword());
+
 
         TextView TextView_New_username = (TextView) findViewById(R.id.TextView_New_username);
         TextView_New_username.setText(citizen.getAccount().getUserName());
@@ -192,6 +198,107 @@ public class MyInformation extends AppCompatActivity
 
 
     }
+
+
+    private void getTextProfileInfo() {
+
+        TextView TextView_first_name = (TextView) findViewById(R.id.TextView_first_name);
+        citizen.setFirstName(TextView_first_name.getText().toString());
+
+        TextView TextView_father_name = (TextView) findViewById(R.id.TextView_father_name);
+        citizen.setFatherName(TextView_father_name.getText().toString());
+
+        TextView TextView_grand_father_name = (TextView) findViewById(R.id.TextView_grand_father_name);
+        citizen.setGrandFatherName(TextView_grand_father_name.getText().toString());
+
+        TextView TextView_family_name = (TextView) findViewById(R.id.TextView_family_name);
+        citizen.setLastName(TextView_family_name.getText().toString());
+
+        EditText editText_number_family_member = (EditText) findViewById(R.id.editText_number_family_member);
+        citizen.setFamilyMember(Integer.parseInt(editText_number_family_member.getText().toString()));
+
+        EditText editText_id_number = (EditText) findViewById(R.id.editText_id_number);
+        citizen.setIdCard(editText_id_number.getText().toString());
+
+        EditText editText_place_birth = (EditText) findViewById(R.id.editText_place_birth);
+        citizen.setPlaceOfBirth(editText_place_birth.getText().toString());
+
+        EditText editText_passport_number = (EditText) findViewById(R.id.editText_passport_number);
+        citizen.setPassportNumber(editText_passport_number.getText().toString());
+
+        EditText editText_telephone_number = (EditText) findViewById(R.id.editText_telephone_number);
+        citizen.setTelephone(editText_telephone_number.getText().toString());
+
+        EditText editText_mobile_number = (EditText) findViewById(R.id.editText_mobile_number);
+        citizen.setMobile(editText_mobile_number.getText().toString());
+
+        EditText editText_email = (EditText) findViewById(R.id.editText_email);
+        citizen.setEmail(editText_email.getText().toString());
+
+        EditText editText_fax = (EditText) findViewById(R.id.editText_fax);
+        citizen.setFax(editText_fax.getText().toString());
+
+
+        EditText editText_work = (EditText) findViewById(R.id.editText_work);
+        citizen.setCitizenJob(editText_work.getText().toString());
+
+        EditText editText_address = (EditText) findViewById(R.id.editText_address);
+        citizen.setAddress(editText_address.getText().toString());
+
+        EditText editText_street = (EditText) findViewById(R.id.editText_street);
+        citizen.setStreet(editText_street.getText().toString());
+
+        EditText editText_region = (EditText) findViewById(R.id.editText_region);
+        citizen.setRegion(editText_region.getText().toString());
+
+        EditText editText_zone = (EditText) findViewById(R.id.editText_zone);
+        citizen.setQuarter(editText_zone.getText().toString());
+
+
+
+        TextView TextView_New_username = (TextView) findViewById(R.id.TextView_New_username);
+        TextView_New_username.setText(citizen.getAccount().getUserName());
+
+        RadioButton female = (RadioButton) findViewById(R.id.female);
+        RadioButton male = (RadioButton) findViewById(R.id.male);
+
+
+        if (female.isSelected()) {
+            citizen.setGender("F");
+
+        } else {
+            citizen.setGender("M");
+        }
+
+
+        TextView textView_date_birth = (TextView) findViewById(R.id.textView_date_birth);
+        textView_date_birth.setText(citizen.getBirthday());
+
+
+    }
+
+
+    private void R_loadUpdateCitizen() {
+        APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
+
+        Call<String> call = apiInterface.updateCitizen(citizen);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.i(" Message","success");
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.i("Error Message", t.getMessage());
+
+            }
+        });
+
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -230,6 +337,8 @@ public class MyInformation extends AppCompatActivity
             startActivity(new Intent(this, MainActivity.class));
         } else if (id == R.id.nav_municipality_information) {
             startActivity(new Intent(this, MunicipalityInformation.class));
+        } else if (id == R.id.nav_my_attachment) {
+            startActivity(new Intent(this, MyAttachment.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_my_information);
@@ -261,6 +370,14 @@ public class MyInformation extends AppCompatActivity
         // Assign the concatenated strings to dateMessage.
         String dateMessage = (month_string + "/" + day_string + "/" + year_string);
         ((TextView) findViewById(R.id.textView_date_birth)).setText(dateMessage);
+    }
+
+    public void updateInfo(View view) {
+        getTextProfileInfo();
+        R_loadUpdateCitizen();
+        Toast.makeText(getApplicationContext(), getString(R.string.edit_done), Toast.LENGTH_SHORT).show();
+        Intent myIntent = new Intent(this, MyInformation.class);
+        startActivity(myIntent);
     }
 }
 

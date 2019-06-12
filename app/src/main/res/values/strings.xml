@@ -102,9 +102,9 @@
     <string name="emp_att">مرفقات الموظف  </string>
     <string name="money">شيقل</string>
     <string name="Download">Downloading Done</string>
-
-
-
+    <string name="edit">Edit</string>
+    <string name="edit_done">Edit Done</string>
+    <string name="title_activity_my_attachment">My Attachment</string>
 
 
     <string name="title_activity_side_bar">SideBarActivity</string>

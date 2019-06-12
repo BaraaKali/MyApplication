@@ -3,7 +3,9 @@ package com.example.myapplication.network;
 import android.support.annotation.GuardedBy;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
+import com.example.myapplication.models.AttachmentArchiveCitizen;
 import com.example.myapplication.models.Citizen;
+import com.example.myapplication.models.CitizenRequest;
 import com.example.myapplication.models.MunInfo;
 import com.example.myapplication.models.Service;
 import com.example.myapplication.models.ServiceCitizen;
@@ -12,7 +14,10 @@ import com.example.myapplication.models.StepsAndDecsions;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface APIInterface {
@@ -35,5 +40,16 @@ public interface APIInterface {
 
     @GET("StepsAndDesion?idcitizen=7&idSerCit=1&idService=1")
     Call<List<StepsAndDecsions>> getStepsAndDesionCall(@Query("idCitizen") int idCitizen,@Query("idSerCit") int idSerCit,@Query("idService") int idService);
+
+    @POST("AddCitizenRequest")
+    Call<String> AddCitizenRequest(@Body CitizenRequest requestCitizen);
+
+    @PUT("UpdateCitizen")
+    Call<String> updateCitizen(@Body Citizen Citizen);
+
+    @GET("CitizenAtt")
+    Call<List<AttachmentArchiveCitizen>> getAttachmentArchiveCitizen(@Query("idCitizen") int idCitizen);
+
+
 
 }

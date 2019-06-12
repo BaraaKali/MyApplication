@@ -148,6 +148,8 @@ public class SpecificSreviceActivity extends AppCompatActivity
             startActivity(new Intent(this, MainActivity.class));
         } else if (id == R.id.nav_municipality_information) {
             startActivity(new Intent(this, MunicipalityInformation.class));
+        } else if (id == R.id.nav_my_attachment) {
+            startActivity(new Intent(this, MyAttachment.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_specific_service);

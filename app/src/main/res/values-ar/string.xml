@@ -103,6 +103,11 @@
     <string name="emp_att">مرفقات الموظف  </string>
     <string name="money">شيقل</string>
     <string name="Download">تم التنزيل</string>
+    <string name="edit">تعديل</string>
+    <string name="edit_done">تم التعديل</string>
+
+
+    <string name="title_activity_my_attachment">مرفقاتي</string>
 
 
 
