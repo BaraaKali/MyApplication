@@ -94,7 +94,7 @@ public class MyAttachment extends AppCompatActivity
 
         int id = 0;
         if (!attachmentsArchiveCitizen.isEmpty()) {
-            AttachmentArchiveCitizen ar = attachmentsArchiveCitizen.get(0);
+            final AttachmentArchiveCitizen ar = attachmentsArchiveCitizen.get(0);
             id = ar.getServiceAttachmentNameID();
 
             LinearLayout linearLayouth = new LinearLayout(this);
@@ -110,7 +110,7 @@ public class MyAttachment extends AppCompatActivity
             linearLayouth.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    goToPageThisAttachment();
+                    goToPageThisAttachment(ar.getServiceAttachmentNameID(),ar.getNameAtt());
                 }
             });
 
@@ -119,10 +119,11 @@ public class MyAttachment extends AppCompatActivity
             linearLayouth.addView(textView);
             linearLayout.addView(linearLayouth,layoutParams);
 
-            //a.add(ar);
             for (AttachmentArchiveCitizen archivesCitizen : attachmentsArchiveCitizen) {
                 Log.i(" Message 1", ""+archivesCitizen.getServiceAttachmentNameID());
                 Log.i(" Message 2", ""+id);
+
+                final AttachmentArchiveCitizen arc = archivesCitizen;
 
 
                 if (archivesCitizen.getServiceAttachmentNameID() != id) {
@@ -140,7 +141,7 @@ public class MyAttachment extends AppCompatActivity
                     linearLayouth2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            goToPageThisAttachment();
+                            goToPageThisAttachment(arc.getServiceAttachmentNameID(),arc.getNameAtt());
                         }
                     });
 
@@ -157,9 +158,13 @@ public class MyAttachment extends AppCompatActivity
     }
 
 
-    public void goToPageThisAttachment(){
-
-
+    public void goToPageThisAttachment(int id,String name){
+        Intent myIntent = new Intent(this, specificArchive.class);
+        Bundle myBundle = new Bundle();
+        myBundle.putInt("id", id);
+        myBundle.putString("name", name);
+        myIntent.putExtras(myBundle);
+        startActivity(myIntent);
     }
 
     @Override
