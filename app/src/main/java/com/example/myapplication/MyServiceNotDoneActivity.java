@@ -118,7 +118,7 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
             linearLayoutv.addView(newTextView3);
 
             ProgressBar progressBar = new  ProgressBar(this,null,android.R.attr.progressBarStyleHorizontal);
-            progressBar.setProgress(newServiceCitizen.getServiceCitizenID()*10);
+            progressBar.setProgress(newServiceCitizen.getAndroidLine());
 
 //        Drawable draw = getDrawable(R.drawable.circle);
 //        progressBar.setProgressDrawable(draw);

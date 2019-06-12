@@ -48,48 +48,64 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void singIn(View view) {
-        if(GetFromDB.checkUsers(editText_user_name.getText().toString(),editText_password.getText().toString())) {
-            Intent myIntent = new Intent(this, HomeActivity.class);
-            startActivity(myIntent);
-        }else{
-            editText_user_name.setAnimation(animShake);
-            editText_user_name.startAnimation(animShake);
-            vib.vibrate(120);
-            editText_password.setAnimation(animShake);
-            editText_password.startAnimation(animShake);
-            vib.vibrate(120);
-            Toast.makeText(getApplicationContext(), R.string.wrong_sign_in,Toast.LENGTH_SHORT).show();
-        }
+        GetFromDB.setUsername(editText_user_name.getText().toString().trim());
+    GetFromDB.setPassWord(editText_password.getText().toString().trim());
+//        if(GetFromDB.checkUsers(editText_user_name.getText().toString(),editText_password.getText().toString())) {
+//            Intent myIntent = new Intent(this, HomeActivity.class);
+//            startActivity(myIntent);
+//        }else{
+//            editText_user_name.setAnimation(animShake);
+//            editText_user_name.startAnimation(animShake);
+//            vib.vibrate(120);
+//            editText_password.setAnimation(animShake);
+//            editText_password.startAnimation(animShake);
+//            vib.vibrate(120);
+//            Toast.makeText(getApplicationContext(), R.string.wrong_sign_in,Toast.LENGTH_SHORT).show();
+//        }
+        R_loadCitizen();
+    }
+    public void goToHome() {
+        Intent myIntent = new Intent(this, HomeActivity.class);
+        startActivity(myIntent);
     }
 
-    public  boolean checkUsers(String username, String password) {
-        Log.d("MyApppppp", password);
-        if ((password.equals(editText_user_name.getText().toString())) && username.equals(editText_password.getText().toString())) {
-            return true;
-        }
-        return false;
-
-    }
 
     private void R_loadCitizen() {
         APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
         Call<Citizen> call = apiInterface.getProfileCall(GetFromDB.getUsername(),GetFromDB.getPassWord());
+
         call.enqueue(new Callback<Citizen>() {
 
             @Override
             public void onResponse(Call<Citizen> call, Response<Citizen> response) {
                 Citizen citizen = response.body();
-                if(citizen != null)
-                checkUsers(citizen.getAccount().getUserName(),citizen.getAccount().getPassword());
+                if(citizen != null) {
+                    GetFromDB.setIdCitizen(citizen.getId());
+                   goToHome();
+                }else{
+                    editText_user_name.setAnimation(animShake);
+                    editText_user_name.startAnimation(animShake);
+                    vib.vibrate(120);
+                    editText_password.setAnimation(animShake);
+                    editText_password.startAnimation(animShake);
+                    vib.vibrate(120);
+                    Toast.makeText(getApplicationContext(), R.string.wrong_sign_in,Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
             public void onFailure(Call<Citizen> call, Throwable t) {
                 Log.i("Error Message", t.getMessage());
-
+                editText_user_name.setAnimation(animShake);
+                editText_user_name.startAnimation(animShake);
+                vib.vibrate(120);
+                editText_password.setAnimation(animShake);
+                editText_password.startAnimation(animShake);
+                vib.vibrate(120);
+                Toast.makeText(getApplicationContext(), R.string.wrong_sign_in,Toast.LENGTH_SHORT).show();
             }
         });
-
 
     }
 

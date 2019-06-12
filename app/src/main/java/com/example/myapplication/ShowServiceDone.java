@@ -33,7 +33,7 @@ import retrofit2.Response;
 public class ShowServiceDone extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-     List<StepsAndDecsions> stepsAndDecsions ;
+     List<StepsAndDecsions> stepsAndDecsions = new ArrayList<>();
     private LinearLayout linearLayout;
 
     @Override
@@ -47,9 +47,7 @@ public class ShowServiceDone extends AppCompatActivity
         int idCitizen = bundle.getInt("idCitizen");
         String name = bundle.getString("name");
 
-        Log.i("idServiceCitizen",""+idServiceCitizen);
-        Log.i("idServiceProvided",""+idServiceProvided);
-
+        
 
         R_loadDoneServiceCitizen(idServiceCitizen,idServiceProvided);
         stepsAndDecsions = GetFromDB.getStepsAndDecsions();
@@ -88,9 +86,9 @@ public class ShowServiceDone extends AppCompatActivity
 
                 if (step.getDecisionsDepartment().getDecision() == null) {
                     linearLayoutv.setBackgroundResource(R.drawable.shape_around_blue);
-                } else if (step.getDecisionsDepartment().getDecision().equals("yes")) {
+                } else if (step.getDecisionsDepartment().getDecision().equals("accept")) {
                     linearLayoutv.setBackgroundResource(R.drawable.shape_around_green);
-                } else if (step.getDecisionsDepartment().getDecision().equals("no")) {
+                } else if (step.getDecisionsDepartment().getDecision().equals("reject")) {
                     linearLayoutv.setBackgroundResource(R.drawable.shape_around_red);
                 } else {
                     linearLayoutv.setBackgroundResource(R.drawable.shape_button);
@@ -130,11 +128,11 @@ public class ShowServiceDone extends AppCompatActivity
                 linearLayouth1v.addView(newTextViewimg1);
                 linearLayouth1v.addView(newTextView2);
                 linearLayouth1v.addView(newTextView3);
-                if (step.getDecisionsDepartment().getDecision() == null) {
+                if (step.getDecisionsDepartment().getStatus() == null) {
                     linearLayouth1v.setBackgroundResource(R.drawable.shape_button);
-                } else if (step.getDecisionsDepartment().getDecision().equals("yes")) {
+                } else if (step.getDecisionsDepartment().getStatus().equals("done")) {
                     linearLayouth1v.setBackgroundResource(R.drawable.shape_around_green);
-                } else if (step.getDecisionsDepartment().getDecision().equals("no")) {
+                } else if (step.getDecisionsDepartment().getStatus().equals("notdone")) {
                     linearLayouth1v.setBackgroundResource(R.drawable.shape_around_red);
                 } else {
                     linearLayouth1v.setBackgroundResource(R.drawable.shape_button);
@@ -163,11 +161,13 @@ public class ShowServiceDone extends AppCompatActivity
                 linearLayouth2v.addView(newTextView4);
                 linearLayouth2v.addView(newTextView5);
                 if (step.getDecisionsDepartment().getDecision() == null) {
-                    linearLayouth2v.setBackgroundResource(R.drawable.shape_around_red);
-                } else if (step.getDecisionsDepartment().getStatus().equals("done")) {
+                    linearLayouth2v.setBackgroundResource(R.drawable.shape_around_blue);
+                } else if (step.getDecisionsDepartment().getDecision().equals("accept")) {
                     linearLayouth2v.setBackgroundResource(R.drawable.shape_around_green);
-                } else {
+                } else if (step.getDecisionsDepartment().getDecision().equals("reject")) {
                     linearLayouth2v.setBackgroundResource(R.drawable.shape_around_red);
+                } else {
+                    linearLayouth2v.setBackgroundResource(R.drawable.shape_button);
                 }
 
 
@@ -262,6 +262,9 @@ public class ShowServiceDone extends AppCompatActivity
 
     private void R_loadDoneServiceCitizen(int idSerCit, int idService) {
         APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
+        Log.i("idCitizen",""+GetFromDB.getIdCitizen());
+        Log.i("idServiceCitizen",""+idSerCit);
+        Log.i("idServiceProvided",""+idService);
         Call<List<StepsAndDecsions>> call = apiInterface.getStepsAndDesionCall(GetFromDB.getIdCitizen(),idSerCit,idService);
         call.enqueue(new Callback<List<StepsAndDecsions>>() {
 
@@ -269,6 +272,7 @@ public class ShowServiceDone extends AppCompatActivity
             @Override
             public void onResponse(Call<List<StepsAndDecsions>> call, Response<List<StepsAndDecsions>> response) {
                 GetFromDB.setStepsAndDecsions(response.body());
+
 
             }
 

@@ -175,9 +175,9 @@ public class DecisionsDepartment {
     }
 
     public int nameDecision() {
-        if ("yse".equals(decision)) {
+        if ("accept".equals(decision)) {
             return R.string.ser_des_yes;
-        } else if ("no".equals(decision)) {
+        } else if ("reject".equals(decision)) {
             return R.string.ser_des_no;
         }
         return R.string.ser_des_else;

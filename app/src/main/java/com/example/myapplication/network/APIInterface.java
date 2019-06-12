@@ -38,8 +38,8 @@ public interface APIInterface {
     @GET("Profile")
     Call<Citizen> getProfileCall(@Query("username") String username , @Query("passWord") String passWord);
 
-    @GET("StepsAndDesion?idcitizen=7&idSerCit=1&idService=1")
-    Call<List<StepsAndDecsions>> getStepsAndDesionCall(@Query("idCitizen") int idCitizen,@Query("idSerCit") int idSerCit,@Query("idService") int idService);
+    @GET("StepsAndDesion")
+    Call<List<StepsAndDecsions>> getStepsAndDesionCall(@Query("idcitizen") int idCitizen,@Query("idSerCit") int idSerCit,@Query("idService") int idService);
 
     @POST("AddCitizenRequest")
     Call<String> AddCitizenRequest(@Body CitizenRequest requestCitizen);

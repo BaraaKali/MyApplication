@@ -9,6 +9,9 @@ public class ServiceCitizen {
     @SerializedName("idMaxSC")
     @Expose
     private Integer idMaxSC;
+    @SerializedName("androidLine")
+    @Expose
+    private Integer androidLine;
     @SerializedName("status")
     @Expose
     private String status;
@@ -63,6 +66,14 @@ public class ServiceCitizen {
 
     public Integer getIdMaxSC() {
         return idMaxSC;
+    }
+
+    public Integer getAndroidLine() {
+        return androidLine;
+    }
+
+    public void setAndroidLine(Integer androidLine) {
+        this.androidLine = androidLine;
     }
 
     public void setIdMaxSC(Integer idMaxSC) {

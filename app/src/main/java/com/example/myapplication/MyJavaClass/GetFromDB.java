@@ -14,9 +14,9 @@ import java.util.List;
 
 public class GetFromDB {
 
-    static  int idCitizen = 7 ;
-    static String username = "baraa";
-    static String passWord = "baraa";
+    static  int idCitizen;
+    static String username;
+    static String passWord;
 
 
     static List<Service> listAllServices = new ArrayList<>();
