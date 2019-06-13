@@ -23,6 +23,7 @@ import com.example.myapplication.models.ServiceCitizen;
 import com.example.myapplication.network.APIInterface;
 import com.example.myapplication.network.RetrofitClient;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,19 +37,22 @@ public class MyServiceDoneActivity extends AppCompatActivity
     List<ServiceCitizen> listDoneServices;
     private LinearLayout linearLayout;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_service_done);
+        Log.i(" Message", "start");
 
         R_loadDoneServiceCitizen();
 
-        listDoneServices = new ArrayList<>();
-        listDoneServices = GetFromDB.getDoneServicesCitizen();
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_my_service_done);
+
+
 
 
         linearLayout = (LinearLayout) findViewById(R.id.LinerLayout_my_done_services);
-        drawMyServices();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -65,13 +69,17 @@ public class MyServiceDoneActivity extends AppCompatActivity
     }
 
     private void R_loadDoneServiceCitizen() {
+        Log.i(" Message", "start22");
         APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
         Call<List<ServiceCitizen>> call = apiInterface.getDoneServiceCitizenCall(GetFromDB.getIdCitizen());
+
         call.enqueue(new Callback<List<ServiceCitizen>>() {
 
             @Override
             public void onResponse(Call<List<ServiceCitizen>> call, Response<List<ServiceCitizen>> response) {
                 GetFromDB.setDoneServicesCitizen(response.body());
+                Log.i(" Message", "length1 = "+GetFromDB.getDoneServicesCitizen().size()+"   start");
+                drawMyServices();
             }
 
             @Override
@@ -80,6 +88,7 @@ public class MyServiceDoneActivity extends AppCompatActivity
                 Log.i("Error Message", t.getMessage());
             }
         });
+        Log.i(" Message", "length2 = "+GetFromDB.getDoneServicesCitizen().size()+"   start");
 
 
     }
@@ -89,8 +98,11 @@ public class MyServiceDoneActivity extends AppCompatActivity
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(30, 0, 30, 0);
-        for (int i = 0 ; i < listDoneServices.size() ; i++) {
-            final ServiceCitizen newServiceCitizen = listDoneServices.get(i);
+
+
+
+        for (int i = 0 ; i < GetFromDB.getDoneServicesCitizen().size() ; i++) {
+            final ServiceCitizen newServiceCitizen = GetFromDB.getDoneServicesCitizen().get(i);
 
             TextView newTextView2 = new TextView(this);
             newTextView2.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_check_circle_black_24dp,0);

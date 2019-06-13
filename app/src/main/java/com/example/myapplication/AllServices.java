@@ -40,7 +40,7 @@ public class AllServices extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    ArrayList<Department> arrayListDepartmant ;
+    //ArrayList<Department> arrayListDepartmant ;
     TableLayout tableLayout ;
 
 
@@ -51,9 +51,9 @@ public class AllServices extends AppCompatActivity
 
         R_loadAllService();
 
-        arrayListDepartmant = GetFromDB.getDepartmants();
+        //arrayListDepartmant = GetFromDB.getDepartmants();
+
         tableLayout = (TableLayout) findViewById(R.id.table_all_Depardments);
-        drawDepartments();
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -69,6 +69,7 @@ public class AllServices extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_all_services);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
     private void R_loadAllService() {
         APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
         Call<List<Service>> call = apiInterface.getServiceCall();
@@ -77,6 +78,8 @@ public class AllServices extends AppCompatActivity
             @Override
             public void onResponse(Call<List<Service>> call, Response<List<Service>> response) {
                 GetFromDB.setListAllServices(response.body());
+                drawDepartments();
+
             }
 
             @Override
@@ -98,9 +101,10 @@ public class AllServices extends AppCompatActivity
 
 
 
+
         TableRow tableRow = new TableRow(this);
-        for (int i = 0 ; i< arrayListDepartmant.size() ; i++){
-            final Department d = arrayListDepartmant.get(i);
+        for (int i = 0 ; i< GetFromDB.getDepartmants().size() ; i++){
+            final Department d = GetFromDB.getDepartmants().get(i);
             if( (i%2) == 0 ){
                 tableLayout.addView(tableRow);
                 tableRow = new TableRow(this);

@@ -39,21 +39,22 @@ import retrofit2.Response;
 public class MyServiceNotDoneActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    List<ServiceCitizen> listNotDoneServices;
+
     private LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        R_loadNotDoneServiceCitizen();
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_service_not_done);
 
 
-        R_loadNotDoneServiceCitizen();
-        listNotDoneServices = new ArrayList<>();
-        listNotDoneServices = GetFromDB.getNotDoneServicesCitizen();
 
         linearLayout = (LinearLayout) findViewById(R.id.LinerLayout_my_not_done_services);
-        drawMyServices();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,6 +78,8 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
             @Override
             public void onResponse(Call<List<ServiceCitizen>> call, Response<List<ServiceCitizen>> response) {
                 GetFromDB.setNotDoneServicesCitizen(response.body());
+                drawMyServices();
+
             }
 
             @Override
@@ -88,14 +91,14 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
 
 
     }
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+
     private void drawMyServices() {
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         layoutParams.setMargins(30, 20, 30, 10);
-        for (int i = 0 ; i < listNotDoneServices.size() ; i++) {
-            final ServiceCitizen newServiceCitizen = listNotDoneServices.get(i);
+        for (int i = 0 ; i <  GetFromDB.getNotDoneServicesCitizen().size() ; i++) {
+            final ServiceCitizen newServiceCitizen =  GetFromDB.getNotDoneServicesCitizen().get(i);
 
             TextView newTextView1 = new TextView(this);
             newTextView1.setTextSize(24);

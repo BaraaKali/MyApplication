@@ -105,7 +105,7 @@ public class MyAttachment extends AppCompatActivity
             textView.setTextColor(Color.BLACK);
             textView.setTextSize(26);
             textView.setGravity(Gravity.CENTER);
-            textView.setPadding(0,20,0,20);
+            textView.setPadding(0,20,20,20);
 
             linearLayouth.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -114,7 +114,12 @@ public class MyAttachment extends AppCompatActivity
                 }
             });
 
+//            TextView textViewimg1 = new TextView(this);
+//            textViewimg1.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.ic_art_track_black_24dp,0,0);
+//            textViewimg1.setBackgroundResource(R.drawable.shape_button);
 
+
+            textView.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_burst_mode_black_24dp,0);
             linearLayouth.setBackgroundResource(R.drawable.shape_button);
             linearLayouth.addView(textView);
             linearLayout.addView(linearLayouth,layoutParams);
@@ -136,7 +141,7 @@ public class MyAttachment extends AppCompatActivity
                     textView2.setTextColor(Color.BLACK);
                     textView2.setTextSize(26);
                     textView2.setGravity(Gravity.CENTER);
-                    textView2.setPadding(0,20,0,20);
+                    textView2.setPadding(0,20,20,20);
 
                     linearLayouth2.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -146,6 +151,7 @@ public class MyAttachment extends AppCompatActivity
                     });
 
 
+                    textView2.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_burst_mode_black_24dp,0);
                     linearLayouth2.setBackgroundResource(R.drawable.shape_button);
                     linearLayouth2.addView(textView2);
                     linearLayout.addView(linearLayouth2,layoutParams);

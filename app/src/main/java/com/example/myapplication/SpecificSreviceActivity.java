@@ -331,14 +331,15 @@ public class SpecificSreviceActivity extends AppCompatActivity
 
 
     public void showimage(AttwhithFile attwhithFile) {
-       // startActivity(new Intent(this, ShowImage.class));
+
 
         try {
 
             String s = attwhithFile.getOutputfinal();
             byte[] bytes = s.getBytes();
 
-            File newFile = new File("/sdcard/Download/"+attwhithFile.getNameFile());
+            String path = "/sdcard/Download/"+attwhithFile.getNameFile();
+            File newFile = new File(path);
             newFile.createNewFile();
             newFile.setWritable(true);
 
@@ -356,6 +357,27 @@ public class SpecificSreviceActivity extends AppCompatActivity
 
 
             Toast.makeText(this, getString(R.string.download)+"  "+attwhithFile.getNameFile(), Toast.LENGTH_SHORT).show();
+
+            //startActivity(new Intent(this, ShowImage.class));
+
+            Log.i("tag9", attwhithFile.getNameFile());
+
+
+            String[] split = attwhithFile.getNameFile().split("\\.");
+
+            Log.i("tag10",split[1]);
+
+            if(split[1].equals("png")){
+
+                Intent myIntent = new Intent(this, ShowImage.class);
+                Bundle myBundle = new Bundle();
+                myBundle.putString("idDep", path);
+                myIntent.putExtras(myBundle);
+                startActivity(myIntent);
+            }
+
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -22,7 +22,14 @@ public class ShowImage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_image);
+
+        Bundle bundle = getIntent().getExtras();
+        String path = bundle.getString("path");
+
+
+
         try {
+
 
 //            Service service = GetFromDB.getSelectedService(12);
 //            Log.i("tag3", "" + service.getAttwhithFile().get(1).getNameFile());
@@ -39,7 +46,10 @@ public class ShowImage extends AppCompatActivity {
 //            fOut.close();
 //            fOut.close();
 
-            File imgFile = new File("/sdcard/Download/profile_icon.png");
+           // File imgFile = new File("/sdcard/Download/profile_icon.png");
+
+            File imgFile = new File(path);
+
             if (imgFile.exists()) {
 
                 Log.i("tag3", "" + "in if exists");
@@ -47,6 +57,7 @@ public class ShowImage extends AppCompatActivity {
                 ImageView myImage = (ImageView) findViewById(R.id.imageviewTest);
                 Log.i("tag4", "" + myImage.getId());
                 myImage.setImageBitmap(myBitmap);
+
             }
 
         } catch (Exception e) {
