@@ -17,6 +17,8 @@ public class GetFromDB {
     static  int idCitizen;
     static String username;
     static String passWord;
+    static String usernameTitle;
+
 
 
     static List<Service> listAllServices = new ArrayList<>();
@@ -158,26 +160,26 @@ public class GetFromDB {
         return notDoneServicesCitizen;
     }
 
-    public static ArrayList<MyAttachment> getServiceAttachment(int idService) {
-        ArrayList<MyAttachment> myAttachments = new ArrayList<>();
-        //File file = new File("filepath.txt");
-        MyAttachment a = new MyAttachment(1, "طلب عداد");
-        a.setNote("يجب ان ");
-        a.setSrc(new File("aa"));
-        MyAttachment b = new MyAttachment(2, "هوية");
-        b.setNote("يجب ام تكاون واضحه ");
-        myAttachments.add(a);
-        myAttachments.add(b);
-        myAttachments.add(b);
-        myAttachments.add(b);
-        myAttachments.add(b);
-        myAttachments.add(b);
-        myAttachments.add(b);
-        myAttachments.add(b);
-        myAttachments.add(b);
-        myAttachments.add(b);
-        return myAttachments;
-    }
+//    public static ArrayList<MyAttachment> getServiceAttachment(int idService) {
+//        ArrayList<MyAttachment> myAttachments = new ArrayList<>();
+//        //File file = new File("filepath.txt");
+//        MyAttachment a = new MyAttachment(1, "طلب عداد");
+//        a.setNote("يجب ان ");
+//        a.setSrc(new File("aa"));
+//        MyAttachment b = new MyAttachment(2, "هوية");
+//        b.setNote("يجب ام تكاون واضحه ");
+//        myAttachments.add(a);
+//        myAttachments.add(b);
+//        myAttachments.add(b);
+//        myAttachments.add(b);
+//        myAttachments.add(b);
+//        myAttachments.add(b);
+//        myAttachments.add(b);
+//        myAttachments.add(b);
+//        myAttachments.add(b);
+//        myAttachments.add(b);
+//        return myAttachments;
+//    }
 
     public static boolean checkUsers(String username, String password) {
         Log.d("MyApppppp", password);
@@ -261,5 +263,13 @@ public class GetFromDB {
 
     public static void setAttachmentsArchiveCitizen(List<AttachmentArchiveCitizen> attachmentsArchiveCitizen) {
         GetFromDB.attachmentsArchiveCitizen = attachmentsArchiveCitizen;
+    }
+
+    public static String getUsernameTitle() {
+        return usernameTitle;
+    }
+
+    public static void setUsernameTitle(String usernameTitle) {
+        GetFromDB.usernameTitle = usernameTitle;
     }
 }

@@ -1,6 +1,10 @@
 package com.example.myapplication;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,12 +19,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
+import com.example.myapplication.Notification.AlarmReceiver;
 import com.example.myapplication.models.MunInfo;
 import com.example.myapplication.models.Service;
 import com.example.myapplication.network.APIInterface;
 import com.example.myapplication.network.RetrofitClient;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -36,6 +42,8 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
 
          R_loadMunicipalityInformatione();
+
+        notifacation();
 
 
 
@@ -60,6 +68,10 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_home);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.usernameTitle);
+        navUsername.setText(GetFromDB.getUsernameTitle());
     }
 
     @Override
@@ -122,7 +134,8 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onResponse(Call<MunInfo> call, Response<MunInfo> response) {
                munInfo = response.body();
-                fillTextMunInfo();
+               fillTextMunInfo();
+
             }
 
             @Override
@@ -165,6 +178,19 @@ public class HomeActivity extends AppCompatActivity
         TextView textView_muni_fax = (TextView)findViewById(R.id.textView_muni_fax);
         textView_muni_fax.setText(munInfo.getFax());
 
+
+    }
+
+    public void notifacation(){
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        Intent notificationIntent = new Intent(this, AlarmReceiver.class);
+        PendingIntent broadcast = PendingIntent.getBroadcast(this, 100, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.SECOND, 5);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), broadcast);
 
     }
 

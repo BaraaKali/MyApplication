@@ -68,6 +68,10 @@ public class AllServices extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_all_services);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.usernameTitle);
+        navUsername.setText(GetFromDB.getUsernameTitle());
+
     }
 
     private void R_loadAllService() {

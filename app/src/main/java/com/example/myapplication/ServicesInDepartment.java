@@ -56,6 +56,9 @@ public class ServicesInDepartment extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_services_in_department);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.usernameTitle);
+        navUsername.setText(GetFromDB.getUsernameTitle());
 
     }
 

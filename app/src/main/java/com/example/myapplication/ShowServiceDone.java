@@ -33,7 +33,6 @@ import retrofit2.Response;
 public class ShowServiceDone extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-     List<StepsAndDecsions> stepsAndDecsions = new ArrayList<>();
     private LinearLayout linearLayout;
 
     @Override
@@ -50,9 +49,7 @@ public class ShowServiceDone extends AppCompatActivity
         
 
         R_loadDoneServiceCitizen(idServiceCitizen,idServiceProvided);
-        stepsAndDecsions = GetFromDB.getStepsAndDecsions();
         linearLayout = (LinearLayout) findViewById(R.id.LinerLayout_path);
-        draw();
 
         setTitle(name);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -68,6 +65,9 @@ public class ShowServiceDone extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.usernameTitle);
+        navUsername.setText(GetFromDB.getUsernameTitle());
 
     }
 
@@ -77,9 +77,9 @@ public class ShowServiceDone extends AppCompatActivity
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(30, 30, 30, 70);
-        if (stepsAndDecsions != null) {
-            for (int i = 0; i < stepsAndDecsions.size(); i++) {
-                final StepsAndDecsions step = stepsAndDecsions.get(i);
+        if ( GetFromDB.getStepsAndDecsions() != null) {
+            for (int i = 0; i <  GetFromDB.getStepsAndDecsions().size(); i++) {
+                final StepsAndDecsions step =  GetFromDB.getStepsAndDecsions().get(i);
 
                 LinearLayout linearLayoutv = new LinearLayout(this);
                 linearLayoutv.setOrientation(LinearLayout.VERTICAL);
@@ -272,6 +272,7 @@ public class ShowServiceDone extends AppCompatActivity
             @Override
             public void onResponse(Call<List<StepsAndDecsions>> call, Response<List<StepsAndDecsions>> response) {
                 GetFromDB.setStepsAndDecsions(response.body());
+                draw();
 
 
             }

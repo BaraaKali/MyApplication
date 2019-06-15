@@ -68,6 +68,9 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_my_not_done_services);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.usernameTitle);
+        navUsername.setText(GetFromDB.getUsernameTitle());
     }
 
     private void R_loadNotDoneServiceCitizen() {
@@ -121,7 +124,7 @@ public class MyServiceNotDoneActivity extends AppCompatActivity
             linearLayoutv.addView(newTextView3);
 
             ProgressBar progressBar = new  ProgressBar(this,null,android.R.attr.progressBarStyleHorizontal);
-            progressBar.setProgress(newServiceCitizen.getAndroidLine());
+            progressBar.setProgress(newServiceCitizen.getPercentageWork());
 
 //        Drawable draw = getDrawable(R.drawable.circle);
 //        progressBar.setProgressDrawable(draw);

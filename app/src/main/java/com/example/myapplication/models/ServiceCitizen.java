@@ -9,9 +9,9 @@ public class ServiceCitizen {
     @SerializedName("idMaxSC")
     @Expose
     private Integer idMaxSC;
-    @SerializedName("androidLine")
+    @SerializedName("percentageWork")
     @Expose
-    private Integer androidLine;
+    private Integer percentageWork;
     @SerializedName("status")
     @Expose
     private String status;
@@ -68,12 +68,12 @@ public class ServiceCitizen {
         return idMaxSC;
     }
 
-    public Integer getAndroidLine() {
-        return androidLine;
+    public Integer getPercentageWork() {
+        return percentageWork;
     }
 
-    public void setAndroidLine(Integer androidLine) {
-        this.androidLine = androidLine;
+    public void setPercentageWork(Integer percentageWork) {
+        this.percentageWork = percentageWork;
     }
 
     public void setIdMaxSC(Integer idMaxSC) {

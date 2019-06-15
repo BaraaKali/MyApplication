@@ -44,7 +44,6 @@ public class MyAttachment extends AppCompatActivity
         linearLayout = (LinearLayout) findViewById(R.id.LinerLayout_citizen_attachment);
 
         R_loadAttachmentCitizen();
-        drawAttachment();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,6 +56,9 @@ public class MyAttachment extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_my_attachment);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.usernameTitle);
+        navUsername.setText(GetFromDB.getUsernameTitle());
 
     }
 
@@ -69,6 +71,7 @@ public class MyAttachment extends AppCompatActivity
             @Override
             public void onResponse(Call<List<AttachmentArchiveCitizen>> call, Response<List<AttachmentArchiveCitizen>> response) {
                 GetFromDB.setAttachmentsArchiveCitizen(response.body());
+                drawAttachment();
 
 
             }
@@ -79,8 +82,6 @@ public class MyAttachment extends AppCompatActivity
 
             }
         });
-
-
     }
 
     private void drawAttachment() {

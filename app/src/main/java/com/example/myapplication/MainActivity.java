@@ -81,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 Citizen citizen = response.body();
                 if(citizen != null) {
                     GetFromDB.setIdCitizen(citizen.getId());
-                   goToHome();
+                    GetFromDB.setUsernameTitle(citizen.getFirstName()+" "+citizen.getFatherName()+" "+citizen.getGrandFatherName()+" "+citizen.getLastName());
+                    goToHome();
                 }else{
                     editText_user_name.setAnimation(animShake);
                     editText_user_name.startAnimation(animShake);

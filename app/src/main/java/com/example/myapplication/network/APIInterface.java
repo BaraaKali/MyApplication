@@ -13,6 +13,8 @@ import com.example.myapplication.models.StepsAndDecsions;
 
 import java.util.List;
 
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -50,6 +52,12 @@ public interface APIInterface {
     @GET("CitizenAtt")
     Call<List<AttachmentArchiveCitizen>> getAttachmentArchiveCitizen(@Query("idCitizen") int idCitizen);
 
+    @GET("fileAtt")
+    Call<String> getFileAtt(@Query("idAtt") int idAtt);
+
+
+    @POST("test")
+    Call<String> test(@Body String s);
 
 
 }

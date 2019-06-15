@@ -65,6 +65,10 @@ public class MyInformation extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_my_information);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.usernameTitle);
+        navUsername.setText(GetFromDB.getUsernameTitle());
+
         selectImage = (Button) findViewById(R.id.buttont);
         imageView = (ImageView) findViewById(R.id.imageViewt);
         selectImage.setOnClickListener(new View.OnClickListener() {
@@ -287,6 +291,7 @@ public class MyInformation extends AppCompatActivity
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 Log.i(" Message","success");
+                afterupdate();
 
             }
 
@@ -375,6 +380,8 @@ public class MyInformation extends AppCompatActivity
     public void updateInfo(View view) {
         getTextProfileInfo();
         R_loadUpdateCitizen();
+    }
+    public void afterupdate() {
         Toast.makeText(getApplicationContext(), getString(R.string.edit_done), Toast.LENGTH_SHORT).show();
         Intent myIntent = new Intent(this, MyInformation.class);
         startActivity(myIntent);

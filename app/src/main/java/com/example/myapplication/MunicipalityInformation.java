@@ -10,8 +10,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
+import com.example.myapplication.MyJavaClass.GetFromDB;
 import com.example.myapplication.models.MunInfo;
 import com.example.myapplication.network.APIInterface;
 import com.example.myapplication.network.RetrofitClient;
@@ -45,6 +47,9 @@ public class MunicipalityInformation extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_municipality_information);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.usernameTitle);
+        navUsername.setText(GetFromDB.getUsernameTitle());
     }
 
     private void R_loadMunicipalityInformatione() {
