@@ -5,7 +5,9 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,9 +24,12 @@ public class ShowImage extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         int idfile = bundle.getInt("idfile");
-        ImageView imageView = (ImageView) findViewById(R.id.imageviewTest);
+        String name = bundle.getString("name");
+        setTitle(name);
+        imageView = (ImageView) findViewById(R.id.imageviewTest);
         String url = "http://10.0.2.2:8080/mmapi/fileAtt?idAtt="+idfile;
         new Getimage(imageView).execute(url);
+
 
     }
 
@@ -48,6 +53,7 @@ public class ShowImage extends AppCompatActivity {
                 bitmap = BitmapFactory.decodeStream(str);
 //st
 
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -57,11 +63,19 @@ public class ShowImage extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Bitmap bitmap){
+
             super.onPostExecute(bitmap);
             imv.setImageBitmap(bitmap);
             //sp
+
         }
     }
+
+
+    public void downloadImage(View view) {
+
+    }
+
 
 }
 

@@ -75,7 +75,8 @@
 
     <string name="attachment_service">Service myAttachments</string>
     <string name="service_requirements">Service Requirements</string>
-    <string name="download">Download</string>
+    <string name="view">show</string>
+    <string name="download">download</string>
     <string name="upload">Upload</string>
     <string name="notes">Notes</string>
 

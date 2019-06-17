@@ -79,7 +79,9 @@
 
     <string name="download">تنزيل</string>
     <string name="upload">تحميل</string>
+    <string name="view">مشاهده</string>
     <string name="notes">ملاحظات</string>
+
     <string name="title_activity_my_done_services">خدماتي المنجزة</string>
     <string name="title_activity_my_not_done_services">خدماتي قيد التنفيذ</string>
 

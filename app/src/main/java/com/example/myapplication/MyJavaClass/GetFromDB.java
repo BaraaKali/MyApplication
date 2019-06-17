@@ -7,6 +7,7 @@ import com.example.myapplication.models.Department;
 import com.example.myapplication.models.Service;
 import com.example.myapplication.models.ServiceCitizen;
 import com.example.myapplication.models.StepsAndDecsions;
+import com.example.myapplication.models.UpLoadFiles;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class GetFromDB {
     static String usernameTitle;
 
 
+    static List<UpLoadFiles> files = new ArrayList<>();
 
     static List<Service> listAllServices = new ArrayList<>();
 
@@ -271,5 +273,13 @@ public class GetFromDB {
 
     public static void setUsernameTitle(String usernameTitle) {
         GetFromDB.usernameTitle = usernameTitle;
+    }
+
+    public static List<UpLoadFiles> getFiles() {
+        return files;
+    }
+
+    public static void setFiles(List<UpLoadFiles> files) {
+        GetFromDB.files = files;
     }
 }
