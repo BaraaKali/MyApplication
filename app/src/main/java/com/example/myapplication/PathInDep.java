@@ -10,25 +10,47 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.TextureView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
+import com.example.myapplication.models.AttFileTex;
+import com.example.myapplication.models.AttachmentServiceEmployee;
+import com.example.myapplication.models.AttwhithFile;
 import com.example.myapplication.models.DecisionSection;
 import com.example.myapplication.models.Section;
 import com.example.myapplication.models.StepsAndDecsions;
 import com.example.myapplication.models.StepsAndDecsionsJob;
+import com.example.myapplication.network.APIInterface;
+import com.example.myapplication.network.RetrofitClient;
+import com.nbsp.materialfilepicker.MaterialFilePicker;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PathInDep extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     List<StepsAndDecsions> stepsAndDecsions ;
     private LinearLayout linearLayout;
     StepsAndDecsions step = new StepsAndDecsions();
+    public int idTextViewSelected = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -168,14 +190,46 @@ public class PathInDep extends AppCompatActivity implements NavigationView.OnNav
                 LinearLayout linearLayouth4 = new LinearLayout(this);
                 linearLayouth4.setOrientation(LinearLayout.VERTICAL);
                 linearLayouth4.addView(newTextView8);
+
+
+                for (int k = 0; k < job.getAttachmentServiceEmployee().size(); k++) {
+                    final AttachmentServiceEmployee ase = job.getAttachmentServiceEmployee().get(k);
+
+                    TextView TextView1 = new TextView(this);
+                    TextView1.setText(ase.getFilename());
+                    TextView1.setTextSize(18);
+                    TextView1.setTypeface(Typeface.DEFAULT_BOLD);
+                    TextView1.setTextColor(Color.BLACK);
+                    TextView1.setPadding(30, 30, 30, 10);
+
+
+                    Button button2 = new Button(this);
+                    SpannableString spanString2 = new SpannableString(getString(R.string.download));
+                    spanString2.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString2.length(), 0);
+                    button2.setText(spanString2);
+                    button2.setTextSize(20);
+                    button2.setBackgroundColor(Color.rgb(33, 150, 243));
+                    button2.setTextColor(Color.WHITE);
+
+                    button2.setId(10000+idTextViewSelected);
+                    button2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Log.i("find att in click" ," on ");
+                            showimage(ase);
+
+                        }
+                    });
+
+                    linearLayouth4.addView(TextView1);
+                    linearLayouth4.addView(button2);
+
+                }
+
                 linearLayoutv1.addView(linearLayouth4);
-
-
                 linearLayoutv.addView(linearLayoutv1,layoutParams);
 
             }
-
-
 
             linearLayout.addView(linearLayoutv, layoutParams);
 
@@ -234,6 +288,75 @@ public class PathInDep extends AppCompatActivity implements NavigationView.OnNav
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
+    public void showimage( AttachmentServiceEmployee ase ) {
+            Log.i("sssss","sssss");
+        try {
+
+            if (ase.getImage().equals(true)) {
+                Intent myIntent = new Intent(this, ShowImage.class);
+                Bundle myBundle = new Bundle();
+                myBundle.putInt("idfile", ase.getAttachmentServiceEmployeeID());
+                myBundle.putString("name", ase.getFilename());
+                myBundle.putString("fileAtt", "fileAttEmp");
+
+                myIntent.putExtras(myBundle);
+                startActivity(myIntent);
+            } else {
+
+                R_loadfile(ase.getAttachmentServiceEmployeeID());
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
+
+    private void R_loadfile(int idAttTex) {
+        APIInterface apiInterface = RetrofitClient.getClient().create(APIInterface.class);
+        Call<AttFileTex> call = apiInterface.getfileAttTexE(idAttTex);
+        call.enqueue(new Callback<AttFileTex>() {
+            @Override
+            public void onResponse(Call<AttFileTex> call, Response<AttFileTex> response) {
+                Log.i(" Message", "success");
+                createFile(response.body());
+
+            }
+
+            @Override
+            public void onFailure(Call<AttFileTex> call, Throwable t) {
+                Log.i("Error Message", t.getMessage());
+
+            }
+        });
+
+    }
+
+    public void createFile(AttFileTex attFileTex) {
+        try {
+            String path = "/sdcard/Download/" + attFileTex.getName();
+            File newFile = new File(path);
+            newFile.createNewFile();
+            newFile.setWritable(true);
+            byte[] bytes = attFileTex.getS().getBytes();
+            FileOutputStream fOut = new FileOutputStream(newFile);
+            fOut.write(bytes);
+            fOut.close();
+            Toast.makeText(this, getString(R.string.download) + "  " + attFileTex.getName(), Toast.LENGTH_SHORT).show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
 

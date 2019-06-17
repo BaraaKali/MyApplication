@@ -390,6 +390,8 @@ public int idTextViewSelected = 0;
                 Bundle myBundle = new Bundle();
                 myBundle.putInt("idfile", attwhithFile.getId());
                 myBundle.putString("name", attwhithFile.getName());
+                myBundle.putString("fileAtt", "fileAtt");
+
 
                 myIntent.putExtras(myBundle);
                 startActivity(myIntent);

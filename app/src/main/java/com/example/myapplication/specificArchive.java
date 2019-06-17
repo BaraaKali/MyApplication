@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,17 +14,23 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.style.StyleSpan;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.MyJavaClass.GetFromDB;
 import com.example.myapplication.models.AttachmentArchiveCitizen;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -32,6 +40,8 @@ public class specificArchive extends AppCompatActivity
 
     Bitmap bitmap;
     LinearLayout linearLayout;
+    ImageView imageView;
+    String namefile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,12 +80,13 @@ public class specificArchive extends AppCompatActivity
         layoutParams.setMargins(35, 0, 35, 35);
 
         List<AttachmentArchiveCitizen> attachmentsArchiveCitizen = GetFromDB.getAttachmentsArchiveCitizen();
+
         for (AttachmentArchiveCitizen archivesCitizen : attachmentsArchiveCitizen) {
             if(id == archivesCitizen.getServiceAttachmentNameID()){
 
                 LinearLayout linearLayouth = new LinearLayout(this);
                 linearLayouth.setOrientation(LinearLayout.VERTICAL);
-
+                namefile = archivesCitizen.getNameFile();
                 TextView textView = new TextView(this);
                 textView.setText(archivesCitizen.getNameFile());
                 textView.setTextColor(Color.BLACK);
@@ -83,30 +94,44 @@ public class specificArchive extends AppCompatActivity
                 textView.setGravity(Gravity.CENTER);
                 textView.setPadding(0,20,0,20);
 
-                linearLayouth.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //goToPageThisAttachment(ar.getServiceAttachmentNameID(),ar.getNameAtt());
-                    }
-                });
+
 
 
                 String [] split = (archivesCitizen.getNameFile()).split("\\.");
                 if(split[1].equals("png") || split[1].equals("jpg") ){
-                    ImageView imageView = new ImageView(this);
+                    imageView = new ImageView(this);
                     String url = "http://10.0.2.2:8080/mmapi/fileAttCit?idAtt="+archivesCitizen.getAttaArchiveCID();
                     new Getimage(imageView).execute(url);
                     linearLayouth.addView(imageView);
 
                 }
 
+                Button button = (Button) new Button (this);
+                button.setText(R.string.download);
+                button.setTextSize(20);
+                button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_file_download_black_24dp, 0, R.drawable.ic_file_download_black_24dp, 0);
+                button.setTypeface(Typeface.DEFAULT_BOLD);
+
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        downloadImageArch(imageView,namefile);
+                    }
+                });
+
+
+
                 linearLayouth.setBackgroundResource(R.drawable.shape_button);
                 linearLayouth.addView(textView);
+                linearLayouth.addView(button);
                 linearLayout.addView(linearLayouth,layoutParams);
 
 
             }
         }
+        TextView T = (TextView) new TextView(this);
+        T.setTextSize(60);
+        linearLayout.addView(T,layoutParams);
 
     }
 
@@ -197,6 +222,44 @@ public class specificArchive extends AppCompatActivity
         }
     }
 
+
+    public void downloadImageArch(ImageView imageViewn2, String filename) {
+
+        String [] split = (filename).split("\\.");
+
+        try {
+            String path = "/sdcard/Download/"+filename;
+            File newFile = new File(path);
+            newFile.createNewFile();
+            newFile.setWritable(true);
+
+            Bitmap bm = ((BitmapDrawable)imageViewn2.getDrawable()).getBitmap();
+            byte[] bytes = getBytesFromBitmap(bm,split[1]);
+
+            FileOutputStream fOut = new FileOutputStream(newFile);
+            fOut.write(bytes);
+            fOut.close();
+            Toast.makeText(this, getString(R.string.download) + "  " + filename, Toast.LENGTH_SHORT).show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public byte[] getBytesFromBitmap(Bitmap bitmap, String type) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        if (type.equals("JPEG")){
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+         }else if (type.equals("PNG")) {
+            bitmap.compress(Bitmap.CompressFormat.PNG, 70, stream);
+        }else{
+
+        }
+
+        return stream.toByteArray();
+    }
 
 }
 

@@ -5,6 +5,7 @@ import android.support.annotation.GuardedBy;
 import com.example.myapplication.MyJavaClass.GetFromDB;
 import com.example.myapplication.models.AttFileTex;
 import com.example.myapplication.models.AttachmentArchiveCitizen;
+import com.example.myapplication.models.AttachmentServiceEmployee;
 import com.example.myapplication.models.Citizen;
 import com.example.myapplication.models.CitizenRequest;
 import com.example.myapplication.models.MunInfo;
@@ -65,6 +66,13 @@ public interface APIInterface {
 
     @GET("fileAttTex")
     Call<AttFileTex> getfileAttTex(@Query("idAttTex") int idAttTex);
+
+    @GET("fileAttEmp")
+    Call<AttFileTex> getfileAttEmp(@Query("idAttTex") int idAttTex);
+
+    @GET("fileAttTexE")
+    Call<AttFileTex> getfileAttTexE(@Query("idAttTex") int idAttTex);
+
 
 
     @POST("test")

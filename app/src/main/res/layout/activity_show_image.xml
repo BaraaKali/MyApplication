@@ -7,6 +7,8 @@
     android:orientation="vertical"
     tools:context=".ShowImage">
 
+
+
     <ImageView
         android:id="@+id/imageviewTest"
         android:layout_width="wrap_content"
@@ -17,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_download"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="downloadImage"
