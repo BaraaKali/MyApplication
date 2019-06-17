@@ -90,6 +90,8 @@ public class SpecificSreviceActivity extends AppCompatActivity
     int idService;
     int idMax;
 
+    String form;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -254,6 +256,7 @@ public int idTextViewSelected = 0;
 
                     Log.i("enter","click bun");
                     idTextViewSelected = v.getId();
+                    form = "No";
                     Log.i("id button", "id = " + idTextViewSelected);
                     new MaterialFilePicker()
                             .withActivity(SpecificSreviceActivity.this)
@@ -329,6 +332,7 @@ public int idTextViewSelected = 0;
 
                     Log.i("enter","click bun");
                     idTextViewSelected = v.getId();
+                    form = "yes";
                     Log.i("id button", "id = " + idTextViewSelected);
                     new MaterialFilePicker()
                             .withActivity(SpecificSreviceActivity.this)
@@ -415,7 +419,7 @@ public int idTextViewSelected = 0;
         if (requestCode == 1000 && resultCode == RESULT_OK) {
             String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
             Log.i("Not filePath", "Not filePath" + filePath);
-            GetFromDB.getFiles().add(new UpLoadFiles(filePath,idService,GetFromDB.getIdCitizen()));
+            GetFromDB.getFiles().add(new UpLoadFiles(filePath,idService,GetFromDB.getIdCitizen(),form));
             Log.i("id button", "id on onActivityResult is  " + idTextViewSelected);
             TextView  textView = findViewById(idTextViewSelected);
             String ss = filePath.substring(filePath.lastIndexOf("/")+1);
@@ -455,7 +459,7 @@ public int idTextViewSelected = 0;
         R_loadgetidMaxServCit();
         R_loadAplyService(citizenNote,idService,idMax);
         for (UpLoadFiles f :GetFromDB.getFiles()) {
-            uploadFile(f.getPath(),f.getIdService(),idMax,GetFromDB.getIdCitizen());
+            uploadFile(f.getPath(),f.getIdService(),idMax,GetFromDB.getIdCitizen(),f.getForm());
         }
 
 
@@ -606,7 +610,7 @@ public int idTextViewSelected = 0;
 //    }
 //
 
-    private void uploadFile(String mediaPath , int idService , int idMax,int idCitizin) {
+    private void uploadFile(String mediaPath , int idService , int idMax,int idCitizin,String form) {
 
 
         // Map is used to multipart the file using okhttp3.RequestBody
@@ -620,7 +624,7 @@ public int idTextViewSelected = 0;
         RequestBody filename = RequestBody.create(MediaType.parse("text/plain"), file.getName());
 
         APIInterface getResponse = RetrofitClient.getClient().create(APIInterface.class);
-        Call<ServerResponse> call = getResponse.uploadFile(fileToUpload,idService,idCitizin,idMax);
+        Call<ServerResponse> call = getResponse.uploadFile(fileToUpload,idService,idCitizin,idMax,form);
 
         Log.i(" uploadFile", "enter uploadFile");
 

@@ -5,10 +5,13 @@ public class UpLoadFiles {
     String path;
     int idService;
     int idCitizen;
-    public UpLoadFiles(String path, int idService, int idCitizen) {
+    String form;
+
+    public UpLoadFiles(String path, int idService, int idCitizen, String form) {
         this.path = path;
-        this.idCitizen = idCitizen;
         this.idService = idService;
+        this.idCitizen = idCitizen;
+        this.form = form;
     }
 
     public String getPath() {
@@ -33,5 +36,13 @@ public class UpLoadFiles {
 
     public void setIdService(int idService) {
         this.idService = idService;
+    }
+
+    public String getForm() {
+        return form;
+    }
+
+    public void setForm(String form) {
+        this.form = form;
     }
 }

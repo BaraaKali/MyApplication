@@ -85,7 +85,7 @@ public interface APIInterface {
 
     @Multipart
     @POST("updateprofile")
-    Call<ServerResponse> uploadFile(@Part MultipartBody.Part file,@Query("idSer") int idSer,@Query("idCit") int idCit,@Query("idMax") int idMax);
+    Call<ServerResponse> uploadFile(@Part MultipartBody.Part file,@Query("idSer") int idSer,@Query("idCit") int idCit,@Query("idMax") int idMax,@Query("form") String form);
 
     @POST("applyService")
     Call<String> applyService(@Body String note,@Query("idSer") int idSer,@Query("idCit") int idCit,@Query("idMax") int idMax);
